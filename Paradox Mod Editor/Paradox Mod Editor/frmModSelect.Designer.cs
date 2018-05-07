@@ -28,42 +28,44 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.radNew = new System.Windows.Forms.RadioButton();
+            this.radEdit = new System.Windows.Forms.RadioButton();
+            this.txtModDirectory = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnBrowse = new System.Windows.Forms.Button();
+            this.fbdModDirectory = new System.Windows.Forms.FolderBrowserDialog();
+            this.btnCreateLoad = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // radioButton1
+            // radNew
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(13, 13);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(71, 17);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "New Mod";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radNew.AutoSize = true;
+            this.radNew.Checked = true;
+            this.radNew.Location = new System.Drawing.Point(13, 13);
+            this.radNew.Name = "radNew";
+            this.radNew.Size = new System.Drawing.Size(71, 17);
+            this.radNew.TabIndex = 0;
+            this.radNew.TabStop = true;
+            this.radNew.Text = "New Mod";
+            this.radNew.UseVisualStyleBackColor = true;
+            this.radNew.CheckedChanged += new System.EventHandler(this.radNew_CheckedChanged);
             // 
-            // radioButton2
+            // radEdit
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(13, 36);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(67, 17);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.Text = "Edit Mod";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radEdit.AutoSize = true;
+            this.radEdit.Location = new System.Drawing.Point(13, 36);
+            this.radEdit.Name = "radEdit";
+            this.radEdit.Size = new System.Drawing.Size(67, 17);
+            this.radEdit.TabIndex = 1;
+            this.radEdit.Text = "Edit Mod";
+            this.radEdit.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // txtModDirectory
             // 
-            this.textBox1.Location = new System.Drawing.Point(92, 56);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(696, 20);
-            this.textBox1.TabIndex = 2;
-            this.textBox1.Text = "D:\\Users\\jjsfw\\Documents\\Paradox Interactive\\Crusader Kings II\\mod\\After the End " +
-    "- Sunset Invasion DLC";
+            this.txtModDirectory.Location = new System.Drawing.Point(92, 56);
+            this.txtModDirectory.Name = "txtModDirectory";
+            this.txtModDirectory.Size = new System.Drawing.Size(602, 20);
+            this.txtModDirectory.TabIndex = 2;
             // 
             // label1
             // 
@@ -74,15 +76,41 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Mod Directory:";
             // 
+            // btnBrowse
+            // 
+            this.btnBrowse.Location = new System.Drawing.Point(700, 55);
+            this.btnBrowse.Name = "btnBrowse";
+            this.btnBrowse.Size = new System.Drawing.Size(88, 22);
+            this.btnBrowse.TabIndex = 4;
+            this.btnBrowse.Text = "Browse";
+            this.btnBrowse.UseVisualStyleBackColor = true;
+            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
+            // 
+            // fbdModDirectory
+            // 
+            this.fbdModDirectory.RootFolder = System.Environment.SpecialFolder.MyComputer;
+            // 
+            // btnCreateLoad
+            // 
+            this.btnCreateLoad.Location = new System.Drawing.Point(13, 82);
+            this.btnCreateLoad.Name = "btnCreateLoad";
+            this.btnCreateLoad.Size = new System.Drawing.Size(775, 23);
+            this.btnCreateLoad.TabIndex = 5;
+            this.btnCreateLoad.Text = "Create Mod";
+            this.btnCreateLoad.UseVisualStyleBackColor = true;
+            this.btnCreateLoad.Click += new System.EventHandler(this.btnCreateLoad_Click);
+            // 
             // frmModSelect
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 121);
+            this.Controls.Add(this.btnCreateLoad);
+            this.Controls.Add(this.btnBrowse);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.radioButton1);
+            this.Controls.Add(this.txtModDirectory);
+            this.Controls.Add(this.radEdit);
+            this.Controls.Add(this.radNew);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmModSelect";
             this.ShowIcon = false;
@@ -96,9 +124,12 @@
 
         #endregion
 
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.RadioButton radNew;
+        private System.Windows.Forms.RadioButton radEdit;
+        private System.Windows.Forms.TextBox txtModDirectory;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnBrowse;
+        private System.Windows.Forms.FolderBrowserDialog fbdModDirectory;
+        private System.Windows.Forms.Button btnCreateLoad;
     }
 }

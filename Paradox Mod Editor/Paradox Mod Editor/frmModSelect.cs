@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Paradox_Mod_Editor
 {
@@ -39,6 +40,37 @@ namespace Paradox_Mod_Editor
         private void frmModSelect_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnBrowse_Click(object sender, EventArgs e)
+        {
+            fbdModDirectory.ShowNewFolderButton = radNew.Checked;
+            fbdModDirectory.ShowDialog();
+            txtModDirectory.Text = fbdModDirectory.SelectedPath;
+        }
+
+        private void radNew_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radNew.Checked)
+            {
+                btnCreateLoad.Text = "Create Mod";
+            }
+            else
+            {
+                btnCreateLoad.Text = "Load Mod";
+            }
+        }
+
+        private void btnCreateLoad_Click(object sender, EventArgs e)
+        {
+            if (Directory.Exists(txtModDirectory.Text))
+            {
+                
+            }
+            else
+            {
+                MessageBox.Show("The input directory does not exist.", "Directory Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
