@@ -1,0 +1,74 @@
+* indicates that a feature is undergoing active development
+** indicates that a feature is complete
+
+####################
+Crusader Kings II
+
+COMMON
+artefacts
+bookmarks
+*buildings
+casus belli
+combat tactics
+council positions
+council voting
+*cultures
+death
+death text
+defines
+disease
+dynasties
+event modifiers
+execution methods
+game rules
+government flavor
+governments
+graphicalculturetypes
+heir text
+job actions
+job titles
+*landed titles
+laws
+mercenaries
+minor titles
+modifier definitions
+nicknames
+objectives
+offmap powers
+*on actions
+opinion modifiers
+province setup
+religion modifiers
+*religions
+religious titles
+retinue subunits
+save conversion
+scripted effects
+scripted triggers
+societies
+special troops
+*traits
+trade routes
+tributary types
+triggered modifiers
+
+*EVENTS
+
+*GFX
+
+HISTORY
+automatic character generation
+
+*INTERFACE
+
+LOCALISATION
+*localisation file generation
+
+MAP
+province definition
+de jure setup
+history editing on map
+
+MUSIC
+
+SOUND

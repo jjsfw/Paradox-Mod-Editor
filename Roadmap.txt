@@ -1,0 +1,30 @@
+This is a rough roadmap of features to be added to the Paradox Mod Editor.
+
+##### VERSION 1 #####
+
+CRUSADER KINGS II
+
+General
+- Mod file and folder structure generation
+- Plain text editing for all text-based file types w/o any special additions
+
+Events
+- Templates
+- Editing (basic)
+- On actions
+
+Common
+- Religion creation
+- Culture creation
+- Trait creation
+- Building creation
+
+Localisation
+- File generation
+- Preview in editor in relevant locations
+
+GFX/Interface
+- Preview in editor in relevant locations
+
+FEATURES NOT TO BE ADDED
+Map image editing (GIMP and other editors can handle this far better)
