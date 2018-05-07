@@ -45,16 +45,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmGameSelection.cs">
+    <Compile Include="Basic Forms\frmGameSelection.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmGameSelection.Designer.cs">
+    <Compile Include="Basic Forms\frmGameSelection.Designer.cs">
       <DependentUpon>frmGameSelection.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmModSelect.cs">
+    <Compile Include="Basic Forms\frmModSelect.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmModSelect.Designer.cs">
+    <Compile Include="Basic Forms\frmModSelect.Designer.cs">
       <DependentUpon>frmModSelect.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -66,10 +66,10 @@
     <Compile Include="TextEditorTesting.Designer.cs">
       <DependentUpon>TextEditorTesting.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="frmGameSelection.resx">
+    <EmbeddedResource Include="Basic Forms\frmGameSelection.resx">
       <DependentUpon>frmGameSelection.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmModSelect.resx">
+    <EmbeddedResource Include="Basic Forms\frmModSelect.resx">
       <DependentUpon>frmModSelect.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -96,6 +96,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="Views\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
