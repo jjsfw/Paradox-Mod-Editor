@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
+using Paradox_Mod_Editor.Views;
+
 namespace Paradox_Mod_Editor
 {
     public partial class frmModSelect : Form
@@ -65,7 +67,10 @@ namespace Paradox_Mod_Editor
         {
             if (Directory.Exists(txtModDirectory.Text))
             {
-                
+                // TODO: Remove parent debugging and implement initialisation based on selected game.
+                Form modEditor = new frmModEditor(txtModDirectory.Text);
+                this.Hide();
+                modEditor.ShowDialog();
             }
             else
             {
