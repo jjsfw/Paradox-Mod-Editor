@@ -70,7 +70,7 @@ namespace Paradox_Mod_Editor
                 // TODO: Remove parent debugging and implement initialisation based on selected game.
 
                 var modEditor = new frmModEditor(txtModDirectory.Text);
-                ModEditorController controller = new ModEditorController(modEditor);
+                ModEditorController controller = new ModEditorController(modEditor, game, txtModDirectory.Text);
                 this.Hide();
                 modEditor.ShowDialog();
             }

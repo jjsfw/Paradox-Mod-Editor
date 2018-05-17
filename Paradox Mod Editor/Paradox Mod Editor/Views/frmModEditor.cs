@@ -11,6 +11,7 @@ using System.IO;
 using FastColoredTextBoxNS;
 using System.Xml.Linq;
 using Paradox_Mod_Editor.Controllers;
+using System.Text.RegularExpressions;
 
 namespace Paradox_Mod_Editor.Views
 {
@@ -19,7 +20,7 @@ namespace Paradox_Mod_Editor.Views
         private string modDirectory;
         private FastColoredTextBox textBox;
         private AutocompleteMenu autocompleteMenu;
-        private TextEditorController controller;
+        private ModEditorController controller;
 
         public frmModEditor(string modDirectory)
         {
@@ -29,13 +30,13 @@ namespace Paradox_Mod_Editor.Views
 
         private void frmModEditor_Load(object sender, EventArgs e)
         {
+            CreateTextBox();
             DirectoryInfo rootInfo = new DirectoryInfo(modDirectory);
             trvModFolderStructure.Nodes.Add(buildModTree(rootInfo));
         }
 
         private TreeNode buildModTree(DirectoryInfo folderInfo)
         {
-            
             TreeNode folderNode = new TreeNode(folderInfo.Name);
             foreach (DirectoryInfo directory in folderInfo.GetDirectories())
             {
@@ -56,23 +57,23 @@ namespace Paradox_Mod_Editor.Views
 
         public void SetController(TextEditorController controller)
         {
-            this.controller = controller;
+            this.controller = (ModEditorController)controller;
         }
 
         public void CreateTextBox()
         {
             textBox = new FastColoredTextBox();
+            textBox.Parent = pnlRawEdit;
             textBox.Location = new Point(0, 0);
             textBox.Dock = DockStyle.Fill;
             textBox.Show();
-
-            // Custom Properties
-
             // TODO: add diffmerge (put this elsewhere, its own tool/section)
+            // TODO: make comments always override non-comment patterns
             textBox.SyntaxHighlighter = new SyntaxHighlighter(textBox);
-
             textBox.AutoCompleteBrackets = true;
-            textBox.AutoIndentChars = true;
+            textBox.AutoIndentChars = false;
+            textBox.AutoIndentExistingLines = false;
+            textBox.AutoIndent = true;
             textBox.BracketsHighlightStrategy = BracketsHighlightStrategy.Strategy1;
             textBox.LeftBracket = '{';
             textBox.LeftBracket2 = '(';
@@ -86,7 +87,6 @@ namespace Paradox_Mod_Editor.Views
             Color textColor = ColorTranslator.FromHtml("#A9B7C6");
             Color backColor = ColorTranslator.FromHtml("#2B2B2B");
             Color neutralGrey = ColorTranslator.FromHtml("#808080");
-
             Color testingColorBright = ColorTranslator.FromHtml("#CB772F");
 
             // Colours - IntelliJ Darcula
@@ -106,6 +106,7 @@ namespace Paradox_Mod_Editor.Views
             textBox.AutoIndentNeeded += textBox_AutoIndentNeeded;
             textBox.MouseDoubleClick += textBox_MouseDoubleClick;
             textBox.OnTextChangedDelayed(textBox.Range);
+            textBox.BringToFront();
 
             autocompleteMenu = new AutocompleteMenu(textBox);
             autocompleteMenu.ForeColor = Color.White;
@@ -116,34 +117,7 @@ namespace Paradox_Mod_Editor.Views
             autocompleteMenu.AlwaysShowTooltip = true;
             autocompleteMenu.SearchPattern = @"[\w\.:=!<>]";
 
-            List<AutocompleteItem> items = new List<AutocompleteItem>();
-
-            string xmlTestPath = @"..\..\CrusaderKingsScripts.xml";
-
-            XDocument scripts = XDocument.Load(xmlTestPath);
-
-            IEnumerable<XElement> names = from c in scripts.Root.Descendants("script")
-                                          select c.Element("name");
-
-            IEnumerable<XElement> desc = from c in scripts.Root.Descendants("script")
-                                         select c.Element("desc");
-
-            IEnumerable<XElement> types = from c in scripts.Root.Descendants("script")
-                                          select c.Element("type");
-
-            for (int i = 0; i < names.Count(); i++)
-            {
-                items.Add(new AutocompleteItem(names.ElementAt(i).Value, -1, names.ElementAt(i).Value, types.ElementAt(i).Value, desc.ElementAt(i).Value));
-            }
-            // TODO: add autocompletion of commands with additional parameters e.g. create_unit
-            // See examples below for how to implement
-            // items.Add(new AutocompleteItem("test_param = {\r\n\tvalue = \r\n}", -1, "test_param", "test object", "used for testing autocomplete"));
-
-            items.Add(new InsertSpaceSnippet());
-            items.Add(new InsertSpaceSnippet(@"^(\w+)([=<>!:]+)(\w+)$"));
-            items.Add(new InsertEnterSnippet());
-
-            autocompleteMenu.Items.SetAutocompleteItems(items);
+            autocompleteMenu.Items.SetAutocompleteItems(controller.LoadAutocompleteItems());
         }
 
         private void textBox_TextChangedDelayed(object sender, TextChangedEventArgs e)
@@ -172,6 +146,8 @@ namespace Paradox_Mod_Editor.Views
                 currentIndent = spacesCount;
                 lastNonEmptyLine = i;
             }
+
+            controller.UpdateFile(textBox.Text);
         }
 
         private void textBox_AutoIndentNeeded(object sender, AutoIndentEventArgs e)
@@ -188,6 +164,13 @@ namespace Paradox_Mod_Editor.Views
                     textBox.Bookmarks.Remove(place.iLine);
                 else
                     textBox.Bookmarks.Add(place.iLine);
+            }
+        }
+
+        private void trvModFolderStructure_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            if (Regex.IsMatch(e.Node.Text, @"^[^\\\.\s]+\.[^\\\.\s]+$")) {
+                controller.LoadSelectedFile(textBox, e.Node);
             }
         }
     }

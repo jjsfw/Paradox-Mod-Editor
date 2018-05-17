@@ -40,12 +40,13 @@
             this.trvModFolderStructure.Dock = System.Windows.Forms.DockStyle.Left;
             this.trvModFolderStructure.Location = new System.Drawing.Point(0, 0);
             this.trvModFolderStructure.Name = "trvModFolderStructure";
-            this.trvModFolderStructure.Size = new System.Drawing.Size(196, 450);
+            this.trvModFolderStructure.Size = new System.Drawing.Size(216, 450);
             this.trvModFolderStructure.TabIndex = 0;
+            this.trvModFolderStructure.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.trvModFolderStructure_AfterSelect);
             // 
             // splitter1
             // 
-            this.splitter1.Location = new System.Drawing.Point(196, 0);
+            this.splitter1.Location = new System.Drawing.Point(216, 0);
             this.splitter1.Name = "splitter1";
             this.splitter1.Size = new System.Drawing.Size(3, 450);
             this.splitter1.TabIndex = 1;
@@ -53,15 +54,16 @@
             // 
             // pnlSpecialEdit
             // 
+            this.pnlSpecialEdit.BackColor = System.Drawing.SystemColors.Control;
             this.pnlSpecialEdit.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlSpecialEdit.Location = new System.Drawing.Point(199, 0);
+            this.pnlSpecialEdit.Location = new System.Drawing.Point(219, 0);
             this.pnlSpecialEdit.Name = "pnlSpecialEdit";
             this.pnlSpecialEdit.Size = new System.Drawing.Size(335, 450);
             this.pnlSpecialEdit.TabIndex = 2;
             // 
             // splitter2
             // 
-            this.splitter2.Location = new System.Drawing.Point(534, 0);
+            this.splitter2.Location = new System.Drawing.Point(554, 0);
             this.splitter2.Name = "splitter2";
             this.splitter2.Size = new System.Drawing.Size(3, 450);
             this.splitter2.TabIndex = 3;
@@ -70,9 +72,9 @@
             // pnlRawEdit
             // 
             this.pnlRawEdit.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlRawEdit.Location = new System.Drawing.Point(537, 0);
+            this.pnlRawEdit.Location = new System.Drawing.Point(557, 0);
             this.pnlRawEdit.Name = "pnlRawEdit";
-            this.pnlRawEdit.Size = new System.Drawing.Size(263, 450);
+            this.pnlRawEdit.Size = new System.Drawing.Size(243, 450);
             this.pnlRawEdit.TabIndex = 4;
             // 
             // frmModEditor

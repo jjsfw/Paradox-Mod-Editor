@@ -7238,12 +7238,14 @@ namespace FastColoredTextBoxNS
 
         private void InitializeComponent()
         {
-            SuspendLayout();
+            this.SuspendLayout();
             // 
             // FastColoredTextBox
             // 
-            Name = "FastColoredTextBox";
-            ResumeLayout(false);
+            this.Name = "FastColoredTextBox";
+            this.Load += new System.EventHandler(this.FastColoredTextBox_Load);
+            this.ResumeLayout(false);
+
         }
 
         /// <summary>
@@ -8198,6 +8200,11 @@ window.status = ""#print"";
         }
 
         #endregion
+
+        private void FastColoredTextBox_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 
     public class PaintLineEventArgs : PaintEventArgs
