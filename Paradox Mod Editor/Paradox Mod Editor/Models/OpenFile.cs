@@ -33,6 +33,11 @@ namespace Paradox_Mod_Editor.Models
             this.state = FileState.Unsaved;
         }
 
+        public void UpdateContentsIgnoreSave(string newContents)
+        {
+            this.contents = newContents;
+        }
+
         public string GetContents()
         {
             return contents;

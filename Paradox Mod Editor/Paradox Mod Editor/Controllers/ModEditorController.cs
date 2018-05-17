@@ -81,6 +81,7 @@ namespace Paradox_Mod_Editor.Controllers
             }
             currentFile = files[filePath];
             textBox.Text = currentFile.GetContents();
+            currentFile.UpdateContentsIgnoreSave(textBox.Text);
         }
 
         public void UpdateFile(string contents)
@@ -89,6 +90,15 @@ namespace Paradox_Mod_Editor.Controllers
             {
                 base.UpdateFile(filePath, contents);
             }
+        }
+
+        public string ReadFile()
+        {
+            if (currentFile == null)
+            {
+                return "";
+            }
+            return currentFile.GetContents();
         }
     }
 }

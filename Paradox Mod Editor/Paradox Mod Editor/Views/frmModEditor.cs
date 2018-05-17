@@ -21,6 +21,7 @@ namespace Paradox_Mod_Editor.Views
         private FastColoredTextBox textBox;
         private AutocompleteMenu autocompleteMenu;
         private ModEditorController controller;
+        private TreeNode currentNode;
 
         public frmModEditor(string modDirectory)
         {
@@ -146,8 +147,21 @@ namespace Paradox_Mod_Editor.Views
                 currentIndent = spacesCount;
                 lastNonEmptyLine = i;
             }
-
-            controller.UpdateFile(textBox.Text);
+            if (textBox.Text != controller.ReadFile())
+            {
+                controller.UpdateFile(textBox.Text);
+                if (currentNode != null)
+                {
+                    currentNode.BackColor = Color.Yellow;
+                }
+            }
+            else
+            {
+                if (currentNode != null)
+                {
+                    currentNode.BackColor = Color.White;
+                }
+            }
         }
 
         private void textBox_AutoIndentNeeded(object sender, AutoIndentEventArgs e)
@@ -171,6 +185,7 @@ namespace Paradox_Mod_Editor.Views
         {
             if (Regex.IsMatch(e.Node.Text, @"^[^\\\.\s]+\.[^\\\.\s]+$")) {
                 controller.LoadSelectedFile(textBox, e.Node);
+                currentNode = e.Node;
             }
         }
     }
