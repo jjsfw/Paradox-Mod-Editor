@@ -16,7 +16,7 @@ namespace Paradox_Mod_Editor
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmTextEditorTesting());
+            Application.Run(new frmGameSelection());
         }
     }
 }

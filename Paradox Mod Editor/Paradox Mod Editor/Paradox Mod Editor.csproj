@@ -58,6 +58,7 @@
     <Compile Include="Basic Forms\frmModSelect.Designer.cs">
       <DependentUpon>frmModSelect.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\ModEditorController.cs" />
     <Compile Include="Controllers\TextEditorController.cs" />
     <Compile Include="FastColoredTextBox\AutocompleteItem.cs" />
     <Compile Include="FastColoredTextBox\AutocompleteMenu.cs">

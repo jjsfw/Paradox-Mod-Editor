@@ -8,8 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-
 using Paradox_Mod_Editor.Views;
+using Paradox_Mod_Editor.Controllers;
 
 namespace Paradox_Mod_Editor
 {
@@ -68,7 +68,9 @@ namespace Paradox_Mod_Editor
             if (Directory.Exists(txtModDirectory.Text))
             {
                 // TODO: Remove parent debugging and implement initialisation based on selected game.
-                Form modEditor = new frmModEditor(txtModDirectory.Text);
+
+                var modEditor = new frmModEditor(txtModDirectory.Text);
+                ModEditorController controller = new ModEditorController(modEditor);
                 this.Hide();
                 modEditor.ShowDialog();
             }

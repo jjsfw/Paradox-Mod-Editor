@@ -22,6 +22,7 @@ namespace Paradox_Mod_Editor
         private FastColoredTextBox textBox;
         private TextEditorController controller;
         private AutocompleteMenu autoCompleteMenu;
+        private Place selectionStart;
 
         public frmTextEditorTesting()
         {
@@ -42,10 +43,6 @@ namespace Paradox_Mod_Editor
 
             // Custom Properties
 
-            // TODO: add autocomplete
-            // TODO: add hints
-            // TODO: add context highlighting
-            // TODO: add indentation after brackets
             // TODO: add diffmerge (put this elsewhere, its own tool/section)
             textBox.SyntaxHighlighter = new SyntaxHighlighter(textBox);
 
@@ -73,16 +70,9 @@ namespace Paradox_Mod_Editor
             textBox.SelectionColor = textColor;
             textBox.IndentBackColor = backColor;
             textBox.LineNumberColor = textColor;
-            //  textBox.FoldingIndicatorColor = testingColorBright;
-
             // End Colours
-
             textBox.DescriptionFile = @"..\..\ParadoxFormat.xml";
-
             textBox.Language = Language.Custom;
-
-
-
             // End Custom Properties
 
             this.Controls.Add(textBox);
@@ -90,7 +80,6 @@ namespace Paradox_Mod_Editor
             textBox.TextChangedDelayed += textBox_TextChangedDelayed;
             textBox.AutoIndentNeeded += textBox_AutoIndentNeeded;
             textBox.MouseDoubleClick += textBox_MouseDoubleClick;
-
             textBox.OnTextChangedDelayed(textBox.Range);
 
             autoCompleteMenu = new AutocompleteMenu(textBox);
@@ -100,16 +89,9 @@ namespace Paradox_Mod_Editor
             autoCompleteMenu.SearchPattern = @"[\w\.]";
             autoCompleteMenu.AllowTabKey = true;
             autoCompleteMenu.AlwaysShowTooltip = true;
-            //autoCompleteMenu.Items.ImageList = imlAutoComplete;
             autoCompleteMenu.SearchPattern = @"[\w\.:=!<>]";
 
             List<AutocompleteItem> items = new List<AutocompleteItem>();
-
-            //items.Add(new AutocompleteItem("AND", -1, "AND", "AND", "Returns true if all enclosed conditions return true. This is the default operator."));
-            //items.Add(new AutocompleteItem("OR"));
-            //items.Add(new AutocompleteItem("NOT"));
-            //items.Add(new AutocompleteItem("NOR"));
-            //items.Add(new AutocompleteItem("NAND"));
 
             string xmlTestPath = @"..\..\CrusaderKingsScripts.xml";
 
@@ -126,8 +108,10 @@ namespace Paradox_Mod_Editor
 
             for (int i = 0; i < names.Count(); i++)
             {
-                items.Add(new AutocompleteItem(names.ElementAt(i).Value, -1, names.ElementAt(i).Value, names.ElementAt(i).Value, desc.ElementAt(i).Value));
+                items.Add(new AutocompleteItem(names.ElementAt(i).Value, -1, names.ElementAt(i).Value, types.ElementAt(i).Value, desc.ElementAt(i).Value));
             }
+
+            items.Add(new AutocompleteItem("test_param = {\r\n\tvalue = \r\n}", -1, "test_param", "test object", "used for testing autocomplete"));
 
             items.Add(new InsertSpaceSnippet());
             items.Add(new InsertSpaceSnippet(@"^(\w+)([=<>!:]+)(\w+)$"));
@@ -193,127 +177,6 @@ namespace Paradox_Mod_Editor
 
         // Snippets for AutoComplete
 
-        /// <summary>
-        /// This item appears when any part of snippet text is typed
-        /// </summary>
-        class DeclarationSnippet : SnippetAutocompleteItem
-        {
-            public DeclarationSnippet(string snippet)
-                : base(snippet)
-            {
-            }
-
-            public override CompareResult Compare(string fragmentText)
-            {
-                var pattern = Regex.Escape(fragmentText);
-                if (Regex.IsMatch(Text, "\\b" + pattern, RegexOptions.IgnoreCase))
-                    return CompareResult.Visible;
-                return CompareResult.Hidden;
-            }
-        }
-
-        /// <summary>
-        /// Divides numbers and words: "123AND456" -> "123 AND 456"
-        /// Or "i=2" -> "i = 2"
-        /// </summary>
-        class InsertSpaceSnippet : AutocompleteItem
-        {
-            string pattern;
-
-            public InsertSpaceSnippet(string pattern) : base("")
-            {
-                this.pattern = pattern;
-            }
-
-            public InsertSpaceSnippet()
-                : this(@"^(\d+)([a-zA-Z_]+)(\d*)$")
-            {
-            }
-
-            public override CompareResult Compare(string fragmentText)
-            {
-                if (Regex.IsMatch(fragmentText, pattern))
-                {
-                    Text = InsertSpaces(fragmentText);
-                    if (Text != fragmentText)
-                        return CompareResult.Visible;
-                }
-                return CompareResult.Hidden;
-            }
-
-            public string InsertSpaces(string fragment)
-            {
-                var m = Regex.Match(fragment, pattern);
-                if (m == null)
-                    return fragment;
-                if (m.Groups[1].Value == "" && m.Groups[3].Value == "")
-                    return fragment;
-                return (m.Groups[1].Value + " " + m.Groups[2].Value + " " + m.Groups[3].Value).Trim();
-            }
-
-            public override string ToolTipTitle
-            {
-                get
-                {
-                    return Text;
-                }
-            }
-        }
-
-        /// <summary>
-        /// Inerts line break after '}'
-        /// </summary>
-        class InsertEnterSnippet : AutocompleteItem
-        {
-            Place enterPlace = Place.Empty;
-
-            public InsertEnterSnippet()
-                : base("[Line break]")
-            {
-            }
-
-            public override CompareResult Compare(string fragmentText)
-            {
-                var r = Parent.Fragment.Clone();
-                while (r.Start.iChar > 0)
-                {
-                    if (r.CharBeforeStart == '}')
-                    {
-                        enterPlace = r.Start;
-                        return CompareResult.Visible;
-                    }
-
-                    r.GoLeftThroughFolded();
-                }
-
-                return CompareResult.Hidden;
-            }
-
-            public override string GetTextForReplace()
-            {
-                //extend range
-                Range r = Parent.Fragment;
-                Place end = r.End;
-                r.Start = enterPlace;
-                r.End = r.End;
-                //insert line break
-                return Environment.NewLine + r.Text;
-            }
-
-            public override void OnSelected(AutocompleteMenu popupMenu, SelectedEventArgs e)
-            {
-                base.OnSelected(popupMenu, e);
-                if (Parent.Fragment.tb.AutoIndent)
-                    Parent.Fragment.tb.DoAutoIndent();
-            }
-
-            public override string ToolTipTitle
-            {
-                get
-                {
-                    return "Insert line break after '}'";
-                }
-            }
-        }
+        
     }
 }

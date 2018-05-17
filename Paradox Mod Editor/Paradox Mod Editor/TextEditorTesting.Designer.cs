@@ -28,15 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.imlAutoComplete = new System.Windows.Forms.ImageList(this.components);
             this.SuspendLayout();
-            // 
-            // imlAutoComplete
-            // 
-            this.imlAutoComplete.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imlAutoComplete.ImageSize = new System.Drawing.Size(16, 16);
-            this.imlAutoComplete.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // frmTextEditorTesting
             // 
@@ -52,7 +44,5 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ImageList imlAutoComplete;
     }
 }
