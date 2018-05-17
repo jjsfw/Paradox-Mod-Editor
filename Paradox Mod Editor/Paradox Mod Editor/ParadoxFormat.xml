@@ -1,0 +1,28 @@
+﻿<doc>
+  <brackets left="{" right="}" />
+
+  <style name="Blue" color="Blue"/>
+  <style name="Green" color="Green" />
+  <style name="BlueViolet" color="BlueViolet" />
+  <style name="Fuschia" color="#f92672" />
+  <style name="SoftPurple" color="#9876AA" />
+  <style name="SoftBlue" color="#6897BB" />
+  <style name="Grey" color="#808080" />
+  <style name="Lime" color="#A5C25C" />
+  <style name="DarkOrange" color="#CB772F" />
+  <style name="CriticalRed" backColor="#D25252" fontStyle="Underline"/>
+
+  <rule style="Grey" options = "Singleline">#.*</rule>
+
+  <rule style="Fuschia" options="Singleline">\=\s*\{</rule>
+  <rule style="Fuschia" options="Singleline">}</rule>
+  <rule style="SoftBlue" options="Singleline">\b(\d)+\b</rule>
+  <rule style="Fuschia" options = "IgnoreCase">\b(OR|AND|NOT|NAND|NOR)\b</rule>
+  <rule style="Lime" options = "IgnoreCase">\b(THIS|ROOT|(?:FROM)+|(?:PREV)+)\b</rule>
+  <rule style="DarkOrange" options="Singleline">(?=.*\=\s*\{).*</rule>
+  <rule style="Lime" options="Singleline">(["'])(?:(?=(\\?))\2.)*?\1</rule>
+  <rule style="CriticalRed" options="Singleline">(")(?(1)[^"]*?$)</rule>"
+  <rule style="SoftBlue" options="IgnoreCase">(yes|no)</rule>
+
+  <rule style="Grey" options = "Singleline">#.*</rule>
+</doc>

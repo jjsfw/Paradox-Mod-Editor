@@ -1,0 +1,1667 @@
+﻿<doc>
+  <script>
+    <type>command</type>
+    <name>abandon_heresy</name>
+    <desc>Converts to the parent religion</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>abdicate</name>
+    <desc>Abdicate to current heir</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>abdicate_to</name>
+    <desc>Abdicate to an arbitrary character. \nNote: to also transfer wealth, use the wealth and clear_wealth commands.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>abdicate_to_most_liked_by</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>activate_disease</name>
+    <desc>Activate a disease, which can now randomly appear. Note that there&apos;s no way to deactivate a disease.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>activate_plot</name>
+    <desc>For plots activated by decision</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>activate_title</name>
+    <desc>Activate/deactivate a titular or de jure landed title. Unlike destroyed titles (destroy_landed_title), deactivated titles cannot be re-created by the player or AI, except through special decisions.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>add_alliance</name>
+    <desc>Creates an alliance between characters. Also see break_alliance.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>add_ambition</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>add_artifact</name>
+    <desc>A copy of the named artifact is created and added to the scoped character</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>add_betrothal</name>
+    <desc>Warn: buggy behavior</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>add_building</name>
+    <desc>Construct a building in a holding.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>add_character_modifier</name>
+    <desc>Adds a character modifier. Can use optional field stacking = yes.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>add_claim</name>
+    <desc>Adds a strong, non-inheritable claim to a character.Note: assigned value cannot be a scope reference to a title.[1]</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>add_consort</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>add_favor</name>
+    <desc>Makes scoped character be owed a favor toward another character. Also see reverse_add_favor.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>add_friend</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>add_holding_modifier</name>
+    <desc>Adds a holding modifier. Can use optional field stacking = yes.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>add_holding_slot</name>
+    <desc>Adds N constructible settlement to a province. Can be negative. [2]</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>add_law</name>
+    <desc>Sets the specified law for the scoped title. Can optionally specify to ignore cooldown and opinion effects (i.e. on vassals), defaulting to yes.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>add_law_w_cooldown</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>add_lover</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>add_objective</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>add_population_scaled</name>
+    <desc>Adds or subtracts a portion of the scope&apos;s population.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>add_pressed_claim</name>
+    <desc>Adds a strong, inheritable claim. Note: assigned value cannot be a scope reference to a title.[1]</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>add_province_modifier</name>
+    <desc>Adds a province modifier</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>add_random_education_trait</name>
+    <desc>Adds an education /trait matching specified attribute or level.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>add_rival</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>add_society_modifier</name>
+    <desc>Adds a timed modifier to the society of scoped character. Works with days and years.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>add_spouse</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>add_spouse_matrilineal</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>add_to_extra_holding</name>
+    <desc>Construct a building in a special holding (hospital, fort or trade post).</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>add_trait</name>
+    <desc>Adds a trait to the character, using an ID from the traits files. Also see remove_trait.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>add_weak_claim</name>
+    <desc>Adds a weak, non-inheritable claim. Note: assigned value cannot be a scope reference to a title.[1]</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>add_weak_pressed_claim</name>
+    <desc>Adds a weak, inheritable claim. Note: assigned value cannot be a scope reference to a title.[1]</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>adjective</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>adjust_siphon_factor</name>
+    <desc>Update the percentage of income that goes to the creator for a dynamic mercenary company.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>ambition_succeeds</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>approve_law</name>
+    <desc>approve_law = law starts a vote on a law approve_law = title votes in favor of a law</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>back_plot</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>banish</name>
+    <desc>banish character to random court</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>banish_religion</name>
+    <desc>All characters of the targeted religion will be banished to random court</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>become_heretic</name>
+    <desc>Changes character religion to a random heresy of current religion</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>best_fit_character_for_title</name>
+    <desc>Gives the character best fit for a title. Parameters: title, perspective (From whose perspective we are viewing the title), index (The index of the character in the list), grant_title</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>break_alliance</name>
+    <desc>Remove an alliance. Also see add_alliance</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>break_betrothal</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>build_holding</name>
+    <desc>Builds a new settlement in the province.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>cancel_ambition</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>cancel_job_action</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>cancel_objective</name>
+    <desc>Outdated, now cancel_objective/cancel_plot</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>cancel_plot</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>capital</name>
+    <desc>Moves the capital</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>change_diplomacy</name>
+    <desc>Changes base diplomacy stat. Negative decreases base diplomacy but will not decrease base diplomacy below 0</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>change_infamy</name>
+    <desc>Add or remove threat from a character.\nvalue : numerical change in infamy/threat (can be a decimal value)\nlocalisation : key for the localisation entry for the character&apos;s threat tooltip.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>change_intrigue</name>
+    <desc>Changes base intrigue stat. Negative decreases base intrigue but will not decrease base intrigue below 0</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>change_learning</name>
+    <desc>Changes base learning stat. Negative decreases base learning but will not decrease base learning below 0</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>change_martial</name>
+    <desc>Changes base martial stat. Negative decreases base martial but will not decrease base martial below 0</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>change_mercenary_composition</name>
+    <desc>Change the composition of a dynamic mercenary title.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>change_plot_power</name>
+    <desc>Add the specified amount of plot power to the plot owned by the scoped characters.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>change_random_civ_tech</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>change_random_eco_tech</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>change_random_mil_tech</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>change_society_currency</name>
+    <desc>Changes the currency of scope character in their society. Can optionally specify parameters for the society to change the currency of and to scale the currency changed by the society influence, reducing the amount of currency consumed (or given, but is intended for the former) by 70% when the society is at 100% influence, going linearly from 0% at 0%.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>change_stewardship</name>
+    <desc>Changes base stewardship stat. Negative decreases base stewardship but will not decrease base stewardship below 0</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>change_tech</name>
+    <desc>Improves technology in the province (referenced in common/technology.txt)</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>change_title_army_size</name>
+    <desc>Changes the army size of a mercenary/adventurer title.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>change_variable</name>
+    <desc>Increment (or decrement) a variable with specified value, or another variable</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>character_event</name>
+    <desc>Fires an event to scoped character. See event modding.Parameter Type Description id int Required. Event ID to fire. May use a namespace. days int Optional. Base number of days to wait before firing the event. If not specified, event occurs instantly. random int Optional. Number of days to add randomly for the event occurrence date, closed-ended (days to days+random). tooltip Key Optional localisation key to show as tooltip. If not specified, uses the DEFAULT_SENDEVENT_EVENTOPTION_TOOLTIP key (&quot;Character receives an event&quot;).</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>chronicle</name>
+    <desc>Parameters: entry, portrait, picture</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>clan_opinion</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>clan_reverse_opinion</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>clear_delayed_event</name>
+    <desc>Removes specified event id with a delayed trigger on current scope.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>clear_education_trait</name>
+    <desc>Removes all traits with the education = yes parameter.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>clear_event_target</name>
+    <desc>Deletes a previously saved variable</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>clear_flags_with_prefix</name>
+    <desc>Clears all flags of the current scope that begin with the specified prefix</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>clear_focus</name>
+    <desc>Removes the focus of a character. Also see set_focus.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>clear_global_event_target</name>
+    <desc>Deletes a previously saved global variable</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>clear_global_event_targets</name>
+    <desc>Deletes all previously saved global variables</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>clear_secret_religion</name>
+    <desc>Removes the scoped character&apos;s secret religion.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>clear_revolt</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>clear_wealth</name>
+    <desc>Sets wealth of character to 0. Can be used after transfer of money via wealth command.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>clr_artifact_flag</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>clr_character_flag</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>clr_discovered_society</name>
+    <desc>Resets the character&apos;s revealed society.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>clr_dynasty_flag</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>clr_global_flag</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>clr_province_flag</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>clr_quest</name>
+    <desc>Removes any quest with that name (and from that society, if the society name is present) belonging to the scoped character. Can optionally specify a failure parameter, considered a success otherwise.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>clr_quest_target</name>
+    <desc>Clears the target of the specified quest belonging to the scoped character. Does not clear the quest itself.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>clr_title_flag</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>conquest_culture</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>convert_to</name>
+    <desc>Converts holding to another holding type: CASTLE, CITY, TEMPLE, TRIBAL, NOMAD</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>convert_to_secret_religion</name>
+    <desc>Sets the scoped character&apos;s public religion to his/her secret religion, or to the target character&apos;s secret religion if a scope is used.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>copy_name</name>
+    <desc>As set_name, but sets name of scope to that of the right side of copy_name = &lt;scope&gt; argument.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>copy_random_personality_trait</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>copy_title_history</name>
+    <desc>Copies title history from title on the right to title on the left.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>copy_title_laws</name>
+    <desc>Copies title laws from title on the right to title on the left.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>create_character</name>
+    <desc>Creates a random character with specified parameters.Parameter Type Description age int age = 0 name string has_nickname nickname attributes clause martial, intrigue, diplomacy, stewardship, learning trait trait trait = bastard health double fertility double random_traits bool If omitted, the default is &apos;no&apos;. female bool female = no employer title If omitted, defaults to scoped character, or owner of scoped province. religion religion religion = ROOT culture culture/random culture = ROOT dynasty ID/none/random/culture dynasty = none dna string flag flag genetic_father character genetic_father = ROOT, used for portraits, congenital trait inheritance, etc. (Note: the trait inheritance is broken, and has been since Old Gods). genetic_mother character genetic_mother = PREV race character race = PREV historical bool If yes, character won&apos;t ever be pruned from the database. immortal_age int Age at which a character become immortal, if relevant.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>create_family_palace</name>
+    <desc>Creates the patrician family palace</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>create_feud</name>
+    <desc>Create a feud between two clans</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>create_hospital</name>
+    <desc>Creates a hospital in the specified province</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>create_random_diplomat</name>
+    <desc>creates a random character with diplomacy education</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>create_random_intriguer</name>
+    <desc>creates a random character with intrigue education</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>create_random_priest</name>
+    <desc>creates a random character with learning education</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>create_random_soldier</name>
+    <desc>creates a random character with martial education</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>create_random_steward</name>
+    <desc>creates a random character with stewardship education</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>create_title</name>
+    <desc>Creates a dynamic title with specified parameters. Landless dynamic titles require a landed home province to both hold prisoners and to act as a fallback if the title gets destroyed. This command should be ran from the home province scope, otherwise the whole court will end up stuck in province 0 when the holder dies.Parameter Type Description tier tier DUKE or higher tier only. Dynamic COUNT and BARON tiers do not work. landless bool temporary bool Destroyed automatically when at peace. The holder and the courtiers cannot marry or accept most other diplo-actions. rebel bool culture culture name Key Localization key for the title name. holder character custom_created bool base_title title copy_title_laws bool mercenary bool adventurer bool Adventure titles work just as temporary titles but do not get destroyed automatically when the holder is in peace. Instead, they are destroyed whenever the holder gains another title or when the holder dies. ruler Key Localization key for the ruler title. ruler_female Key Localization key for the female ruler title. foa Key nomad bool replace_captain_on_death bool Used for dynamic mercenary titles. siphons_income_to_creator double Percentage of income given to creator for dynamic mercenary titles. army_template composition Army composition for dynamic mercenary titles.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>create_tradepost</name>
+    <desc>Creates a trade post in the specified province</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>culture</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>culture_techpoints</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>cure_illness</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>cut_mercenary_creator_relation</name>
+    <desc>Break free the dynamic mercenary title from its creator.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>damage_unit</name>
+    <desc>Creates casualties for an army (whole unit or a specific unit type) by either a fixed amount or percentage. They won&apos;t be displayed in a combat report.[3][4]. Using a negative number will heal units instead.Parameter Type Description amount float Either amount or percentage is required. percentage float type unit_type Optional. Base unit types (light_infantry, heavy_infantry, pikemen, light_cavalry, knights, archers, special_troops, galleys, light_troops, or heavy_troops).</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>damage_unit_morale</name>
+    <desc>Removes morale for the army (or adds morale with negative values). Only takes absolute values.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>de_jure_liege</name>
+    <desc>Changes the de jure structure</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>death</name>
+    <desc>Kills currently scoped character</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>decadence</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>decline_law</name>
+    <desc>Also see approve_law.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>destroy_artifact</name>
+    <desc>Destroy the scoped or specified artifact. If there is no name given, the scope must be an artifact, and the PREV scope must be the owner. If an artifact name is given, the scope should be the owner of the artifact. If they own more than one, only the first one will be destroyed. Cannot be used to destroy indestructible objects; see unsafe_destroy_artifact</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>destroy_fort</name>
+    <desc>Destroy the fort in a province.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>destroy_hospital</name>
+    <desc>Destroys the hospital in the specified province</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>destroy_in_extra_holding</name>
+    <desc>Destroy a building in a special holding (hospital, fort or trade post).</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>destroy_landed_title</name>
+    <desc>Destroys a landed title. It can later be re-created by the player or AI, at the difference of deactivating it via &lt;code&gt;activate_title.Note: Count-tier titles can currently not be destroyed, even if titular and not connected to a province.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>destroy_random_building</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>destroy_settlement</name>
+    <desc>Destroys scoped holding. Also see build_holding.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>destroy_tradepost</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>diplomatic_immunity</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>disable_council_voting_on_issue</name>
+    <desc>Changes council laws. Also see enable_council_voting_on_issue.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>disable_prepared_invasion</name>
+    <desc>Disable dynamically the allow_viking_invasion characteristic of a religion. Also see enable_prepared_invasion.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>disband_event_forces</name>
+    <desc>Disbands the levies previously created with the given earmark via spawn_unit = { earmark = xxx }</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>divide_variable</name>
+    <desc>Divide a variable with specified value, or with another variable</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>dynasty</name>
+    <desc>Sets the dynasty of scoped character. May need to been chained with recalc_succession command, if impacting succession. Use &apos;dynasty = father_bastard&apos; to generate a cadet dynasty. dynasty = none makes the character Lowborn.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>economy_techpoints</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>enable_council_voting_on_issue</name>
+    <desc>Changes council laws. Also see disable_council_voting_on_issue.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>enable_prepared_invasion</name>
+    <desc>Enables dynamically prepared invasions for that religion with allow_viking_invasion flag. Also see disable_prepared_invasion.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>end_oath</name>
+    <desc>Ends a blood oath</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>end_war</name>
+    <desc>Possible war ends: invalid, whitepeace, success, reverse_demand</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>embargo</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>excommunicate</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>export_to_variable</name>
+    <desc>Used to create (or reset) a variable to a the value of a trigger.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>faction</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>fertility</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>force_host</name>
+    <desc>Similar to move_character, but it bypasses the checks and forces the character to move. Should not be used lightly.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>gain_all_occupied_titles</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>gain_settlements_under_title</name>
+    <desc>Note: Does not work with &quot;any_&quot; scopes.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>gain_title</name>
+    <desc>Similar to abdicate_to</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>gain_title_plus_barony_if_unlanded</name>
+    <desc>Gives opinion bonus toward the title giver</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>gender_succ</name>
+    <desc>cognatic, agnatic, true_cognatic, enatic_cognatic, or enatic</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>give_job_title</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>give_minor_title</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>give_nickname</name>
+    <desc>gives the character a nickname</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>grant_kingdom_w_adjudication</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>grant_title</name>
+    <desc>Also grants any vassal owning or below current title</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>grant_title_no_opinion</name>
+    <desc>No claim for the giver and no opinion bonus from the receiver.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>health</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>hold_election</name>
+    <desc>For merchant republics</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>impregnate</name>
+    <desc>Scope gets impregnated by the value.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>impregnate_cuckoo</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>imprison</name>
+    <desc>Scoped character will be imprisoned by target, or imprisoned in the correct location if used with boolean yes, or released from the prison with boolean no. Identical to the `prisoner` command.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>inherit</name>
+    <desc>Scoped character will inherit titles of target character.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>join_attacker_wars</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>join_defender_wars</name>
+    <desc>Only joins one war. Cannot be used by (feudal?) vassals to join liege&apos;s war.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>join_faction</name>
+    <desc>Joins the faction led by the faction leader, if it exists. Also supports the optional argumentignore_requirements = yes\n.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>join_society</name>
+    <desc>Joins the specified society.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>leave_faction</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>leave_plot</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>leave_society</name>
+    <desc>Makes the scoped character leave the society they are currently part of.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>log</name>
+    <desc>Logs for debug purposes into game.log. Localisation commands can be used normally in the string. Can even be used within event triggers and other places that normally only accept conditionals, such as if limit.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>letter_event</name>
+    <desc>Fires an event to scoped character. See event modding.Parameter Type Description id int Required. Event ID to fire. May use a namespace. days int Optional. Base number of days to wait before firing the event. If not specified, event occurs instantly. random int Optional. Number of days to add randomly for the event occurrence date, closed-ended (days to days+random). tooltip Key Optional localisation key to show as tooltip. If not specified, uses the DEFAULT_SENDEVENT_EVENTOPTION_TOOLTIP key (&quot;Character receives an event&quot;).</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>make_capital_holding</name>
+    <desc>Makes the holding the capital of the province. Also see revoke_capital_holding.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>make_primary_spouse</name>
+    <desc>scoped character will become primary spouse</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>make_primary_title</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>make_tributary</name>
+    <desc>Whoever the command is scoped from becomes the suzerain, WHO becomes the tributary and tributary_type determines what kind of tributary they are. For example, on a targetted_decision, to make the target the tributary of the decision taker, use the first example in the Example column. To make the decision taker the tributary, and the target the suzerain, use the second example. (The suzerain is the boss, the tributary is the servant). If tributary_type is omitted, it defaults to &quot;default&quot;</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>manpower</name>
+    <desc>Increase/decrease manpower</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>military_techpoints</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>morale</name>
+    <desc>Changes the morale of the unit by the amount indicated</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>move_character</name>
+    <desc>scoped character will be moved to targeted characters court</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>multiply_variable</name>
+    <desc>Multiply variable with specified value, or variable.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>narrative_event</name>
+    <desc>Fires an event to scoped character. See event modding.Parameter Type Description id int Required. Event ID to fire. May use a namespace. days int Optional. Base number of days to wait before firing the event. If not specified, event occurs instantly. random int Optional. Number of days to add randomly for the event occurrence date, closed-ended (days to days+random). tooltip Key Optional localisation key to show as tooltip. If not specified, uses the DEFAULT_SENDEVENT_EVENTOPTION_TOOLTIP key (&quot;Character receives an event&quot;).</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>occupy_minors_of_occupied_settlements</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>opinion</name>
+    <desc>Adds an opinion modifier to the scoped character towards the target character. origin_description can be used to customize localization that appears in tooltip.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>participation_scaled_decadence</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>participation_scaled_piety</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>participation_scaled_prestige</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>piety</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>plot_succeeds</name>
+    <desc>Tells the plot system to end the plot and fire the effect block. Note that it doesn&apos;t cause a plot to succeed, it should be used when a plot has already succeeded (success condition block).</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>population</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>press_claim</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>prestige</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>province_capital</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>province_event</name>
+    <desc>Fires an event to scoped province. See event modding.Parameter Type Description id int Required. Event ID to fire. May use a namespace. days int Optional. Base number of days to wait before firing the event. If not specified, event occurs instantly. random int Optional. Number of days to add randomly for the event occurrence date, closed-ended (days to days+random). tooltip Key Optional localisation key to show as tooltip.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>random</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>random_list</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>rebel_defection</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>recalc_succession</name>
+    <desc>Recalculates the succession.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>reduce_disease</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>refill_holding_levy</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>religion</name>
+    <desc>Changes the (public) religion of scoped character/province/title. Can use a clause to specify which of the scope&apos;s religion to use, defaulting to public. See also unsafe_religion.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>religion_authority</name>
+    <desc>Adds a religion modifier to the religion of scoped character/province</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>remove_building</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>remove_character_modifier</name>
+    <desc>Removes a character modifier</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>remove_character_modifiers</name>
+    <desc>Removes a number of instances of a character modifier (usually a stackable one).</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>remove_claim</name>
+    <desc>Note: assigned value cannot be a scope reference to a title.[1]</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>remove_consort</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>remove_favor</name>
+    <desc>Target character no longer owes a favor to the scoped character. Also see reverse_remove_favor.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>remove_friend</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>remove_guardian</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>remove_holding_modifier</name>
+    <desc>Removes a holding modifier</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>remove_holding_modifiers</name>
+    <desc>Removes a number of instances of a holding modifier (usually a stackable one).</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>remove_lover</name>
+    <desc>Remove scoped character&apos;s lover</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>remove_nickname</name>
+    <desc>Remove character&apos;s nickname</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>remove_opinion</name>
+    <desc>Removes an opinion modifier</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>remove_province_modifier</name>
+    <desc>Removes a province modifier</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>remove_province_modifiers</name>
+    <desc>Removes a number of instances of a province modifier (usually a stackable one).</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>remove_rival</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>remove_special_character_title</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>remove_spouse</name>
+    <desc>remove scoped character&apos;s spouse</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>remove_title</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>remove_trait</name>
+    <desc>Removes a trait, also see add_trait.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>remove_tributary</name>
+    <desc>Stop a character to be tributary to its suzerain.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>repeat_event</name>
+    <desc>Fires an event, without modifying the event chain (i.e ROOT and FROM remain unchanged). Note that it will fire the event whose id is specified, and not necessarily the current event again. See event modding.Warning: the event will fire for the character/province scope where it is written in, however the scopes of event chain will be weird if you do so (ROOT and default will be different, and FROM will be modified), so this is not recommended.\nParameter Type Description id int Required. Event ID to fire. May use a namespace. days int Optional. Base number of days to wait before firing the event. If not specified (or 0), event occurs instantly. random int Optional. Number of days to add randomly for the event occurrence date, closed-ended (days to days+random). tooltip Key Optional localisation key to show as tooltip. If not specified, uses the DEFAULT_SENDEVENT_EVENTOPTION_TOOLTIP key (&quot;Character receives an event&quot;).</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>reset_coa</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>reveal_plot</name>
+    <desc>reveal scoped characters plot. The plot discoverer may be specified.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>reveal_plot_w_message</name>
+    <desc>reveal scoped characters plot</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>reverse_add_favor</name>
+    <desc>Makes scoped character owe a favor to another character. Also see add_favor.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>reverse_banish</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>reverse_culture</name>
+    <desc>Change the target&apos;s culture to the one of current scope</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>reverse_imprison</name>
+    <desc>Target character will be imprisoned by the scoped character</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>reverse_opinion</name>
+    <desc>Adds an opinion modifier to the target character towards scoped character.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>reverse_religion</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>reverse_remove_favor</name>
+    <desc>Scoped character no longer owes a favor to the target character. Also see remove_favor.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>reverse_remove_opinion</name>
+    <desc>Removes an opinion modifier of right side of who argument towards scoped character.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>reverse_unsafe_war</name>
+    <desc>Works like the reverse_war command, but without ensuring the CB can be used.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>reverse_war</name>
+    <desc>Initiate a war, with current character as defender. infamy can be used to override the threat value (for instance infamy = 0).</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>revoke_capital_holding</name>
+    <desc>Also see make_capital_holding</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>revoke_law</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>save_event_target_as</name>
+    <desc>Saves a scope into a variable, to be re-used later in an event chain</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>save_global_event_target_as</name>
+    <desc>Saves a scope into a global variable, to be re-used later</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>scaled_piety</name>
+    <desc>Modifies piety by percent (1.0 = 100%) of annual piety increase. minincreases final cost to min if result would be lower. max reduces the final cost to max if result would be lower.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>scaled_prestige</name>
+    <desc>Modifies prestige by percent (1.0 = 100%) of annual prestige increase. minincreases final cost to min if result would be lower. max reduces the final cost to max if result would be lower.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>scaled_wealth</name>
+    <desc>Modifies wealth by percent (1.0 = 100%) of annual income. min increases final cost to min if result would be lower. max reduces the final cost to maxif result would be higher.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>seize_trade_post</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>send_assassin</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_allow_free_duchy_revokation</name>
+    <desc>Crown laws</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_allow_free_infidel_revokation</name>
+    <desc>Crown laws</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_allow_free_revokation</name>
+    <desc>Crown laws</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_allow_title_revokation</name>
+    <desc>Crown laws</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_allow_feminism</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_allow_free_vice_royalty_revokation</name>
+    <desc>Crown laws</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_allow_gender_laws</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_allow_vice_royalties</name>
+    <desc>Crown laws</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_allows_matrilineal_marriage</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_appoint_generals</name>
+    <desc>Crown laws</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_appoint_regents</name>
+    <desc>Crown laws</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_artifact_flag</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_artifact_original_owner</name>
+    <desc>Sets the original owner of the artifact</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_can_toggle_looting</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_character_flag</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_coa</name>
+    <desc>Set the coats of arms (flag) of a title to that of another title. An otherwise unused &quot;dummy&quot; title in landed_titles can be used to define the coats of arms.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_defacto_liege</name>
+    <desc>Sets the liege of a character. Can be used to make a character become independent via set_defacto_liege = THIS</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_defacto_vassal</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_description</name>
+    <desc>Changes the description of the scoped to artifact to the given string/localisation key. All custom localisation is resolved when set, so the description will not change once set. Can be reset by setting it to the blank string &quot;&quot;.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_discovered_society</name>
+    <desc>Sets the character to be &quot;revealed&quot; to be part of the specified society, or otherwise their secret society if no society is specified.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_dynasty_flag</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_father</name>
+    <desc>Change (or remove) the father of a character.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_flank_tactic</name>
+    <desc>Totally ignores the triggers or phases. If the tactic has a phase change part then that part will be acknowledged however.[5]</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_focus</name>
+    <desc>Sets the focus of a character (bypasses 5 year cooldown period)</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_global_flag</name>
+    <desc>Creates a global flag.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_government_type</name>
+    <desc>Change the government type of a character</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_graphical_culture</name>
+    <desc>Sets the ethnicity of character, based on the default graphical_culture of a culture, or of the culture of another character or province.Note: it changes the face of the character, but not the clothing.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_guardian</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_interested_society</name>
+    <desc>Make a character interested in joining the specified society.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_investiture</name>
+    <desc>Crown laws</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_job_action</name>
+    <desc>Update the current job of a councillor.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_looting</name>
+    <desc>Used with set_can_toggle_looting</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_mercenary_maintenance_modifier</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_mother</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_name</name>
+    <desc>Override name of character or title. Using set_name = &quot;&quot; resets the original name.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_opinion_levy_raised_days</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_original_owner</name>
+    <desc>Changes the original owner of an artifact.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_parent_religion</name>
+    <desc>Religion becomes an heresy of new parent religion</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_pentarch_title</name>
+    <desc>The scoped title becomes under the authority of the specified Pentarch seat</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_preferred_capital</name>
+    <desc>Sets the preferred capital of the scoped title to the specified provinces. Can only currently be used for dynamic titles.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_protected_inheritance</name>
+    <desc>Crown laws: avoid titles leaving the realm upon inheritance</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_province_flag</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_quest</name>
+    <desc>Creates a quest for the scoped character. Society can be optionally specified.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_quest_target</name>
+    <desc>Creates a quest targeting the current scope or changes the target of an already exist target to the scope.Parameter Type Description id quest_id The name of the quest. Dynamic and can be anything (though requires localisation). holder character The character who receives the quest, or who has it already. society society Optional, defaults to the character&apos;s society. If the society is not set, and the character is not part of a society, this will send an error and nothing will happen.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_real_father</name>
+    <desc>When a child is denounced (no official father), real_father is used to keep track of it.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_reincarnation</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_secret_religion</name>
+    <desc>Sets the secret religion of the character to the right-hand-side (defaulting to secret religion, if applicable). Can be expanded to specify what visibility to use.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_society_grandmaster</name>
+    <desc>Set or unset the scoped character as the grandmaster of their society.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_special_character_title</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_the_kings_full_peace</name>
+    <desc>Crown laws: allow/disallow vassals to wage war</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_the_kings_peace</name>
+    <desc>Crown laws: allow/disallow vassals to wage war between them</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_title_flag</name>
+    <desc>Creates a flag on a title</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_title_adventurer</name>
+    <desc>set/unset title as being an adventurer title.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_title_landless</name>
+    <desc>set/unset title as being a temporary title.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_title_nomad</name>
+    <desc>set/unset title as being a nomad title.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_tribal_vassal_levy_control</name>
+    <desc>Whether liege can directly raise tribal vassal levies</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_tribal_vassal_tax_income</name>
+    <desc>Whether tribal vassals pay taxes to their liege</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_truce</name>
+    <desc>Gives a temporary truce to the scoped character towards right side of who argument</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>set_variable</name>
+    <desc>Used to create (or reset) a variable to a value, or to the value of another variable</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>society_rank_down</name>
+    <desc>Rank down a character by the specified number of ranks in their current society, or the society specified if applicable.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>society_rank_up</name>
+    <desc>Rank up a character by the specified number of ranks in their current society, or the society specified if applicable.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>sound_effect</name>
+    <desc>Plays the specified sound, as defined in interface/sound.sfx</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>spawn_disease</name>
+    <desc>Spawns a specific disease in the scoped province</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>spawn_fleet</name>
+    <desc>Parameter Type Description province province/closest Closest sea zone owner character earmark earmark ID of the unit, to be able to reference them later. troops clause Fixed amount of troops in the form troop_type = { &lt;max_value&gt; &lt;starting_value&gt; }. Ex: galleys = { 20 20 } match_character character match_mult double Matches against the total levies of every single holding match_min double disband_on_peace bool cannot_inherit bool</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>spawn_unit</name>
+    <desc>Parameter Type Description province province/closest Spawn location home province owner character leader character/none Defaults to current character scope. earmark earmark ID of the unit, to be able to reference them later. Can be localized via earmark_ARMY and earmark_ARMY_OF. troops clause Fixed amount of troops in the form troop_type = { &lt;max_value&gt; &lt;starting_value&gt; }. Ex: archers = { 100 100 } match_character character Character to match against for match_mult match_mult double Proportional amount of troops to match_character total levy size (levies and event troops) match_max double match_min double disband_on_peace bool Will auto-disband if at peace. cannot_inherit bool Marked as not inheritable attrition double Attrition multiplier (1.0 for normal, 0 for attrition-less) maintenance_multiplier double Will have normal maintenance cost multiplied by this value scaled_by_biggest_garrison double merge bool Merge all the regiments in this province together into one army can_toggle_looting bool is_looter bool reinforces bool By default spawned unit do not reinforce. reinforce_rate_multiplier double maintenance bool</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>start_faction</name>
+    <desc>Starts a faction on the liege of the current character scope, if it does not already exist. Different arguments are required depending on the type of the faction being started:character: faction liege_titles: faction, title liege_titles_w_claimant: faction, title, thirdpartyThe optional can_join_existing argument controls whether or not the character will join the faction if it already exists, with the default behaviour being no.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>start_outbreak</name>
+    <desc>Forces an outbreak, but follows the scenarios set up in the disease.txt file.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>steal_population_scaled</name>
+    <desc>Steal population from another nomad clan</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>steal_random_tech</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>subjugate_or_take_under_title</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>subtract_variable</name>
+    <desc>Subtract specified value or another variable to a variable</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>succession</name>
+    <desc>Valid successions: gavelkind, primogeniture, feudal_elective, seniority, catholic_bishopric, open_elective, turkish_succession, patrician_elective, ultimogeniture, tanistry, appointment, papal_succession, elective_gavelkind</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>succession_w_cooldown</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>transfer_artifact</name>
+    <desc>Transfers the artifact from one character to another. If from does not have the artifact, it will not be transferred.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>transfer_scaled_wealth</name>
+    <desc>Parameter Type Description from character Either from or to to character Either from or to value all/double 1 means 1 year of income min double min = 5 max double max = 50</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>treasury</name>
+    <desc>Same as wealth ?</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>trigger_switch</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>troops</name>
+    <desc>Changes the size of the unit by the amount indicated</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>unsafe_destroy_landed_title</name>
+    <desc>Bypasses some error-checking in destroy title, allowing to destroy landless titles. Warning: use this effect with care !</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>unsafe_religion</name>
+    <desc>Bypasses some error-checking in set religion, allowing to change the religion of the leader of a holy order, a religious head or a rebel leader. Warning: use this effect with care !</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>unsafe_war</name>
+    <desc>Works like the war command, but without ensuring the CB can be used.</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>usurp_title</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>usurp_title_only</name>
+    <desc>Gives strong claim to character being usurped</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>usurp_title_plus_barony_if_unlanded</name>
+    <desc>Gives strong claim to character being usurped</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>usurp_title_plus_barony_if_unlanded_and_vassals</name>
+    <desc>Targeted character will usurp scoped title</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>usurp_title_plus_barony_if_unlanded_and_vassals_no_adj</name>
+    <desc>Targeted character will usurp scoped title</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>vassalize_or_take_under_title</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>vassalize_or_take_under_title_destroy_duchies</name>
+    <desc></desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>war</name>
+    <desc>Initiate a war, with current character as attacker. Also see reverse_war. infamy can be used to override the threat value (for instance infamy = 0).</desc>
+  </script>
+  <script>
+    <type>command</type>
+    <name>wealth</name>
+    <desc>Modify the wealth of scoped character with the specified amount, or with the wealth of another character.</desc>
+  </script>
+</doc>

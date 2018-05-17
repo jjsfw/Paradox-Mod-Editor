@@ -196,8 +196,10 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CrusaderKingsScripts.xml" />
     <Content Include="FastColoredTextBox\FastColoredTextBox.csproj" />
     <Content Include="FastColoredTextBox\license.txt" />
+    <Content Include="ParadoxFormat.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
