@@ -125,6 +125,11 @@ namespace FastColoredTextBoxNS
         private int reservedCountOfLineNumberChars = 1;
         private int zoom = 100;
         private Size localAutoScrollMinSize;
+
+        public TextSource GetLines()
+        {
+            return lines;
+        }
  
         /// <summary>
         /// Constructor

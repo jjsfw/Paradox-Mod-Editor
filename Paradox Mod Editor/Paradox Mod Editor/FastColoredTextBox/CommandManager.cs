@@ -13,6 +13,22 @@ namespace FastColoredTextBoxNS
 
         public event EventHandler RedoCompleted = delegate { };
 
+        public LimitedStack<UndoableCommand> GetHistory()
+        {
+            return history;
+        }
+
+        public void SetHistory(LimitedStack<UndoableCommand> history, Stack<UndoableCommand> redoStack)
+        {
+            this.history = history;
+            this.redoStack = redoStack;
+        }
+
+        public Stack<UndoableCommand> GetRedoStack()
+        {
+            return redoStack;
+        }
+
         public CommandManager(TextSource ts)
         {
             history = new LimitedStack<UndoableCommand>(maxHistoryLength);

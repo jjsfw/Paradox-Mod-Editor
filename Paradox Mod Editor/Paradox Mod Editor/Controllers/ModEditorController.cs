@@ -74,14 +74,29 @@ namespace Paradox_Mod_Editor.Controllers
         public void LoadSelectedFile(FastColoredTextBox textBox, TreeNode node)
         {
             filePath = modDirectory + node.FullPath;
-            if (!files.ContainsKey(filePath))
+            if (currentFile == null || filePath != currentFile.GetPath())
             {
-                OpenNewFile(filePath);
-                //textBox.SyntaxHighlighter.HighlightSyntax();
+                if (!files.ContainsKey(filePath))
+                {
+                    OpenNewFile(filePath);
+                    //textBox.SyntaxHighlighter.HighlightSyntax();
+                }
+                if (currentFile != null)
+                {
+                    currentFile.SetUndoRedo(textBox.GetLines().Manager.GetHistory(), textBox.GetLines().Manager.GetRedoStack());
+                }
+                currentFile = files[filePath];
+                if (currentFile.GetHistory() == null)
+                {
+                    textBox.ClearUndo();
+                }
+                else
+                {
+                    textBox.GetLines().Manager.SetHistory(currentFile.GetHistory(), currentFile.GetRedoStack());
+                }
+                textBox.Text = currentFile.GetContents();
+                currentFile.UpdateContentsIgnoreSave(textBox.Text);
             }
-            currentFile = files[filePath];
-            textBox.Text = currentFile.GetContents();
-            currentFile.UpdateContentsIgnoreSave(textBox.Text);
         }
 
         public void UpdateFile(string contents)
@@ -99,6 +114,11 @@ namespace Paradox_Mod_Editor.Controllers
                 return "";
             }
             return currentFile.GetContents();
+        }
+
+        protected void SetFileHistory(LimitedStack<UndoableCommand> history, Stack<UndoableCommand> redoStack)
+        {
+            
         }
     }
 }
