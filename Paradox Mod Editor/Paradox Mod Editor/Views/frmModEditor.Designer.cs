@@ -33,6 +33,8 @@
             this.pnlSpecialEdit = new System.Windows.Forms.Panel();
             this.splitter2 = new System.Windows.Forms.Splitter();
             this.pnlRawEdit = new System.Windows.Forms.Panel();
+            this.pgrEditor = new System.Windows.Forms.PropertyGrid();
+            this.pnlSpecialEdit.SuspendLayout();
             this.SuspendLayout();
             // 
             // trvModFolderStructure
@@ -55,6 +57,7 @@
             // pnlSpecialEdit
             // 
             this.pnlSpecialEdit.BackColor = System.Drawing.SystemColors.Control;
+            this.pnlSpecialEdit.Controls.Add(this.pgrEditor);
             this.pnlSpecialEdit.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlSpecialEdit.Location = new System.Drawing.Point(219, 0);
             this.pnlSpecialEdit.Name = "pnlSpecialEdit";
@@ -77,6 +80,14 @@
             this.pnlRawEdit.Size = new System.Drawing.Size(243, 450);
             this.pnlRawEdit.TabIndex = 4;
             // 
+            // pgrEditor
+            // 
+            this.pgrEditor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pgrEditor.Location = new System.Drawing.Point(0, 0);
+            this.pgrEditor.Name = "pgrEditor";
+            this.pgrEditor.Size = new System.Drawing.Size(335, 450);
+            this.pgrEditor.TabIndex = 0;
+            // 
             // frmModEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -92,6 +103,7 @@
             this.Text = "Mod Editor";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmModEditor_Load);
+            this.pnlSpecialEdit.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -103,5 +115,6 @@
         private System.Windows.Forms.Panel pnlSpecialEdit;
         private System.Windows.Forms.Splitter splitter2;
         private System.Windows.Forms.Panel pnlRawEdit;
+        private System.Windows.Forms.PropertyGrid pgrEditor;
     }
 }

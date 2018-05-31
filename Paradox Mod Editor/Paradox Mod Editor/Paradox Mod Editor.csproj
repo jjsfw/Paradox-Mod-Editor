@@ -133,8 +133,10 @@
     </Compile>
     <Compile Include="FastColoredTextBox\VisualMarker.cs" />
     <Compile Include="Models\ControlFactory.cs" />
+    <Compile Include="Models\CrusaderKingsReligion.cs" />
     <Compile Include="Models\OpenFile.cs" />
     <Compile Include="Models\TextBoxFactory.cs" />
+    <Compile Include="Models\ScriptObject.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TextEditor.cs" />
@@ -198,10 +200,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="CrusaderKingsScripts.xml" />
+    <Content Include="ParadoxSyntax\CrusaderKingsScripts.xml" />
     <Content Include="FastColoredTextBox\FastColoredTextBox.csproj" />
     <Content Include="FastColoredTextBox\license.txt" />
-    <Content Include="ParadoxFormat.xml" />
+    <Content Include="ParadoxSyntax\ParadoxFormat.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

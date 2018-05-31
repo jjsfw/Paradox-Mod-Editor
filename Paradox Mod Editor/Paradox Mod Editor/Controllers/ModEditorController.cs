@@ -16,31 +16,33 @@ namespace Paradox_Mod_Editor.Controllers
         private ParadoxTitle game;
         private string modDirectory;
         private string filePath;
+        private ScriptObject scriptObject;
 
         public ModEditorController(ITextEditorView view, ParadoxTitle game, string modDirectory)
             : base(view)
         {
             this.game = game;
             this.modDirectory = modDirectory.Substring(0, modDirectory.LastIndexOf("\\") + 1);
+            ((frmModEditor)view).debugProperties();
         }
 
         protected override List<AutocompleteItem> LoadAutocompleteItems()
         {
             List<AutocompleteItem> items = new List<AutocompleteItem>();
-            string xmlTestPath = @"..\..\CrusaderKingsScripts.xml"; ;
+            string xmlTestPath = @"..\..\ParadoxSyntax\CrusaderKingsScripts.xml"; ;
             switch (game)
             {
                 case ParadoxTitle.CrusaderKings:
-                    xmlTestPath = @"..\..\CrusaderKingsScripts.xml";
+                    xmlTestPath = @"..\..\ParadoxSyntax\CrusaderKingsScripts.xml";
                     break;
                 case ParadoxTitle.EuropaUniversalis:
-                    xmlTestPath = @"..\..\EuropaUniversalisScripts.xml";
+                    xmlTestPath = @"..\..\ParadoxSyntax\EuropaUniversalisScripts.xml";
                     break;
                 case ParadoxTitle.HeartsOfIron:
-                    xmlTestPath = @"..\..\HeartsOfIronScripts.xml";
+                    xmlTestPath = @"..\..\ParadoxSyntax\HeartsOfIronScripts.xml";
                     break;
                 case ParadoxTitle.Stellaris:
-                    xmlTestPath = @"..\..\StellarisScripts.xml";
+                    xmlTestPath = @"..\..\ParadoxSyntax\StellarisScripts.xml";
                     break;
             }
 
@@ -117,6 +119,17 @@ namespace Paradox_Mod_Editor.Controllers
                 return "";
             }
             return currentFile.GetContents();
+        }
+
+        public ScriptObject GetScriptObject()
+        {
+            //return scriptObject;
+            return new CrusaderKingsReligion();
+        }
+
+        protected void SetFileHistory(LimitedStack<UndoableCommand> history, Stack<UndoableCommand> redoStack)
+        {
+            // TODO: set file history in mod editor controller
         }
     }
 }

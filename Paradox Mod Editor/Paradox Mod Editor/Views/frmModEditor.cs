@@ -138,5 +138,10 @@ namespace Paradox_Mod_Editor.Views
                 currentNode = e.Node;
             }
         }
+
+        public void debugProperties()
+        {
+            pgrEditor.SelectedObject = controller.GetScriptObject();
+        }
     }
 }
