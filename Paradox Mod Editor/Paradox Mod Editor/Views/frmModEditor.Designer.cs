@@ -87,6 +87,8 @@
             this.pgrEditor.Name = "pgrEditor";
             this.pgrEditor.Size = new System.Drawing.Size(335, 450);
             this.pgrEditor.TabIndex = 0;
+            this.pgrEditor.PropertyValueChanged += new System.Windows.Forms.PropertyValueChangedEventHandler(this.pgrEditor_PropertyValueChanged);
+            this.pgrEditor.Click += new System.EventHandler(this.pgrEditor_Click);
             // 
             // frmModEditor
             // 

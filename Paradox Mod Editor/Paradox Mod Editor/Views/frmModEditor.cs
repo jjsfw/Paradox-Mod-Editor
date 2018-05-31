@@ -143,5 +143,15 @@ namespace Paradox_Mod_Editor.Views
         {
             pgrEditor.SelectedObject = controller.GetScriptObject();
         }
+
+        private void pgrEditor_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pgrEditor_PropertyValueChanged(object s, PropertyValueChangedEventArgs e)
+        {
+            
+        }
     }
 }
