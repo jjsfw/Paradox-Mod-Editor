@@ -3,36 +3,43 @@
     <type>command</type>
     <name>abandon_heresy</name>
     <desc>Converts to the parent religion</desc>
+    <fillText> = </fillText>
   </script>
   <script>
     <type>command</type>
     <name>abdicate</name>
     <desc>Abdicate to current heir</desc>
+    <fillText> = </fillText>
   </script>
   <script>
     <type>command</type>
     <name>abdicate_to</name>
     <desc>Abdicate to an arbitrary character. \nNote: to also transfer wealth, use the wealth and clear_wealth commands.</desc>
+    <fillText> = </fillText>
   </script>
   <script>
     <type>command</type>
     <name>abdicate_to_most_liked_by</name>
     <desc></desc>
+    <fillText> = </fillText>
   </script>
   <script>
     <type>command</type>
     <name>activate_disease</name>
     <desc>Activate a disease, which can now randomly appear. Note that there&apos;s no way to deactivate a disease.</desc>
+    <fillText> = </fillText>
   </script>
   <script>
     <type>command</type>
     <name>activate_plot</name>
     <desc>For plots activated by decision</desc>
+    <fillText> = </fillText>
   </script>
   <script>
     <type>command</type>
     <name>activate_title</name>
     <desc>Activate/deactivate a titular or de jure landed title. Unlike destroyed titles (destroy_landed_title), deactivated titles cannot be re-created by the player or AI, except through special decisions.</desc>
+    <fillText> = {\n\ttitle = \n\tstatus = \n}</fillText>
   </script>
   <script>
     <type>command</type>

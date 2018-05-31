@@ -73,7 +73,7 @@ namespace Paradox_Mod_Editor.Views
             textBox.SyntaxHighlighter = new SyntaxHighlighter(textBox);
             textBox.AutoCompleteBrackets = true;
             textBox.AutoIndentChars = false;
-            textBox.AutoIndentExistingLines = false;
+            textBox.AutoIndentExistingLines = true;
             textBox.AutoIndent = true;
             textBox.BracketsHighlightStrategy = BracketsHighlightStrategy.Strategy1;
             textBox.LeftBracket = '{';

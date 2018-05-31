@@ -56,11 +56,25 @@ namespace Paradox_Mod_Editor.Controllers
             IEnumerable<XElement> types = from c in scripts.Root.Descendants("script")
                                           select c.Element("type");
 
-            for (int i = 0; i < names.Count(); i++)
+            //IEnumerable<XElement> texts = from c in scripts.Root.Descendants("script")
+            //                              select c.Element("fillText");
+
+            for (int i = 0; i < 7; i++)//names.Count(); i++)
             {
+                // Replace newlines and tabs with proper characters
+                names.ElementAt(i).Value = names.ElementAt(i).Value.Replace("\\n", "\n");
+                desc.ElementAt(i).Value = desc.ElementAt(i).Value.Replace("\\n", "\n");
+                types.ElementAt(i).Value = types.ElementAt(i).Value.Replace("\\n", "\n");
+                //texts.ElementAt(i).Value = texts.ElementAt(i).Value.Replace("\\n", "\n");
+
+                names.ElementAt(i).Value = names.ElementAt(i).Value.Replace("\\t", "\t");
+                desc.ElementAt(i).Value = desc.ElementAt(i).Value.Replace("\\t", "\t");
+                types.ElementAt(i).Value = types.ElementAt(i).Value.Replace("\\t", "\t");
+                //texts.ElementAt(i).Value = texts.ElementAt(i).Value.Replace("\\t", "\t");
+
                 items.Add(new AutocompleteItem(names.ElementAt(i).Value, -1, names.ElementAt(i).Value, types.ElementAt(i).Value, desc.ElementAt(i).Value));
             }
-            // TODO: add autocompletion of commands with additional parameters e.g. create_unit
+            // TODO: add autocompletion of commands with additional parameters e.g. create_unit using the texts tags
             // See examples below for how to implement
             // items.Add(new AutocompleteItem("test_param = {\r\n\tvalue = \r\n}", -1, "test_param", "test object", "used for testing autocomplete"));
 
