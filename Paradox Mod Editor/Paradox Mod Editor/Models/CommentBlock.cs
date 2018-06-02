@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace Paradox_Mod_Editor.Models
 {
-    public class ScriptObject
+    class CommentBlock : ScriptObject
     {
-        public string Name { get; }
     }
 }

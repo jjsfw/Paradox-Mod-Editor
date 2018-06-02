@@ -8,7 +8,7 @@ using System.Drawing;
 
 namespace Paradox_Mod_Editor.Models
 {
-    class CrusaderKingsReligion : ScriptObject
+    class Religion : ScriptObject
     {
         // TODO: update types (modifiers, graphical cultures (?), etc)
         // TODO: finish descriptions, display names
@@ -158,13 +158,12 @@ namespace Paradox_Mod_Editor.Models
             HighZeal = 1,
             Always = 2
         }
-        
-        [Description("A boolean value that allows for keeping the default yes/no setting of an attribute without explicitly stating whether that default is yes or no.")]
-        public enum PBool
-        {
-            Default,
-            yes,
-            no
-        }
+    }
+    [Description("A boolean value that allows for keeping the default yes/no setting of an attribute without explicitly stating whether that default is yes or no.")]
+    public enum PBool
+    {
+        Default,
+        yes,
+        no
     }
 }

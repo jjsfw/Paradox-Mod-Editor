@@ -34,6 +34,8 @@ namespace Paradox_Mod_Editor.Views
             // CreateTextBox();
             DirectoryInfo rootInfo = new DirectoryInfo(modDirectory);
             trvModFolderStructure.Nodes.Add(buildModTree(rootInfo));
+            spcPropertiesList.SplitterDistance = this.Height / 5;
+            spcListButtons.SplitterDistance = spcListButtons.Height - 22;
         }
 
         private TreeNode buildModTree(DirectoryInfo folderInfo)
@@ -152,6 +154,16 @@ namespace Paradox_Mod_Editor.Views
         private void pgrEditor_PropertyValueChanged(object s, PropertyValueChangedEventArgs e)
         {
             
+        }
+
+        private void spcListButtons_SizeChanged(object sender, EventArgs e)
+        {
+            spcListButtons.SplitterDistance = spcListButtons.Height - 22;
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            controller.CreateNewScriptObject();
         }
     }
 }

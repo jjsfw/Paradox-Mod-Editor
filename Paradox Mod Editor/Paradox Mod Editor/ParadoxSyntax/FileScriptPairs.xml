@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<doc>
+  <ck2>
+    <fileType>
+      <name>religion</name>
+      <scriptObjects>
+        Religion ReligionGroup CommentBlock
+      </scriptObjects>
+    </fileType>
+  </ck2>
+</doc>

@@ -58,6 +58,12 @@
     <Compile Include="Basic Forms\frmModSelect.Designer.cs">
       <DependentUpon>frmModSelect.cs</DependentUpon>
     </Compile>
+    <Compile Include="Basic Forms\frmNewScriptObjectDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Basic Forms\frmNewScriptObjectDialog.Designer.cs">
+      <DependentUpon>frmNewScriptObjectDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\ModEditorController.cs" />
     <Compile Include="Controllers\TextEditorController.cs" />
     <Compile Include="DebugStartForm.cs">
@@ -132,6 +138,10 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="FastColoredTextBox\VisualMarker.cs" />
+    <Compile Include="Models\CommentBlock.cs" />
+    <Compile Include="Models\CrusaderKings\Religion.cs" />
+    <Compile Include="Models\CrusaderKings\ReligionGroup.cs" />
+    <Compile Include="Models\FileScriptPair.cs" />
     <Compile Include="Models\ControlFactory.cs" />
     <Compile Include="Models\CrusaderKingsReligion.cs" />
     <Compile Include="Models\OpenFile.cs" />
@@ -152,6 +162,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Basic Forms\frmModSelect.resx">
       <DependentUpon>frmModSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Basic Forms\frmNewScriptObjectDialog.resx">
+      <DependentUpon>frmNewScriptObjectDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DebugStartForm.resx">
       <DependentUpon>DebugStartForm.cs</DependentUpon>
@@ -203,6 +216,7 @@
     <Content Include="ParadoxSyntax\CrusaderKingsScripts.xml" />
     <Content Include="FastColoredTextBox\FastColoredTextBox.csproj" />
     <Content Include="FastColoredTextBox\license.txt" />
+    <Content Include="ParadoxSyntax\FileScriptPairs.xml" />
     <Content Include="ParadoxSyntax\ParadoxFormat.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -8,6 +8,7 @@ using FastColoredTextBoxNS;
 using System.Xml.Linq;
 using System.Windows.Forms;
 using Paradox_Mod_Editor.Models;
+using Paradox_Mod_Editor.Basic_Forms;
 
 namespace Paradox_Mod_Editor.Controllers
 {
@@ -17,6 +18,7 @@ namespace Paradox_Mod_Editor.Controllers
         private string modDirectory;
         private string filePath;
         private ScriptObject scriptObject;
+        private FileScriptPair fileScripts;
 
         public ModEditorController(ITextEditorView view, ParadoxTitle game, string modDirectory)
             : base(view)
@@ -124,12 +126,17 @@ namespace Paradox_Mod_Editor.Controllers
         public ScriptObject GetScriptObject()
         {
             //return scriptObject;
-            return new CrusaderKingsReligion();
+            return new Religion();
         }
 
         protected void SetFileHistory(LimitedStack<UndoableCommand> history, Stack<UndoableCommand> redoStack)
         {
             // TODO: set file history in mod editor controller
+        }
+
+        public void CreateNewScriptObject()
+        {
+            frmNewScriptObjectDialog newScriptDialog = new frmNewScriptObjectDialog(fileScripts.ScriptObjects);
         }
     }
 }
