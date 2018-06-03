@@ -19,6 +19,8 @@ namespace Paradox_Mod_Editor.Controllers
         private string filePath;
         private ScriptObject scriptObject;
         private FileScriptPair fileScripts;
+        private Dictionary<string, FileScriptPair> fileScriptPairs;
+        private Dictionary<ParadoxTitle, Dictionary<string, FileScriptPair>> gameFilePairs;
 
         public ModEditorController(ITextEditorView view, ParadoxTitle game, string modDirectory)
             : base(view)
@@ -26,29 +28,42 @@ namespace Paradox_Mod_Editor.Controllers
             this.game = game;
             this.modDirectory = modDirectory.Substring(0, modDirectory.LastIndexOf("\\") + 1);
             ((frmModEditor)view).debugProperties();
+
+            gameFilePairs = new Dictionary<ParadoxTitle, Dictionary<string, FileScriptPair>>();
+            foreach (ParadoxTitle title in Enum.GetValues(typeof(ParadoxTitle)))
+            {
+                gameFilePairs.Add(title, new Dictionary<string, FileScriptPair>());
+            }
+
+            LoadScriptPairs();
+        }
+
+        private void BuildCK2Scripts()
+        {
+
         }
 
         protected override List<AutocompleteItem> LoadAutocompleteItems()
         {
             List<AutocompleteItem> items = new List<AutocompleteItem>();
-            string xmlTestPath = @"..\..\ParadoxSyntax\CrusaderKingsScripts.xml"; ;
+            string xmlPath = @"..\..\ParadoxSyntax\CrusaderKingsScripts.xml";
             switch (game)
             {
                 case ParadoxTitle.CrusaderKings:
-                    xmlTestPath = @"..\..\ParadoxSyntax\CrusaderKingsScripts.xml";
+                    xmlPath = @"..\..\ParadoxSyntax\CrusaderKingsScripts.xml";
                     break;
                 case ParadoxTitle.EuropaUniversalis:
-                    xmlTestPath = @"..\..\ParadoxSyntax\EuropaUniversalisScripts.xml";
+                    xmlPath = @"..\..\ParadoxSyntax\EuropaUniversalisScripts.xml";
                     break;
                 case ParadoxTitle.HeartsOfIron:
-                    xmlTestPath = @"..\..\ParadoxSyntax\HeartsOfIronScripts.xml";
+                    xmlPath = @"..\..\ParadoxSyntax\HeartsOfIronScripts.xml";
                     break;
                 case ParadoxTitle.Stellaris:
-                    xmlTestPath = @"..\..\ParadoxSyntax\StellarisScripts.xml";
+                    xmlPath = @"..\..\ParadoxSyntax\StellarisScripts.xml";
                     break;
             }
 
-            XDocument scripts = XDocument.Load(xmlTestPath);
+            XDocument scripts = XDocument.Load(xmlPath);
 
             IEnumerable<XElement> names = from c in scripts.Root.Descendants("script")
                                           select c.Element("name");
@@ -137,6 +152,43 @@ namespace Paradox_Mod_Editor.Controllers
         public void CreateNewScriptObject()
         {
             frmNewScriptObjectDialog newScriptDialog = new frmNewScriptObjectDialog(fileScripts.ScriptObjects);
+        }
+
+        private void LoadScriptPairs()
+        {
+            string xmlPath = @"..\..\ParadoxSyntax\FileScriptPairs.xml";
+
+            XDocument scripts = XDocument.Load(xmlPath);
+            IEnumerable<XElement> names;
+            IEnumerable<XElement> games;
+            IEnumerable<XElement> rawScriptObjects;
+
+            switch (game)
+            {
+                case ParadoxTitle.CrusaderKings:
+                    names = from c in scripts.Root.Descendants("fileType")
+                            select c.Element("name");
+                    games = from c in scripts.Root.Descendants("fileType")
+                            select c.Element("game");
+                    rawScriptObjects = from c in scripts.Root.Descendants("fileType")
+                            select c.Element("scriptObjects");
+                    break;
+                default:
+                    names = from c in scripts.Root.Descendants("fileType")
+                            select c.Element("name");
+                    games = from c in scripts.Root.Descendants("fileType")
+                            select c.Element("game");
+                    rawScriptObjects = from c in scripts.Root.Descendants("fileType")
+                                    select c.Element("scriptObjects");
+                    break;
+            }
+
+            for (int i = 0; i < names.Count(); i++)
+            {
+                // TODO: replace this with factory pattern
+                List<string> scriptObjectNames = rawScriptObjects.ElementAt(i).ToString().Split(' ').ToList();
+                //gameFilePairs[game].Add(names.ElementAt(i), new FileScriptPair(names.ElementAt(i).ToString(), scriptObjects));
+            }
         }
     }
 }
