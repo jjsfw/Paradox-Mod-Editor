@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Drawing;
 
-namespace Paradox_Mod_Editor.Models
+namespace Paradox_Mod_Editor.Models.CrusaderKings
 {
-    class Religion : ScriptObject
+    class Religion : IScriptObject
     {
         // TODO: update types (modifiers, graphical cultures (?), etc)
         // TODO: finish descriptions, display names

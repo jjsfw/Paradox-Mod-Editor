@@ -12,6 +12,7 @@ using FastColoredTextBoxNS;
 using System.Xml.Linq;
 using Paradox_Mod_Editor.Controllers;
 using System.Text.RegularExpressions;
+using Paradox_Mod_Editor.Models;
 
 namespace Paradox_Mod_Editor.Views
 {
@@ -141,11 +142,6 @@ namespace Paradox_Mod_Editor.Views
             }
         }
 
-        public void debugProperties()
-        {
-            pgrEditor.SelectedObject = controller.GetScriptObject();
-        }
-
         private void pgrEditor_Click(object sender, EventArgs e)
         {
 
@@ -164,6 +160,18 @@ namespace Paradox_Mod_Editor.Views
         private void btnAdd_Click(object sender, EventArgs e)
         {
             controller.CreateNewScriptObject();
+        }
+
+        public void AddNewScriptObject(IScriptObject scriptObject)
+        {
+            lstScriptObjects.Items.Add(scriptObject);
+            lstScriptObjects.SelectedIndex = lstScriptObjects.Items.Count - 1;
+        }
+
+        private void lstScriptObjects_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            pgrEditor.SelectedObject = lstScriptObjects.SelectedItem;
+            pgrEditor.Enabled = true;
         }
     }
 }

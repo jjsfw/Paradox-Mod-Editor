@@ -133,6 +133,7 @@
             this.lstScriptObjects.Name = "lstScriptObjects";
             this.lstScriptObjects.Size = new System.Drawing.Size(335, 51);
             this.lstScriptObjects.TabIndex = 0;
+            this.lstScriptObjects.SelectedIndexChanged += new System.EventHandler(this.lstScriptObjects_SelectedIndexChanged);
             // 
             // spcButtons
             // 
@@ -177,6 +178,7 @@
             // pgrEditor
             // 
             this.pgrEditor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pgrEditor.Enabled = false;
             this.pgrEditor.Location = new System.Drawing.Point(0, 0);
             this.pgrEditor.Name = "pgrEditor";
             this.pgrEditor.Size = new System.Drawing.Size(335, 345);

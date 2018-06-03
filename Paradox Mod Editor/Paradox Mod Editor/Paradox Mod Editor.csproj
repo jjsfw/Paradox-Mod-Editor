@@ -139,12 +139,15 @@
     </Compile>
     <Compile Include="FastColoredTextBox\VisualMarker.cs" />
     <Compile Include="Models\CommentBlock.cs" />
+    <Compile Include="Models\ScriptFactoryCK2.cs" />
     <Compile Include="Models\CrusaderKings\Religion.cs" />
     <Compile Include="Models\CrusaderKings\ReligionGroup.cs" />
     <Compile Include="Models\FileScriptPair.cs" />
     <Compile Include="Models\ControlFactory.cs" />
     <Compile Include="Models\CrusaderKingsReligion.cs" />
     <Compile Include="Models\OpenFile.cs" />
+    <Compile Include="Models\IScriptObject.cs" />
+    <Compile Include="Models\ScriptFactory.cs" />
     <Compile Include="Models\TextBoxFactory.cs" />
     <Compile Include="Models\ScriptObject.cs" />
     <Compile Include="Program.cs" />

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Paradox_Mod_Editor.Models
 {
-    public class ScriptObject
+    public interface IScriptObject
     {
-        public string Name { get; }
+        string Name { get; }
     }
 }

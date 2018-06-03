@@ -8,7 +8,7 @@ using System.Drawing;
 
 namespace Paradox_Mod_Editor.Models.CrusaderKings
 {
-    class ReligionGroup : ScriptObject
+    class ReligionGroup : IScriptObject
     {
         [Category("*General"), Description("The name of the religion group as it appears in script."), DisplayName("Name")]
         public string Name { get; set; }

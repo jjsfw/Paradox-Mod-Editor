@@ -9,6 +9,7 @@ using System.Xml.Linq;
 using System.Windows.Forms;
 using Paradox_Mod_Editor.Models;
 using Paradox_Mod_Editor.Basic_Forms;
+using Paradox_Mod_Editor.Models.CrusaderKings;
 
 namespace Paradox_Mod_Editor.Controllers
 {
@@ -17,22 +18,21 @@ namespace Paradox_Mod_Editor.Controllers
         private ParadoxTitle game;
         private string modDirectory;
         private string filePath;
-        private ScriptObject scriptObject;
-        private FileScriptPair fileScripts;
-        private Dictionary<string, FileScriptPair> fileScriptPairs;
-        private Dictionary<ParadoxTitle, Dictionary<string, FileScriptPair>> gameFilePairs;
+        private IScriptObject scriptObject;
+        private List<string> scriptPairs;
+        private Dictionary<string, List<string>> fileScriptPairs;
+        private Dictionary<ParadoxTitle, Dictionary<string, List<string>>> gameFilePairs;
 
         public ModEditorController(ITextEditorView view, ParadoxTitle game, string modDirectory)
             : base(view)
         {
             this.game = game;
             this.modDirectory = modDirectory.Substring(0, modDirectory.LastIndexOf("\\") + 1);
-            ((frmModEditor)view).debugProperties();
 
-            gameFilePairs = new Dictionary<ParadoxTitle, Dictionary<string, FileScriptPair>>();
+            gameFilePairs = new Dictionary<ParadoxTitle, Dictionary<string, List<string>>>();
             foreach (ParadoxTitle title in Enum.GetValues(typeof(ParadoxTitle)))
             {
-                gameFilePairs.Add(title, new Dictionary<string, FileScriptPair>());
+                gameFilePairs.Add(title, new Dictionary<string, List<string>>());
             }
 
             LoadScriptPairs();
@@ -138,12 +138,6 @@ namespace Paradox_Mod_Editor.Controllers
             return currentFile.GetContents();
         }
 
-        public ScriptObject GetScriptObject()
-        {
-            //return scriptObject;
-            return new Religion();
-        }
-
         protected void SetFileHistory(LimitedStack<UndoableCommand> history, Stack<UndoableCommand> redoStack)
         {
             // TODO: set file history in mod editor controller
@@ -151,7 +145,13 @@ namespace Paradox_Mod_Editor.Controllers
 
         public void CreateNewScriptObject()
         {
-            frmNewScriptObjectDialog newScriptDialog = new frmNewScriptObjectDialog(fileScripts.ScriptObjects);
+            frmNewScriptObjectDialog newScriptDialog = new frmNewScriptObjectDialog(scriptPairs);
+            newScriptDialog.ShowDialog();
+            if (newScriptDialog.type != "Cancel")
+            {
+                IScriptObject newScript = ((ScriptFactoryCK2)ScriptFactoryCK2.GetFactory()).GetScriptObject(newScriptDialog.type);
+                view.AddNewScriptObject(newScript);
+            }
         }
 
         private void LoadScriptPairs()
@@ -186,9 +186,12 @@ namespace Paradox_Mod_Editor.Controllers
             for (int i = 0; i < names.Count(); i++)
             {
                 // TODO: replace this with factory pattern
-                List<string> scriptObjectNames = rawScriptObjects.ElementAt(i).ToString().Split(' ').ToList();
-                //gameFilePairs[game].Add(names.ElementAt(i), new FileScriptPair(names.ElementAt(i).ToString(), scriptObjects));
+                List<string> scriptObjectNames = rawScriptObjects.ElementAt(i).Value.Trim().Split(' ').ToList();
+                gameFilePairs[game].Add(names.ElementAt(i).Value, scriptObjectNames);
             }
+
+            // debug
+            scriptPairs = gameFilePairs[ParadoxTitle.CrusaderKings]["religion"];
         }
     }
 }
