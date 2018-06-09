@@ -15,9 +15,6 @@ namespace Paradox_Mod_Editor.Models
         private FileState state = FileState.Saved;
         public FastColoredTextBox textBox { get; }
 
-        // TODO: store bookmarks
-        // TODO: give each file its own unique textbox?
-
         public OpenFile(string path, FastColoredTextBox textBox)
         {
             this.path = path;
