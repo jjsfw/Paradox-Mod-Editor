@@ -132,6 +132,7 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="FastColoredTextBox\VisualMarker.cs" />
+    <Compile Include="Models\ControlFactory.cs" />
     <Compile Include="Models\OpenFile.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
