@@ -95,19 +95,7 @@ namespace Paradox_Mod_Editor.Controllers
                     OpenNewFile(filePath);
                     //textBox.SyntaxHighlighter.HighlightSyntax();
                 }
-                if (currentFile != null)
-                {
-                    currentFile.SetUndoRedo(textBox.GetLines().Manager.GetHistory(), textBox.GetLines().Manager.GetRedoStack());
-                }
                 currentFile = files[filePath];
-                if (currentFile.GetHistory() == null)
-                {
-                    textBox.ClearUndo();
-                }
-                else
-                {
-                    textBox.GetLines().Manager.SetHistory(currentFile.GetHistory(), currentFile.GetRedoStack());
-                }
                 textBox.Text = currentFile.GetContents();
                 currentFile.UpdateContentsIgnoreSave(textBox.Text);
             }

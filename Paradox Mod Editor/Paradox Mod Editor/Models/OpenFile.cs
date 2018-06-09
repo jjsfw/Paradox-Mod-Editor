@@ -13,10 +13,10 @@ namespace Paradox_Mod_Editor.Models
         private string path;
         private string contents;
         private FileState state = FileState.Saved;
-        private LimitedStack<UndoableCommand> history;
-        private Stack<UndoableCommand> redoStack;
+        private FastColoredTextBox textBox;
 
         // TODO: store bookmarks
+        // TODO: give each file its own unique textbox?
 
         public OpenFile(string path)
         {
@@ -49,22 +49,6 @@ namespace Paradox_Mod_Editor.Models
         public string GetPath()
         {
             return path;
-        }
-
-        public void SetUndoRedo(LimitedStack<UndoableCommand> history, Stack<UndoableCommand> redoStack)
-        {
-            this.history = history;
-            this.redoStack = redoStack;
-        }
-
-        public LimitedStack<UndoableCommand> GetHistory()
-        {
-            return history;
-        }
-
-        public Stack<UndoableCommand> GetRedoStack()
-        {
-            return redoStack;
         }
     }
 
