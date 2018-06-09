@@ -13,6 +13,7 @@ namespace Paradox_Mod_Editor.Controllers
     public class TextEditorController
     {
         protected ITextEditorView view;
+        protected OpenFile currentFile;
         internal Dictionary<string, OpenFile> files;
 
         public TextEditorController(ITextEditorView view)
@@ -44,6 +45,14 @@ namespace Paradox_Mod_Editor.Controllers
             view.AddTextBoxToView(newTextBox);
 
             return newTextBox;
+        }
+
+        public void CheckFileForChanges(TreeNode fileNode)
+        {
+            if (currentFile.IsChanged())
+            {
+                fileNode.BackColor = System.Drawing.Color.Yellow;
+            }
         }
     }
 }

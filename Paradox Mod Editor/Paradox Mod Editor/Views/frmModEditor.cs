@@ -97,21 +97,8 @@ namespace Paradox_Mod_Editor.Views
                 currentIndent = spacesCount;
                 lastNonEmptyLine = i;
             }
-            if (textBox.Text != controller.ReadFile())
-            {
-                controller.UpdateFile(textBox.Text);
-                if (currentNode != null)
-                {
-                    currentNode.BackColor = Color.Yellow;
-                }
-            }
-            else
-            {
-                if (currentNode != null)
-                {
-                    currentNode.BackColor = Color.White;
-                }
-            }
+            currentNode.BackColor = Color.White;
+            controller.CheckFileForChanges(currentNode);
         }
 
         private void textBox_AutoIndentNeeded(object sender, AutoIndentEventArgs e)

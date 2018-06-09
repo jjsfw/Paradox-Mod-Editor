@@ -14,7 +14,6 @@ namespace Paradox_Mod_Editor.Controllers
     class ModEditorController : TextEditorController
     {
         private ParadoxTitle game;
-        private OpenFile currentFile;
         private string modDirectory;
         private string filePath;
 

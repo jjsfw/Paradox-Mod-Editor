@@ -8,7 +8,7 @@ using FastColoredTextBoxNS;
 
 namespace Paradox_Mod_Editor.Models
 {
-    class OpenFile
+    public class OpenFile
     {
         private string path;
         private string contents;
@@ -24,6 +24,7 @@ namespace Paradox_Mod_Editor.Models
             this.contents = File.ReadAllText(path);
             this.textBox = textBox;
             this.textBox.Text = this.contents;
+            this.textBox.GetLines().Manager.ClearHistory();
         }
 
         public OpenFile(string path, string contents, FastColoredTextBox textBox)
@@ -32,6 +33,7 @@ namespace Paradox_Mod_Editor.Models
             this.contents = contents;
             this.textBox = textBox;
             this.textBox.Text = this.contents;
+            this.textBox.GetLines().Manager.ClearHistory();
         }
 
         public void UpdateContents(string newContents)
@@ -53,6 +55,11 @@ namespace Paradox_Mod_Editor.Models
         public string GetPath()
         {
             return path;
+        }
+
+        public bool IsChanged()
+        {
+            return textBox.GetLines().Manager.GetHistory().Count > 0;
         }
     }
 
