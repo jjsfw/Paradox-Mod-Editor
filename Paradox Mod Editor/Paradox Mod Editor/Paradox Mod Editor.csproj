@@ -134,6 +134,7 @@
     <Compile Include="FastColoredTextBox\VisualMarker.cs" />
     <Compile Include="Models\ControlFactory.cs" />
     <Compile Include="Models\OpenFile.cs" />
+    <Compile Include="Models\TextBoxFactory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TextEditor.cs" />

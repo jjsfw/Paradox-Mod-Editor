@@ -12,7 +12,7 @@ namespace Paradox_Mod_Editor.Views
     public interface ITextEditorView
     {
         void SetController(TextEditorController controller);
-        void CreateTextBox();
+        void AddTextBoxToView(FastColoredTextBox newTextBox);
         FastColoredTextBox GetTextBox();
     }
 }

@@ -19,7 +19,6 @@ namespace Paradox_Mod_Editor.Views
     {
         private string modDirectory;
         private FastColoredTextBox textBox;
-        private AutocompleteMenu autocompleteMenu;
         private ModEditorController controller;
         private TreeNode currentNode;
 
@@ -31,7 +30,8 @@ namespace Paradox_Mod_Editor.Views
 
         private void frmModEditor_Load(object sender, EventArgs e)
         {
-            CreateTextBox();
+            // TODO: starting texbox
+            // CreateTextBox();
             DirectoryInfo rootInfo = new DirectoryInfo(modDirectory);
             trvModFolderStructure.Nodes.Add(buildModTree(rootInfo));
         }
@@ -61,64 +61,14 @@ namespace Paradox_Mod_Editor.Views
             this.controller = (ModEditorController)controller;
         }
 
-        public void CreateTextBox()
+        public void AddTextBoxToView(FastColoredTextBox newTextBox)
         {
-            textBox = new FastColoredTextBox();
-            textBox.Parent = pnlRawEdit;
-            textBox.Location = new Point(0, 0);
-            textBox.Dock = DockStyle.Fill;
-            textBox.Show();
-            // TODO: add diffmerge (put this elsewhere, its own tool/section)
-            // TODO: make comments always override non-comment patterns
-            textBox.SyntaxHighlighter = new SyntaxHighlighter(textBox);
-            textBox.AutoCompleteBrackets = true;
-            textBox.AutoIndentChars = false;
-            textBox.AutoIndentExistingLines = true;
-            textBox.AutoIndent = true;
-            textBox.BracketsHighlightStrategy = BracketsHighlightStrategy.Strategy1;
-            textBox.LeftBracket = '{';
-            textBox.LeftBracket2 = '(';
-            textBox.RightBracket = '}';
-            textBox.RightBracket2 = ')';
-            textBox.DelayedTextChangedInterval = 400;
-            textBox.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            textBox.WordWrap = true;
-            textBox.LeftPadding = 17;
+            newTextBox.TextChangedDelayed += textBox_TextChangedDelayed;
+            newTextBox.AutoIndentNeeded += textBox_AutoIndentNeeded;
+            newTextBox.MouseDoubleClick += textBox_MouseDoubleClick;
 
-            Color textColor = ColorTranslator.FromHtml("#A9B7C6");
-            Color backColor = ColorTranslator.FromHtml("#2B2B2B");
-            Color neutralGrey = ColorTranslator.FromHtml("#808080");
-            Color testingColorBright = ColorTranslator.FromHtml("#CB772F");
-
-            // Colours - IntelliJ Darcula
-            textBox.ForeColor = textColor;
-            textBox.BackColor = backColor;
-            textBox.SelectionColor = textColor;
-            textBox.IndentBackColor = backColor;
-            textBox.LineNumberColor = textColor;
-            // End Colours
-            textBox.DescriptionFile = @"..\..\ParadoxFormat.xml";
-            textBox.Language = Language.Custom;
-            // End Custom Properties
-
-            this.Controls.Add(textBox);
-
-            textBox.TextChangedDelayed += textBox_TextChangedDelayed;
-            textBox.AutoIndentNeeded += textBox_AutoIndentNeeded;
-            textBox.MouseDoubleClick += textBox_MouseDoubleClick;
-            textBox.OnTextChangedDelayed(textBox.Range);
-            textBox.BringToFront();
-
-            autocompleteMenu = new AutocompleteMenu(textBox);
-            autocompleteMenu.ForeColor = Color.White;
-            autocompleteMenu.BackColor = Color.Gray;
-            autocompleteMenu.SelectedColor = Color.Purple;
-            autocompleteMenu.SearchPattern = @"[\w\.]";
-            autocompleteMenu.AllowTabKey = true;
-            autocompleteMenu.AlwaysShowTooltip = true;
-            autocompleteMenu.SearchPattern = @"[\w\.:=!<>]";
-
-            autocompleteMenu.Items.SetAutocompleteItems(controller.LoadAutocompleteItems());
+            newTextBox.Parent = pnlRawEdit;
+            this.Controls.Add(newTextBox);
         }
 
         private void textBox_TextChangedDelayed(object sender, TextChangedEventArgs e)
@@ -184,7 +134,20 @@ namespace Paradox_Mod_Editor.Views
         private void trvModFolderStructure_AfterSelect(object sender, TreeViewEventArgs e)
         {
             if (Regex.IsMatch(e.Node.Text, @"^[^\\\.\s]+\.[^\\\.\s]+$")) {
-                controller.LoadSelectedFile(textBox, e.Node);
+                if (textBox != null)
+                {
+                    textBox.Hide();
+                }
+                FastColoredTextBox loadedBox = controller.LoadSelectedFileTextBox(e.Node);
+                if (loadedBox != null)
+                {
+                    textBox = loadedBox;
+                }
+                if (textBox != null)
+                {
+                    textBox.Parent = pnlRawEdit;
+                    textBox.Show();
+                }
                 currentNode = e.Node;
             }
         }

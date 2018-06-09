@@ -9,7 +9,7 @@ namespace Paradox_Mod_Editor.Models
 {
     public abstract class ControlFactory
     {
-        public abstract Control GetScriptObject(string scriptObject);
+        public abstract Control GetControl();
 
         public static ControlFactory GetFactory()
         {

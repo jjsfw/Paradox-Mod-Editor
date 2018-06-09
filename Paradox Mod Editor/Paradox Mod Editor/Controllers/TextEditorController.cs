@@ -18,17 +18,32 @@ namespace Paradox_Mod_Editor.Controllers
         public TextEditorController(ITextEditorView view)
         {
             view.SetController(this);
+            this.view = view;
             files = new Dictionary<string, OpenFile>();
         }
 
         protected void OpenNewFile(string path)
         {
-            files.Add(path, new OpenFile(path));
+            files.Add(path, new OpenFile(path, MakeTextBox()));
         }
 
         protected void UpdateFile(string path, string contents)
         {
             files[path].UpdateContents(contents);
+        }
+
+        protected virtual List<AutocompleteItem> LoadAutocompleteItems()
+        {
+            throw new NotImplementedException();
+        }
+
+        public FastColoredTextBox MakeTextBox()
+        {
+            FastColoredTextBox newTextBox =  (FastColoredTextBox)TextBoxFactory.GetFactory().GetControl(LoadAutocompleteItems());
+
+            view.AddTextBoxToView(newTextBox);
+
+            return newTextBox;
         }
     }
 }

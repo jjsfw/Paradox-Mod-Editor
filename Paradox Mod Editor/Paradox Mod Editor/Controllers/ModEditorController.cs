@@ -25,7 +25,7 @@ namespace Paradox_Mod_Editor.Controllers
             this.modDirectory = modDirectory.Substring(0, modDirectory.LastIndexOf("\\") + 1);
         }
 
-        public List<AutocompleteItem> LoadAutocompleteItems()
+        protected override List<AutocompleteItem> LoadAutocompleteItems()
         {
             List<AutocompleteItem> items = new List<AutocompleteItem>();
             string xmlTestPath = @"..\..\CrusaderKingsScripts.xml"; ;
@@ -85,7 +85,7 @@ namespace Paradox_Mod_Editor.Controllers
             return items;
         }
 
-        public void LoadSelectedFile(FastColoredTextBox textBox, TreeNode node)
+        public FastColoredTextBox LoadSelectedFileTextBox(TreeNode node)
         {
             filePath = modDirectory + node.FullPath;
             if (currentFile == null || filePath != currentFile.GetPath())
@@ -96,9 +96,11 @@ namespace Paradox_Mod_Editor.Controllers
                     //textBox.SyntaxHighlighter.HighlightSyntax();
                 }
                 currentFile = files[filePath];
-                textBox.Text = currentFile.GetContents();
-                currentFile.UpdateContentsIgnoreSave(textBox.Text);
+                return currentFile.textBox;
+                //textBox.Text = currentFile.GetContents();
+                //currentFile.UpdateContentsIgnoreSave(textBox.Text);
             }
+            return null;
         }
 
         public void UpdateFile(string contents)
@@ -116,11 +118,6 @@ namespace Paradox_Mod_Editor.Controllers
                 return "";
             }
             return currentFile.GetContents();
-        }
-
-        protected void SetFileHistory(LimitedStack<UndoableCommand> history, Stack<UndoableCommand> redoStack)
-        {
-            
         }
     }
 }

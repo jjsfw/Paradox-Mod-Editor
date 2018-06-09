@@ -13,21 +13,25 @@ namespace Paradox_Mod_Editor.Models
         private string path;
         private string contents;
         private FileState state = FileState.Saved;
-        private FastColoredTextBox textBox;
+        public FastColoredTextBox textBox { get; }
 
         // TODO: store bookmarks
         // TODO: give each file its own unique textbox?
 
-        public OpenFile(string path)
+        public OpenFile(string path, FastColoredTextBox textBox)
         {
             this.path = path;
             this.contents = File.ReadAllText(path);
+            this.textBox = textBox;
+            this.textBox.Text = this.contents;
         }
 
-        public OpenFile(string path, string contents)
+        public OpenFile(string path, string contents, FastColoredTextBox textBox)
         {
             this.path = path;
             this.contents = contents;
+            this.textBox = textBox;
+            this.textBox.Text = this.contents;
         }
 
         public void UpdateContents(string newContents)
