@@ -40,7 +40,7 @@
             this.pgrEditor = new System.Windows.Forms.PropertyGrid();
             this.splitter2 = new System.Windows.Forms.Splitter();
             this.pnlRawEdit = new System.Windows.Forms.Panel();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.mnsMenu = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mniNewFile = new System.Windows.Forms.ToolStripMenuItem();
             this.mniSave = new System.Windows.Forms.ToolStripMenuItem();
@@ -84,7 +84,7 @@
             this.spcButtons.Panel1.SuspendLayout();
             this.spcButtons.Panel2.SuspendLayout();
             this.spcButtons.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
+            this.mnsMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // trvModFolderStructure
@@ -233,19 +233,19 @@
             this.pnlRawEdit.Size = new System.Drawing.Size(243, 426);
             this.pnlRawEdit.TabIndex = 4;
             // 
-            // menuStrip1
+            // mnsMenu
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnsMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.editToolStripMenuItem,
             this.findToolStripMenuItem,
             this.viewToolStripMenuItem,
             this.preferencesToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
-            this.menuStrip1.TabIndex = 5;
-            this.menuStrip1.Text = "menuStrip1";
+            this.mnsMenu.Location = new System.Drawing.Point(0, 0);
+            this.mnsMenu.Name = "mnsMenu";
+            this.mnsMenu.Size = new System.Drawing.Size(800, 24);
+            this.mnsMenu.TabIndex = 5;
+            this.mnsMenu.Text = "menuStrip1";
             // 
             // fileToolStripMenuItem
             // 
@@ -464,7 +464,7 @@
             this.Controls.Add(this.pnlSpecialEdit);
             this.Controls.Add(this.splitter1);
             this.Controls.Add(this.trvModFolderStructure);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.mnsMenu);
             this.Name = "frmModEditor";
             this.ShowIcon = false;
             this.Text = "Mod Editor";
@@ -483,8 +483,8 @@
             this.spcButtons.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.spcButtons)).EndInit();
             this.spcButtons.ResumeLayout(false);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.mnsMenu.ResumeLayout(false);
+            this.mnsMenu.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -499,7 +499,7 @@
         private System.Windows.Forms.Panel pnlRawEdit;
         private System.Windows.Forms.PropertyGrid pgrEditor;
         private System.Windows.Forms.SplitContainer spcPropertiesList;
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip mnsMenu;
         private System.Windows.Forms.SplitContainer spcListButtons;
         private System.Windows.Forms.ListBox lstScriptObjects;
         private System.Windows.Forms.SplitContainer spcButtons;
