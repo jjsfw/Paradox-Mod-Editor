@@ -56,7 +56,7 @@ namespace Paradox_Mod_Editor.Models
             textBox.IndentBackColor = backColor;
             textBox.LineNumberColor = textColor;
             // End Colours
-            textBox.DescriptionFile = @"..\..\ParadoxFormat.xml";
+            textBox.DescriptionFile = @"..\..\ParadoxSyntax\ParadoxFormat.xml";
             textBox.Language = Language.Custom;
             // End Custom Properties
 

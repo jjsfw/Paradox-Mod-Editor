@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Drawing;
+using System.Reflection;
 
 namespace Paradox_Mod_Editor.Models.CrusaderKings
 {
@@ -12,6 +13,8 @@ namespace Paradox_Mod_Editor.Models.CrusaderKings
     {
         // TODO: update types (modifiers, graphical cultures (?), etc)
         // TODO: finish descriptions, display names
+        // TODO: custom script property class containing raw data, script as it appears in file (?)
+        // TODO: see if this can be stored in xml, loaded at runtime like with script objects w/o using dynamics - DO THIS IN DIFFERENT BRANCH
         [Category("*General"), Description("The name of the religion as it appears in script."), DisplayName("Name")]
         public string Name { get; set; }
         [Category("*General"), Description("Makes the religion a heresy of its parent religion. The parent religion must be defined before. Note: reformed pagans can have heresies, but they need to be defined after both reformed and unreformed religions."), DisplayName("Parent Religion")]
@@ -150,7 +153,6 @@ namespace Paradox_Mod_Editor.Models.CrusaderKings
         public PBool IsHardToConvert { get; set; }
         [Category("Special Features"), Description("Prevents the religion from appearing in Ruler Designer, typically pagan reformed religions."), DisplayName("Allow in Ruler Designer")]
         public PBool AllowInRulerDesigner { get; set; }
-
 
         public enum ConvertReligion
         {
