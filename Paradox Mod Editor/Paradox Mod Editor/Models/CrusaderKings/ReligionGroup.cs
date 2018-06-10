@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Drawing;
+using Paradox_Mod_Editor.ParadoxSyntax;
 
 namespace Paradox_Mod_Editor.Models.CrusaderKings
 {

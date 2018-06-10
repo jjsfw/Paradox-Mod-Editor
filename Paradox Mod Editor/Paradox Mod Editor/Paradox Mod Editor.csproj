@@ -145,7 +145,10 @@
     <Compile Include="Models\OpenFile.cs" />
     <Compile Include="Models\IScriptObject.cs" />
     <Compile Include="Models\ScriptFactory.cs" />
+    <Compile Include="Models\ScriptPBool.cs" />
+    <Compile Include="Models\ScriptValue.cs" />
     <Compile Include="Models\TextBoxFactory.cs" />
+    <Compile Include="ParadoxSyntax\ParadoxTypes.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TextEditor.cs" />
