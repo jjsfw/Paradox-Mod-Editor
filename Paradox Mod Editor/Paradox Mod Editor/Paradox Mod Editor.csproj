@@ -138,7 +138,6 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="FastColoredTextBox\VisualMarker.cs" />
-    <Compile Include="Models\AttributeReader.cs" />
     <Compile Include="Models\CommentBlock.cs" />
     <Compile Include="Models\ScriptFactoryCK2.cs" />
     <Compile Include="Models\CrusaderKings\Religion.cs" />
