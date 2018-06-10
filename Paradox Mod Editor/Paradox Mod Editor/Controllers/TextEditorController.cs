@@ -40,7 +40,7 @@ namespace Paradox_Mod_Editor.Controllers
 
         public FastColoredTextBox MakeTextBox()
         {
-            FastColoredTextBox newTextBox =  (FastColoredTextBox)TextBoxFactory.GetFactory().GetControl(LoadAutocompleteItems());
+            FastColoredTextBox newTextBox =  TextBoxFactory.GetTextBox(LoadAutocompleteItems());
 
             view.AddTextBoxToView(newTextBox);
 

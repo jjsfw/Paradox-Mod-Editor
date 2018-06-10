@@ -9,16 +9,9 @@ using System.Drawing;
 
 namespace Paradox_Mod_Editor.Models
 {
-    public sealed class TextBoxFactory : ControlFactory
-    {
-        static readonly TextBoxFactory factory = new TextBoxFactory();
-
-        public override Control GetControl()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Control GetControl(IEnumerable<AutocompleteItem> autocompleteItems)
+    public static class TextBoxFactory
+    { 
+        public static FastColoredTextBox GetTextBox(IEnumerable<AutocompleteItem> autocompleteItems)
         {
             FastColoredTextBox textBox = new FastColoredTextBox();
             AutocompleteMenu autocompleteMenu = new AutocompleteMenu(textBox);
@@ -75,11 +68,6 @@ namespace Paradox_Mod_Editor.Models
             autocompleteMenu.Items.SetAutocompleteItems(autocompleteItems);
 
             return textBox;
-        }
-
-        public new static TextBoxFactory GetFactory()
-        {
-            return factory;
         }
     }
 }
