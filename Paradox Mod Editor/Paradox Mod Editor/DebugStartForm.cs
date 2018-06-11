@@ -21,8 +21,8 @@ namespace Paradox_Mod_Editor
 
         private void DebugStartForm_Load(object sender, EventArgs e)
         {
-            var modEditor = new frmModEditor(@"D:\Users\jjsfw\Documents\Paradox Interactive\Crusader Kings II\mod\EKSVN");
-            ModEditorController controller = new ModEditorController(modEditor, ParadoxTitle.CrusaderKings, @"D:\Users\jjsfw\Documents\Paradox Interactive\Crusader Kings II\mod\EKSVN");
+            var modEditor = new frmModEditor(@"D:\Users\jjsfw\Documents\Paradox Interactive\Crusader Kings II\mod\Editor Testing");
+            ModEditorController controller = new ModEditorController(modEditor, ParadoxTitle.CrusaderKings, @"D:\Users\jjsfw\Documents\Paradox Interactive\Crusader Kings II\mod\Editor Testing");
             this.Hide();
             modEditor.ShowDialog();
             this.Close();
