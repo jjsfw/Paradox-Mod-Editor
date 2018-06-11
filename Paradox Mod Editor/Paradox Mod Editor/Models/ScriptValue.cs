@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace Paradox_Mod_Editor.Models
 {
@@ -10,6 +11,11 @@ namespace Paradox_Mod_Editor.Models
     {
         public T Value { get; set; }
         public string ScriptText { get; }
+
+        public ScriptValue(string text)
+        {
+            this.ScriptText = text;
+        }
 
         public ScriptValue(T value, string text)
         {
