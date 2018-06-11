@@ -25,7 +25,7 @@ namespace Paradox_Mod_Editor.Models
             textBox.SyntaxHighlighter = new SyntaxHighlighter(textBox);
             textBox.AutoCompleteBrackets = true;
             textBox.AutoIndentChars = false;
-            textBox.AutoIndentExistingLines = true;
+            textBox.AutoIndentExistingLines = false;
             textBox.AutoIndent = true;
             textBox.BracketsHighlightStrategy = BracketsHighlightStrategy.Strategy1;
             textBox.LeftBracket = '{';
