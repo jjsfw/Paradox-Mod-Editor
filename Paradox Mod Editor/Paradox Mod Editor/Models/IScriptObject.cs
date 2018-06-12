@@ -9,5 +9,6 @@ namespace Paradox_Mod_Editor.Models
     public interface IScriptObject
     {
         string Name { get; }
+        List<string> ExcludedStrings { get; }
     }
 }

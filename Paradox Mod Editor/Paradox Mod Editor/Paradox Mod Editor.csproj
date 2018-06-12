@@ -145,6 +145,7 @@
     <Compile Include="Models\OpenFile.cs" />
     <Compile Include="Models\IScriptObject.cs" />
     <Compile Include="Models\ScriptFactory.cs" />
+    <Compile Include="Models\ScriptParser.cs" />
     <Compile Include="Models\ScriptPBool.cs" />
     <Compile Include="Models\ScriptValue.cs" />
     <Compile Include="Models\TextBoxFactory.cs" />

@@ -11,6 +11,8 @@ namespace Paradox_Mod_Editor.Models.CrusaderKings
 {
     class ReligionGroup : IScriptObject
     {
+        [Browsable(false)]
+        public List<String> ExcludedStrings { get; } = new List<string>(new string[] { "secret_religion_visibility_trigger" });
         [Category("*General"), DisplayName("Name")]
         [Description("The name of the religion group as it appears in script.")]
         public string Name { get; set; }
@@ -110,5 +112,7 @@ namespace Paradox_Mod_Editor.Models.CrusaderKings
 		}
         [Browsable(false)]
         private ScriptValue<string> CrusadeCasusBelli = new ScriptValue<string>("crusade_cb");
+        [Browsable(false)]
+        private List<Religion> religions = new List<Religion>();
     }
 }

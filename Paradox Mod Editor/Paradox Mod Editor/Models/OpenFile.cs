@@ -49,6 +49,11 @@ namespace Paradox_Mod_Editor.Models
             return contents;
         }
 
+        public string GetCurrentText()
+        {
+            return textBox.Text;
+        }
+
         public string GetPath()
         {
             return path;

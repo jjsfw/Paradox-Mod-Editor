@@ -71,6 +71,8 @@
             this.preferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.coloursToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.readOnlyBlocksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.debugToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mniDebugParse = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlSpecialEdit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spcPropertiesList)).BeginInit();
             this.spcPropertiesList.Panel1.SuspendLayout();
@@ -239,7 +241,8 @@
             this.editToolStripMenuItem,
             this.findToolStripMenuItem,
             this.viewToolStripMenuItem,
-            this.preferencesToolStripMenuItem});
+            this.preferencesToolStripMenuItem,
+            this.debugToolStripMenuItem});
             this.mnsMenu.Location = new System.Drawing.Point(0, 0);
             this.mnsMenu.Name = "mnsMenu";
             this.mnsMenu.Size = new System.Drawing.Size(800, 24);
@@ -453,6 +456,21 @@
             this.readOnlyBlocksToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.readOnlyBlocksToolStripMenuItem.Text = "Read-Only Blocks";
             // 
+            // debugToolStripMenuItem
+            // 
+            this.debugToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mniDebugParse});
+            this.debugToolStripMenuItem.Name = "debugToolStripMenuItem";
+            this.debugToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
+            this.debugToolStripMenuItem.Text = "Debug";
+            // 
+            // mniDebugParse
+            // 
+            this.mniDebugParse.Name = "mniDebugParse";
+            this.mniDebugParse.Size = new System.Drawing.Size(180, 22);
+            this.mniDebugParse.Text = "Parse";
+            this.mniDebugParse.Click += new System.EventHandler(this.mniDebugParse_Click);
+            // 
             // frmModEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -534,5 +552,7 @@
         private System.Windows.Forms.ToolStripMenuItem preferencesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem coloursToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem readOnlyBlocksToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem debugToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mniDebugParse;
     }
 }

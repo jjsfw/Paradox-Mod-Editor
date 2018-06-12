@@ -168,5 +168,10 @@ namespace Paradox_Mod_Editor.Views
             pgrEditor.SelectedObject = lstScriptObjects.SelectedItem;
             pgrEditor.Enabled = true;
         }
+
+        private void mniDebugParse_Click(object sender, EventArgs e)
+        {
+            controller.DebugParse((IScriptObject)pgrEditor.SelectedObject);
+        }
     }
 }
