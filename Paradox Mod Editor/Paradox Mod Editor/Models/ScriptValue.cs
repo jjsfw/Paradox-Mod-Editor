@@ -9,7 +9,7 @@ namespace Paradox_Mod_Editor.Models
 {
     class ScriptValue<T> : IScriptContainer
     {
-        public T Value { get; set; }
+        public T Value;
         public string ScriptText { get; }
 
         public ScriptValue(string text)
@@ -26,6 +26,24 @@ namespace Paradox_Mod_Editor.Models
         public virtual string WriteScript()
         {
             return ScriptText + " = " + Value;
+        }
+
+        public dynamic GetValue()
+        {
+            return Value;
+        }
+
+        public virtual void SetValue(object newValue)
+        {
+            // TODO: add PBool special case in ScriptPBool
+            try
+            {
+                Value = (T)newValue;
+            }
+            catch (InvalidCastException)
+            {
+                throw new ArgumentException(String.Format("cannot store a {0} in a ScriptValue for {1}", newValue.GetType().ToString(), typeof(T).ToString()));
+            }
         }
     }
 }

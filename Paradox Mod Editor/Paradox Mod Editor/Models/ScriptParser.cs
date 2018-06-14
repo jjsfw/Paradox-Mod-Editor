@@ -70,7 +70,14 @@ namespace Paradox_Mod_Editor.Models
             }
             for (int i = 0; i < data.Length; i++)
             {
-                
+                string line = data[i];
+                if (scriptToProperty.Keys.Any(line.Contains))
+                {
+                    IScriptContainer scriptValue = scriptToProperty[scriptToProperty.Keys.First(line.Contains)];
+                    string lineValue = line.Substring(line.IndexOf('=') + 1).Trim();
+                    scriptValue.SetValue(lineValue);
+                    int k = 1;
+                }
             }
         }
     }

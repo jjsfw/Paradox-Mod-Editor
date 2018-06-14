@@ -24,5 +24,25 @@ namespace Paradox_Mod_Editor.Models // TODO: make PBool a special case of Script
                 return null;
             }
         }
+
+        public override void SetValue(object newValue)
+        {
+            if (newValue.GetType() == typeof(PBool))
+            {
+                Value = (PBool)newValue;
+                return;
+            }
+            switch (newValue.ToString().ToLower())
+            {
+                case "yes":
+                    Value = PBool.yes;
+                    break;
+                case "no":
+                    Value = PBool.no;
+                    break;
+                default:
+                    throw new ArgumentException(String.Format("cannot store a {0} in a ScriptValue for PBools", newValue.GetType().ToString()));
+            }
+        }
     }
 }

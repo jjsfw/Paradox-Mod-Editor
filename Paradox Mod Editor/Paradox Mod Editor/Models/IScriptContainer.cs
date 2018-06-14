@@ -9,5 +9,7 @@ namespace Paradox_Mod_Editor.Models
     interface IScriptContainer
     {
         string ScriptText { get; }
+        dynamic GetValue();
+        void SetValue(object newValue);
     }
 }
