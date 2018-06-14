@@ -12,7 +12,6 @@ namespace Paradox_Mod_Editor.Models
     {
         public PropertyInfo[] GetScriptProperties()
         {
-            int i = 1;
             PropertyInfo[] properties = this.GetType().GetProperties().Where(
                 prop => Attribute.IsDefined(prop, typeof(ScriptValueAttribute))).ToArray();
 

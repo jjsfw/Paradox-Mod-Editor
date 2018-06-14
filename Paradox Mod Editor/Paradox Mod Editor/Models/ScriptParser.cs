@@ -65,7 +65,6 @@ namespace Paradox_Mod_Editor.Models
             {
                 if (property.PropertyType.Name == typeof(ScriptValue<>).Name || property.PropertyType == typeof(ScriptPBool)) // use Name to account for ScriptValues of fixed type not being equal
                 {
-                    // TODO: cast as generic ScriptValue
                     scriptToProperty.Add(((IScriptContainer)property.GetValue(scriptObject)).ScriptText, (IScriptContainer)property.GetValue(scriptObject));
                 }
             }
