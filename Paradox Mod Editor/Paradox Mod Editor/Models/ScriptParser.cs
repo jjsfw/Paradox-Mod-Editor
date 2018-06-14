@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Reflection;
 using Paradox_Mod_Editor.Models;
 using System.Text.RegularExpressions;
+using System.ComponentModel;
+using Paradox_Mod_Editor.ParadoxSyntax;
 
 namespace Paradox_Mod_Editor.Models
 {
@@ -57,7 +59,26 @@ namespace Paradox_Mod_Editor.Models
 
         private static void Parse(IScriptObject scriptObject, string[] data)
         {
-            int i = 1;
+            PropertyInfo[] properties = ((ScriptPropertyGiver)scriptObject).GetScriptProperties();
+            Dictionary<string, dynamic> scriptToProperty = new Dictionary<string, dynamic>();
+            foreach(PropertyInfo property in properties)
+            {
+                if (property.PropertyType.Name == typeof(ScriptValue<>).Name) // use Name to account for ScriptValues of fixed type not being equal
+                {
+                    // TODO: cast as generic ScriptValue
+                    var p = property.GetValue(scriptObject);
+                    ScriptValue<dynamic> d = (ScriptValue<dynamic>)Convert.ChangeType(p, property.GetValue(scriptObject).GetType());
+                    scriptToProperty.Add(d.ScriptText, property.GetValue(scriptObject));
+                }
+                else if (property.PropertyType == typeof(ScriptPBool))
+                {
+                    scriptToProperty.Add(((ScriptPBool)property.GetValue(scriptObject)).ScriptText, (ScriptPBool)(property.GetValue(scriptObject)));
+                }
+            }
+            for (int i = 0; i < data.Length; i++)
+            {
+                
+            }
         }
     }
 }

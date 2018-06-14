@@ -10,7 +10,7 @@ using Paradox_Mod_Editor.ParadoxSyntax;
 
 namespace Paradox_Mod_Editor.Models.CrusaderKings
 {
-    class Religion : IScriptObject
+    class Religion : ScriptPropertyGiver, IScriptObject
     {
         // TODO: update types (modifiers, graphical cultures (?), etc)
         // TODO: contain text inside of religion/whichever script object the text refers to, store script objects instead of raw text in OpenFiles (?)
