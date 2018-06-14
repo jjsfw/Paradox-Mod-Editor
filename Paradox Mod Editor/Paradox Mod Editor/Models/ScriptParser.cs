@@ -73,6 +73,9 @@ namespace Paradox_Mod_Editor.Models
                 string line = data[i];
                 if (scriptToProperty.Keys.Any(line.Contains))
                 {
+                    // TODO: add check for default PBools
+                    // TODO: add check for undefined properties
+                    // TODO: add check for repeated properties
                     IScriptContainer scriptValue = scriptToProperty[scriptToProperty.Keys.First(line.Contains)];
                     string lineValue = line.Substring(line.IndexOf('=') + 1).Trim();
                     scriptValue.SetValue(lineValue);

@@ -35,7 +35,6 @@ namespace Paradox_Mod_Editor.Models
 
         public virtual void SetValue(object newValue)
         {
-            // TODO: add PBool special case in ScriptPBool
             try
             {
                 Value = (T)newValue;
