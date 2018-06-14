@@ -60,19 +60,13 @@ namespace Paradox_Mod_Editor.Models
         private static void Parse(IScriptObject scriptObject, string[] data)
         {
             PropertyInfo[] properties = ((ScriptPropertyGiver)scriptObject).GetScriptProperties();
-            Dictionary<string, dynamic> scriptToProperty = new Dictionary<string, dynamic>();
+            Dictionary<string, IScriptContainer> scriptToProperty = new Dictionary<string, IScriptContainer>();
             foreach(PropertyInfo property in properties)
             {
-                if (property.PropertyType.Name == typeof(ScriptValue<>).Name) // use Name to account for ScriptValues of fixed type not being equal
+                if (property.PropertyType.Name == typeof(ScriptValue<>).Name || property.PropertyType == typeof(ScriptPBool)) // use Name to account for ScriptValues of fixed type not being equal
                 {
                     // TODO: cast as generic ScriptValue
-                    var p = property.GetValue(scriptObject);
-                    ScriptValue<dynamic> d = (ScriptValue<dynamic>)Convert.ChangeType(p, property.GetValue(scriptObject).GetType());
-                    scriptToProperty.Add(d.ScriptText, property.GetValue(scriptObject));
-                }
-                else if (property.PropertyType == typeof(ScriptPBool))
-                {
-                    scriptToProperty.Add(((ScriptPBool)property.GetValue(scriptObject)).ScriptText, (ScriptPBool)(property.GetValue(scriptObject)));
+                    scriptToProperty.Add(((IScriptContainer)property.GetValue(scriptObject)).ScriptText, (IScriptContainer)property.GetValue(scriptObject));
                 }
             }
             for (int i = 0; i < data.Length; i++)

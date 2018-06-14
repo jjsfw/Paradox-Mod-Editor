@@ -140,6 +140,7 @@
     <Compile Include="FastColoredTextBox\VisualMarker.cs" />
     <Compile Include="Models\Attributes.cs" />
     <Compile Include="Models\CommentBlock.cs" />
+    <Compile Include="Models\IScriptContainer.cs" />
     <Compile Include="Models\ScriptFactoryCK2.cs" />
     <Compile Include="Models\CrusaderKings\Religion.cs" />
     <Compile Include="Models\CrusaderKings\ReligionGroup.cs" />
