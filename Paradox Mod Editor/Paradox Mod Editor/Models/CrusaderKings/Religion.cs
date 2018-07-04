@@ -57,7 +57,7 @@ namespace Paradox_Mod_Editor.Models.CrusaderKings
         public ScriptValue<int> Icon = new ScriptValue<int>("icon");
         [Category("Graphical"), DisplayName("Colour")]
         [Description("The color used when drawing the religion map mode.\nRGB format with a range of 0.0–1.0.To determine a value from the RGB, simply divide by 255, e.g. 180 ÷ 255 = 0.7")]
-        public Color ColorValue
+        public string ColorValue
 		{
 			get { return Color.Value; }
 			set
@@ -66,7 +66,7 @@ namespace Paradox_Mod_Editor.Models.CrusaderKings
 			}
 		}
         [Browsable(false)]
-        public ScriptValue<Color> Color = new ScriptValue<Color>("color");
+        public ScriptValue<string> Color = new ScriptValue<string>("color");
         [Category("Graphical"), DisplayName("Heresy Icon")]
         [Description("Heresy icon. Note that this has to be set in the parent religion, not at heresy level.")]
         public int HeresyIconValue

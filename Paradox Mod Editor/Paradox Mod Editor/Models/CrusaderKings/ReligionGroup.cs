@@ -32,7 +32,7 @@ namespace Paradox_Mod_Editor.Models.CrusaderKings
         public ScriptPBool Playable { get; } = new ScriptPBool("playable");
         [Category("Graphical"), DisplayName("Color")]
         [Description("The color used for the coalitions -per religion group- map mode.")]
-        public Color ColorValue
+        public string ColorValue
         {
             get { return Color.Value; }
             set
@@ -42,7 +42,7 @@ namespace Paradox_Mod_Editor.Models.CrusaderKings
         }
         [Browsable(false)]
 		[ScriptValue(true)]
-        public ScriptValue<Color> Color { get; } = new ScriptValue<Color>("color");
+        public ScriptValue<string> Color { get; } = new ScriptValue<string>("color");
         [Category("Graphical"), DisplayName("Graphical Culture")]
         [Description("Only used for the display of CoA frames on the map.")]
         public string GraphicalCultureValue

@@ -13,8 +13,11 @@ namespace Paradox_Mod_Editor.Models
 {
     static class ScriptParser
     {
-        public static void Split(string data, IScriptObject scriptObject)
+        public static void Split(string data, List<string> scriptPairs)
         {
+            // TODO: add IScriptObject type detection based on file type
+            // TODO: add file type detection
+
             string[] lineData = data.Split('\n');
             int start = 0;
             int depth = 0;
@@ -78,8 +81,11 @@ namespace Paradox_Mod_Editor.Models
                     // TODO: add check for repeated properties
                     IScriptContainer scriptValue = scriptToProperty[scriptToProperty.Keys.First(line.Contains)];
                     string lineValue = line.Substring(line.IndexOf('=') + 1).Trim();
+                    if (lineValue.Contains('#'))
+                    {
+                        lineValue = lineValue.Substring(0, lineValue.IndexOf('#')).Trim(); ;
+                    }
                     scriptValue.SetValue(lineValue);
-                    int k = 1;
                 }
             }
         }

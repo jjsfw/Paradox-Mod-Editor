@@ -171,7 +171,7 @@ namespace Paradox_Mod_Editor.Views
 
         private void mniDebugParse_Click(object sender, EventArgs e)
         {
-            controller.DebugParse((IScriptObject)pgrEditor.SelectedObject);
+            controller.DebugParse();
         }
     }
 }

@@ -4,7 +4,7 @@
     <name>religion</name>
     <game>ck2</game>
     <scriptObjects>
-      Religion ReligionGroup CommentBlock
+      ReligionGroup Religion CommentBlock
     </scriptObjects>
   </fileType>
 </doc>

@@ -194,9 +194,9 @@ namespace Paradox_Mod_Editor.Controllers
             scriptPairs = gameFilePairs[ParadoxTitle.CrusaderKings]["religion"];
         }
 
-        public void DebugParse(IScriptObject scriptObject)
+        public void DebugParse()
         {
-            ScriptParser.Split(currentFile.GetCurrentText(), scriptObject);
+            ScriptParser.Split(currentFile.GetCurrentText(scriptPairs));
         }
     }
 }
