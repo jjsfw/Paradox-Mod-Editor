@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Paradox_Mod_Editor.Models
 {
-    public interface IScriptFactory
+    public interface IScriptStrategy
     {
-        IScriptObject GetScriptObject();
-        bool AppliesTo(Type type);
+        IScriptObject GetScriptObject(Type type);
     }
 }

@@ -141,11 +141,13 @@
     <Compile Include="Models\Attributes.cs" />
     <Compile Include="Models\CommentBlock.cs" />
     <Compile Include="Models\CommentBlockScriptFactory.cs" />
+    <Compile Include="Models\CrusaderKings\CrusaderKingsStrategy.cs" />
     <Compile Include="Models\CrusaderKings\ReligionGroupScriptFactory.cs" />
     <Compile Include="Models\IScriptContainer.cs" />
     <Compile Include="Models\CrusaderKings\ReligionScriptFactory.cs" />
     <Compile Include="Models\CrusaderKings\Religion.cs" />
     <Compile Include="Models\CrusaderKings\ReligionGroup.cs" />
+    <Compile Include="Models\IScriptStrategy.cs" />
     <Compile Include="Models\OpenFile.cs" />
     <Compile Include="Models\IScriptObject.cs" />
     <Compile Include="Models\IScriptFactory.cs" />

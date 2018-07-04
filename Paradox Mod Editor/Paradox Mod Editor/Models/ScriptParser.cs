@@ -17,6 +17,7 @@ namespace Paradox_Mod_Editor.Models
         {
             // TODO: add IScriptObject type detection based on file type
             // TODO: add file type detection
+            // TODO: move excluded strings to file type
             Type scriptObjectType = Type.GetType(scriptPairs[0] + scriptPairs[1]);
             string[] lineData = data.Split('\n');
             IScriptObject scriptObject = new CommentBlock(); // TODO: remove this
