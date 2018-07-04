@@ -10,12 +10,12 @@ using Paradox_Mod_Editor.ParadoxSyntax;
 
 namespace Paradox_Mod_Editor.Models.CrusaderKings
 {
-    class Religion : ScriptPropertyGiver, IScriptObject
+    public class Religion : ScriptPropertyGiver, IScriptObject
     {
         // TODO: update types (modifiers, graphical cultures (?), etc)
         // TODO: contain text inside of religion/whichever script object the text refers to, store script objects instead of raw text in OpenFiles (?)
         [Browsable(false)]
-        public List<string> ExcludedStrings { get; } = new List<string>();
+        public static List<string> ExcludedStrings { get; } = new List<string>();
         [Category("*General"), DisplayName("Name"), DefaultValue("new_religion")]
         [Description("The name of the religion as it appears in script.")]
         public string Name { get; set; }
@@ -842,6 +842,11 @@ namespace Paradox_Mod_Editor.Models.CrusaderKings
             Never = 0,
             HighZeal = 1,
             Always = 2
+        }
+
+        public List<string> GetExcludedStrings()
+        {
+            return ExcludedStrings;
         }
     }
 }

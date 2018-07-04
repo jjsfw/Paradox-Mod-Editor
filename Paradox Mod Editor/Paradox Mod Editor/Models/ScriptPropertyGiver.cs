@@ -8,7 +8,7 @@ using Paradox_Mod_Editor.Models.CrusaderKings;
 
 namespace Paradox_Mod_Editor.Models
 {
-    abstract class ScriptPropertyGiver
+    public abstract class ScriptPropertyGiver
     {
         public PropertyInfo[] GetScriptProperties()
         {

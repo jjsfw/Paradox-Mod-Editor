@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace Paradox_Mod_Editor.Models
 {
-    class ScriptValue<T> : IScriptContainer
+    public class ScriptValue<T> : IScriptContainer
     {
         public T Value;
         public string ScriptText { get; }

@@ -22,6 +22,7 @@ namespace Paradox_Mod_Editor.Controllers
         private List<string> scriptPairs;
         private Dictionary<string, List<string>> fileScriptPairs;
         private Dictionary<ParadoxTitle, Dictionary<string, List<string>>> gameFilePairs;
+        private ScriptParser parser = new ScriptParser();
 
         public ModEditorController(ITextEditorView view, ParadoxTitle game, string modDirectory)
             : base(view)
@@ -149,8 +150,9 @@ namespace Paradox_Mod_Editor.Controllers
             newScriptDialog.ShowDialog();
             if (newScriptDialog.type != "Cancel")
             {
-                IScriptObject newScript = ((ScriptFactoryCK2)ScriptFactoryCK2.GetFactory()).GetScriptObject(newScriptDialog.type);
-                view.AddNewScriptObject(newScript);
+                // TODO: update this with strategy
+                //IScriptObject newScript = ((ScriptFactoryCK2)ScriptFactoryCK2.GetFactory()).GetScriptObject(newScriptDialog.type);
+                //view.AddNewScriptObject(newScript);
             }
         }
 
@@ -196,7 +198,7 @@ namespace Paradox_Mod_Editor.Controllers
 
         public void DebugParse()
         {
-            ScriptParser.Split(currentFile.GetCurrentText(scriptPairs));
+            parser.Split(currentFile.GetCurrentText(), scriptPairs);
         }
     }
 }

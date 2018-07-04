@@ -9,6 +9,7 @@ namespace Paradox_Mod_Editor.Models
     public interface IScriptObject
     {
         string Name { get; }
-        List<string> ExcludedStrings { get; }
+        //List<string> ExcludedStrings { get; }
+        List<string> GetExcludedStrings(); // Change to abstract class for default impl?
     }
 }

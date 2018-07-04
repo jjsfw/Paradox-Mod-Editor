@@ -4,7 +4,7 @@
     <name>religion</name>
     <game>ck2</game>
     <scriptObjects>
-      ReligionGroup Religion CommentBlock
+      Paradox_Mod_Editor.Models.CrusaderKings. ReligionGroup Religion CommentBlock
     </scriptObjects>
   </fileType>
 </doc>

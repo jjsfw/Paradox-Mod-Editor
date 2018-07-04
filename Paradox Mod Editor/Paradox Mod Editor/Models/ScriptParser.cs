@@ -11,14 +11,15 @@ using Paradox_Mod_Editor.ParadoxSyntax;
 
 namespace Paradox_Mod_Editor.Models
 {
-    static class ScriptParser
+    public class ScriptParser
     {
-        public static void Split(string data, List<string> scriptPairs)
+        public void Split(string data, List<string> scriptPairs)
         {
             // TODO: add IScriptObject type detection based on file type
             // TODO: add file type detection
-
+            Type scriptObjectType = Type.GetType(scriptPairs[0] + scriptPairs[1]);
             string[] lineData = data.Split('\n');
+            IScriptObject scriptObject = new CommentBlock(); // TODO: remove this
             int start = 0;
             int depth = 0;
             bool insideObject = false;
@@ -34,7 +35,7 @@ namespace Paradox_Mod_Editor.Models
                 {
                     line = lineData[i];
                 }
-                if (!insideObject && Regex.IsMatch(line, @"^\s*[a-zA-Z]+\s*=\s*{\s*$") && !scriptObject.ExcludedStrings.Any(line.Contains))
+                if (!insideObject && Regex.IsMatch(line, @"^\s*[a-zA-Z]+\s*=\s*{\s*$") && !scriptObject.GetExcludedStrings().Any(line.Contains))
                 {
                     start = i;
                     insideObject = true;
@@ -60,7 +61,7 @@ namespace Paradox_Mod_Editor.Models
             }
         }
 
-        private static void Parse(IScriptObject scriptObject, string[] data)
+        private void Parse(IScriptObject scriptObject, string[] data)
         {
             PropertyInfo[] properties = ((ScriptPropertyGiver)scriptObject).GetScriptProperties();
             Dictionary<string, IScriptContainer> scriptToProperty = new Dictionary<string, IScriptContainer>();

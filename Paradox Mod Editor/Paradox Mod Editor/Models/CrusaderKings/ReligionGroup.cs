@@ -9,10 +9,10 @@ using Paradox_Mod_Editor.ParadoxSyntax;
 
 namespace Paradox_Mod_Editor.Models.CrusaderKings
 {
-    class ReligionGroup : ScriptPropertyGiver, IScriptObject
+    public class ReligionGroup : ScriptPropertyGiver, IScriptObject
     {
         [Browsable(false)]
-        public List<String> ExcludedStrings { get; } = new List<string>(new string[] { "secret_religion_visibility_trigger" });
+        public static List<String> ExcludedStrings { get; } = new List<string>(new string[] { "secret_religion_visibility_trigger" });
         [Category("*General"), DisplayName("Name")]
         [Description("The name of the religion group as it appears in script.")]
         [ScriptValue(true)]
@@ -124,5 +124,10 @@ namespace Paradox_Mod_Editor.Models.CrusaderKings
         [Browsable(false)]
 		[ScriptValue(true)]
         public List<Religion> religions = new List<Religion>();
+
+        public List<string> GetExcludedStrings()
+        {
+            return ExcludedStrings;
+        }
     }
 }
