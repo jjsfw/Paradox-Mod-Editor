@@ -10,11 +10,11 @@ namespace Paradox_Mod_Editor.Models.CrusaderKings
     // Revised based on solution by NightOwl888
     // https://stackoverflow.com/questions/31950362/factory-method-with-di-and-ioc
 
-    public class ReligionGroupScriptFactory : IScriptFactory<ReligionGroup>
+    public class ReligionGroupScriptFactory : IScriptFactory
     {
         // Use constructor to assign params of created Religions
 
-        public ReligionGroup GetScriptObject()
+        public IScriptObject GetScriptObject()
         {
             return new ReligionGroup();
         }

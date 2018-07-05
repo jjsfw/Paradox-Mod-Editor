@@ -143,6 +143,7 @@
     <Compile Include="Models\CommentBlockScriptFactory.cs" />
     <Compile Include="Models\CrusaderKings\CrusaderKingsStrategy.cs" />
     <Compile Include="Models\CrusaderKings\ReligionGroupScriptFactory.cs" />
+    <Compile Include="Models\FileType.cs" />
     <Compile Include="Models\IScriptContainer.cs" />
     <Compile Include="Models\CrusaderKings\ReligionScriptFactory.cs" />
     <Compile Include="Models\CrusaderKings\Religion.cs" />

@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Paradox_Mod_Editor.Models
 {
-    class CommentBlockScriptFactory : IScriptFactory<CommentBlock>
+    class CommentBlockScriptFactory : IScriptFactory
     {
         // Use constructor to assign params of created Religions
 
-        public CommentBlock GetScriptObject()
+        public IScriptObject GetScriptObject()
         {
             return new CommentBlock();
         }
