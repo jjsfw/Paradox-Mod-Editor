@@ -51,13 +51,13 @@ namespace Paradox_Mod_Editor.Models
                     if (depth == -1)
                     {
                         insideObject = false;
-                        Parse(scriptObject, lineData.Skip(start).Take(i - start + 1).ToArray());
+                        Parse(fileType.ScriptTypes[0], lineData.Skip(start).Take(i - start + 1).ToArray());
                     }
                 }
             }
         }
 
-        private void Parse(IScriptObject scriptObject, string[] data)
+        private void Parse(Type scriptType, string[] data)
         {
             PropertyInfo[] properties = ((ScriptPropertyGiver)scriptObject).GetScriptProperties();
             Dictionary<string, IScriptContainer> scriptToProperty = new Dictionary<string, IScriptContainer>();

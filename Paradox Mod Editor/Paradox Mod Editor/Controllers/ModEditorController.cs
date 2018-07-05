@@ -198,7 +198,9 @@ namespace Paradox_Mod_Editor.Controllers
 
         public void DebugParse()
         {
-            parser.Split(currentFile.GetCurrentText(), scriptPairs);
+            parser.Split(currentFile.GetCurrentText(), new FileType(
+                new List<string> { "Paradox_Mod_Editor.Models.CrusaderKings.ReligionGroup", "Paradox_Mod_Editor.Models.CrusaderKings.Religion", "Paradox_Mod_Editor.Models.CrusaderKings.CommentBlock" }, 
+                new List<string> { "secret_religion_visibility_trigger" }));
         }
     }
 }
