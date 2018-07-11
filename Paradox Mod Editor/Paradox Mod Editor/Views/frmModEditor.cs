@@ -157,6 +157,11 @@ namespace Paradox_Mod_Editor.Views
             controller.CreateNewScriptObject();
         }
 
+        public void SetScriptObjects(List<IScriptObject> scriptObjects)
+        {
+            lstScriptObjects.DataSource = scriptObjects;
+        }
+
         public void AddNewScriptObject(IScriptObject scriptObject)
         {
             lstScriptObjects.Items.Add(scriptObject);

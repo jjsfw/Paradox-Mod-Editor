@@ -12,23 +12,14 @@ namespace Paradox_Mod_Editor.Models.CrusaderKings
 
         public CrusaderKingsStrategy(IScriptFactory[] scriptFactories)
         {
-            if (scriptFactories == null)
-            {
-                throw new ArgumentNullException("scriptFactories");
-            }
-            this.scriptFactories = scriptFactories;
+            this.scriptFactories = scriptFactories ?? throw new ArgumentNullException("scriptFactories");
         }
 
         public IScriptObject GetScriptObject(Type type)
         {
             IScriptFactory scriptFactory = scriptFactories.FirstOrDefault(factory => factory.AppliesTo(type));
 
-            if (scriptFactory == null)
-            {
-                throw new Exception("type not registered");
-            }
-
-            return scriptFactory.GetScriptObject();
+            return scriptFactory.GetScriptObject() ?? throw new Exception(String.Format("type {0} has no factory", type));
         }
     }
 }

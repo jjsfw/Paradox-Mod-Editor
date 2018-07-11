@@ -14,6 +14,7 @@ namespace Paradox_Mod_Editor.Models
         private string contents;
         private FileState state = FileState.Saved;
         public FastColoredTextBox textBox { get; }
+        private List<IScriptObject> scriptObjects = new List<IScriptObject>();
 
         public OpenFile(string path, FastColoredTextBox textBox)
         {
@@ -62,6 +63,21 @@ namespace Paradox_Mod_Editor.Models
         public bool IsChanged()
         {
             return textBox.GetLines().Manager.GetHistory().Count > 0;
+        }
+
+        public List<IScriptObject> GetScriptObjects()
+        {
+            return scriptObjects;
+        }
+
+        public void SetScriptObjects(List<IScriptObject> newScriptObjects)
+        {
+            this.scriptObjects = newScriptObjects;
+        }
+
+        public void AddScriptObject(IScriptObject newScriptObject)
+        {
+            this.scriptObjects.Add(newScriptObject);
         }
     }
 

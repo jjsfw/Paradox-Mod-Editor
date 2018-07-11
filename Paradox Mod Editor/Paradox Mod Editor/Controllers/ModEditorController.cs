@@ -22,7 +22,8 @@ namespace Paradox_Mod_Editor.Controllers
         private List<string> scriptPairs;
         private Dictionary<string, List<string>> fileScriptPairs;
         private Dictionary<ParadoxTitle, Dictionary<string, List<string>>> gameFilePairs;
-        private ScriptParser parser = new ScriptParser();
+        private ScriptParser parser;
+        private IScriptStrategy strategy;
 
         public ModEditorController(ITextEditorView view, ParadoxTitle game, string modDirectory)
             : base(view)
@@ -36,7 +37,27 @@ namespace Paradox_Mod_Editor.Controllers
                 gameFilePairs.Add(title, new Dictionary<string, List<string>>());
             }
 
+            switch(game)
+            {
+                case ParadoxTitle.EuropaUniversalis:
+                    break;
+                case ParadoxTitle.HeartsOfIron:
+                    break;
+                case ParadoxTitle.Stellaris:
+                    break;
+                default:
+                    strategy = new CrusaderKingsStrategy(GetCrusaderKingsFactories());
+                    break;
+            }
+
+            parser = new ScriptParser(strategy);
+
             LoadScriptPairs();
+        }
+
+        private IScriptFactory[] GetCrusaderKingsFactories()
+        {
+            return new IScriptFactory[] { new ReligionGroupScriptFactory(), new ReligionScriptFactory(), new CommentBlockScriptFactory() };
         }
 
         private void BuildCK2Scripts()
@@ -198,9 +219,11 @@ namespace Paradox_Mod_Editor.Controllers
 
         public void DebugParse()
         {
+            currentFile.SetScriptObjects(
             parser.Split(currentFile.GetCurrentText(), new FileType(
                 new List<string> { "Paradox_Mod_Editor.Models.CrusaderKings.ReligionGroup", "Paradox_Mod_Editor.Models.CrusaderKings.Religion", "Paradox_Mod_Editor.Models.CrusaderKings.CommentBlock" }, 
-                new List<string> { "secret_religion_visibility_trigger" }));
+                new List<string> { "secret_religion_visibility_trigger" })));
+            view.SetScriptObjects(currentFile.GetScriptObjects());
         }
     }
 }
