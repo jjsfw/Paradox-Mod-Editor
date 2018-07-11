@@ -15,11 +15,11 @@ namespace Paradox_Mod_Editor.Models.CrusaderKings
             this.scriptFactories = scriptFactories ?? throw new ArgumentNullException("scriptFactories");
         }
 
-        public IScriptObject GetScriptObject(Type type)
+        public ScriptObject GetScriptObject(Type type, string name)
         {
             IScriptFactory scriptFactory = scriptFactories.FirstOrDefault(factory => factory.AppliesTo(type));
 
-            return scriptFactory.GetScriptObject() ?? throw new Exception(String.Format("type {0} has no factory", type));
+            return scriptFactory.GetScriptObject(name) ?? throw new Exception(String.Format("type {0} has no factory", type));
         }
     }
 }

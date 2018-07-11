@@ -18,7 +18,7 @@ namespace Paradox_Mod_Editor.Controllers
         private ParadoxTitle game;
         private string modDirectory;
         private string filePath;
-        private IScriptObject scriptObject;
+        private ScriptObject scriptObject;
         private List<string> scriptPairs;
         private Dictionary<string, List<string>> fileScriptPairs;
         private Dictionary<ParadoxTitle, Dictionary<string, List<string>>> gameFilePairs;

@@ -9,7 +9,7 @@ using Paradox_Mod_Editor.ParadoxSyntax;
 
 namespace Paradox_Mod_Editor.Models.CrusaderKings
 {
-    public class ReligionGroup : ScriptPropertyGiver, IScriptObject
+    public class ReligionGroup : ScriptObject
     {
         [Category("*General"), DisplayName("Name")]
         [Description("The name of the religion group as it appears in script.")]
@@ -122,5 +122,7 @@ namespace Paradox_Mod_Editor.Models.CrusaderKings
         [Browsable(false)]
 		[ScriptValue(true)]
         public List<Religion> religions = new List<Religion>();
+
+        public ReligionGroup(string name) : base(name) { }
     }
 }

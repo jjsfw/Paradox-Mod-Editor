@@ -8,7 +8,7 @@ namespace Paradox_Mod_Editor.Models
 {
     public interface IScriptFactory
     {
-        IScriptObject GetScriptObject();
+        ScriptObject GetScriptObject(string name);
         bool AppliesTo(Type type);
     }
 }

@@ -20,12 +20,12 @@ namespace Paradox_Mod_Editor.Models
             this.strategy = strategy;
         }
 
-        public List<IScriptObject> Split(string data, FileType fileType)
+        public List<ScriptObject> Split(string data, FileType fileType)
         {
             // TODO: add IScriptObject type detection based on file type
             // TODO: add file type detection
             // TODO: move excluded strings to file type
-            List<IScriptObject> scriptObjects = new List<IScriptObject>();
+            List<ScriptObject> scriptObjects = new List<ScriptObject>();
             string[] lineData = data.Split('\n');
             int start = 0;
             int depth = 0;
@@ -66,14 +66,16 @@ namespace Paradox_Mod_Editor.Models
             return scriptObjects;
         }
 
-        private IScriptObject Parse(Type scriptType, string[] data)
+        private ScriptObject Parse(Type scriptType, string[] data)
         {
             // TODO: get name from first line
             PropertyInfo[] properties = scriptType.GetProperties().Where(
                 prop => Attribute.IsDefined(prop, typeof(ScriptValueAttribute))).ToArray();
             // PropertyInfo[] properties = ((ScriptPropertyGiver)scriptObject).GetScriptProperties();
             Dictionary<string, IScriptContainer> scriptToProperty = new Dictionary<string, IScriptContainer>();
-            IScriptObject scriptObject = strategy.GetScriptObject(scriptType);
+
+            string name = data[0].Substring(0, data[0].IndexOf(' ')).Trim();
+            ScriptObject scriptObject = strategy.GetScriptObject(scriptType, name);
             foreach(PropertyInfo property in properties)
             {
                 if (property.PropertyType.Name == typeof(ScriptValue<>).Name || property.PropertyType == typeof(ScriptPBool)) // use Name to account for ScriptValues of fixed type not being equal

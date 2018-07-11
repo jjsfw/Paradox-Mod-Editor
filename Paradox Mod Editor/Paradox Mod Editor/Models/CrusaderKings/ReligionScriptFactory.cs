@@ -14,9 +14,9 @@ namespace Paradox_Mod_Editor.Models.CrusaderKings
     {
         // Use constructor to assign params of created Religions
 
-        public IScriptObject GetScriptObject()
+        public ScriptObject GetScriptObject(string name)
         {
-            return new Religion();
+            return new Religion(name);
         }
 
         public bool AppliesTo(Type type)

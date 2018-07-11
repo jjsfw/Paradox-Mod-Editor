@@ -154,7 +154,6 @@
     <Compile Include="Models\IScriptFactory.cs" />
     <Compile Include="Models\ScriptParser.cs" />
     <Compile Include="Models\ScriptPBool.cs" />
-    <Compile Include="Models\ScriptPropertyGiver.cs" />
     <Compile Include="Models\ScriptValue.cs" />
     <Compile Include="Models\TextBoxFactory.cs" />
     <Compile Include="ParadoxSyntax\ParadoxTypes.cs" />

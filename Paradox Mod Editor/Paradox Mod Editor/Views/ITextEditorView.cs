@@ -15,7 +15,7 @@ namespace Paradox_Mod_Editor.Views
         void SetController(TextEditorController controller);
         void AddTextBoxToView(FastColoredTextBox newTextBox);
         FastColoredTextBox GetTextBox();
-        void AddNewScriptObject(IScriptObject scriptObject);
-        void SetScriptObjects(List<IScriptObject> scriptObjects);
+        void AddNewScriptObject(ScriptObject scriptObject);
+        void SetScriptObjects(List<ScriptObject> scriptObjects);
     }
 }

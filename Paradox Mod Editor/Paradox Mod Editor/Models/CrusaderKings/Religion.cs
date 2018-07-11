@@ -10,7 +10,7 @@ using Paradox_Mod_Editor.ParadoxSyntax;
 
 namespace Paradox_Mod_Editor.Models.CrusaderKings
 {
-    public class Religion : ScriptPropertyGiver, IScriptObject
+    public class Religion : ScriptObject
     {
         // TODO: update types (modifiers, graphical cultures (?), etc)
         // TODO: contain text inside of religion/whichever script object the text refers to, store script objects instead of raw text in OpenFiles (?)
@@ -834,6 +834,8 @@ namespace Paradox_Mod_Editor.Models.CrusaderKings
 		}
         [Browsable(false)]
         public ScriptPBool AllowInRulerDesigner = new ScriptPBool("allow_in_ruler_designer");
+
+        public Religion(string name) : base(name) { }
 
         public enum ConvertReligion
         {

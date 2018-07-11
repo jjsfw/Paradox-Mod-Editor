@@ -8,6 +8,6 @@ namespace Paradox_Mod_Editor.Models
 {
     public interface IScriptStrategy
     {
-        IScriptObject GetScriptObject(Type type);
+        ScriptObject GetScriptObject(Type type, string name);
     }
 }
