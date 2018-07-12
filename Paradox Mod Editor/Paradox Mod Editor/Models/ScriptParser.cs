@@ -121,7 +121,6 @@ namespace Paradox_Mod_Editor.Models
             Dictionary<string, IScriptContainer> scriptToProperty = new Dictionary<string, IScriptContainer>();
 
             // TODO: parse sub-objects (recursively?)
-            // TODO: fix parsing of the ai convert values
 
             string name = data[0].Substring(0, data[0].IndexOf(' ')).Trim();
             ScriptObject scriptObject = strategy.GetScriptObject(scriptType, name);
@@ -141,6 +140,8 @@ namespace Paradox_Mod_Editor.Models
                     scriptToProperty.Add(((IScriptContainer)property.GetValue(scriptObject)).ScriptText, (IScriptContainer)property.GetValue(scriptObject));
                 }
             }
+
+            List<string> parsedFields = new List<string>();
             for (int i = 0; i < data.Length; i++)
             {
                 string line = data[i];
@@ -150,12 +151,17 @@ namespace Paradox_Mod_Editor.Models
                     // TODO: add check for undefined properties
                     // TODO: add check for repeated properties
                     IScriptContainer scriptValue = scriptToProperty[scriptToProperty.Keys.First(line.Contains)];
+                    if (parsedFields.Contains(scriptValue.ScriptText))
+                    {
+                        continue;
+                    }
                     string lineValue = line.Substring(line.IndexOf('=') + 1).Trim();
                     if (lineValue.Contains('#'))
                     {
                         lineValue = lineValue.Substring(0, lineValue.IndexOf('#')).Trim(); ;
                     }
                     scriptValue.SetValue(lineValue);
+                    parsedFields.Add(scriptValue.ScriptText);
                 }
                 else if (scriptObject.GetChildType() != null && i > 0 && Regex.IsMatch(line, scriptPattern) && !scriptObject.GetExcludedStrings().Any(line.Contains))
                 {

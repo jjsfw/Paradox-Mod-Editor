@@ -79,7 +79,7 @@ namespace Paradox_Mod_Editor.Models.CrusaderKings
         }
         [Browsable(false)]
         [ScriptValue(true)]
-        public ScriptValue<ConvertReligion> ConvertSameGroup = new ScriptValue<ConvertReligion>("ai_convert_same_group");
+        public ScriptValue<ConvertReligion> ConvertSameGroup { get; } = new ScriptValue<ConvertReligion>("ai_convert_same_group");
         [Category("AI"), DisplayName("Convert Other Group")]
         [Description("Determines if AI sends court chaplain to proselytize on religions of other religious groups:0: never try to convert 1: try to convert if ai_zeal is high 2: always try to convert")]
         public ConvertReligion ConvertOtherGroupValue
@@ -92,7 +92,7 @@ namespace Paradox_Mod_Editor.Models.CrusaderKings
         }
         [Browsable(false)]
         [ScriptValue(true)]
-        public ScriptValue<ConvertReligion> ConvertOtherGroup = new ScriptValue<ConvertReligion>("ai_convert_other_group");
+        public ScriptValue<ConvertReligion> ConvertOtherGroup { get; } = new ScriptValue<ConvertReligion>("ai_convert_other_group");
         [Category("AI"), DisplayName("Peaceful")]
         [Description("Will make Hordes lose their super aggressiveness, upon conversion to this religion group.")]
         public PBool PeacefulValue
