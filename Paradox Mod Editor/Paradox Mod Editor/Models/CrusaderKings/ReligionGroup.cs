@@ -67,6 +67,32 @@ namespace Paradox_Mod_Editor.Models.CrusaderKings
         [Browsable(false)]
 		[ScriptValue(true)]
         public ScriptPBool HasCoaOnBaronyOnly { get; } = new ScriptPBool("has_coa_on_barony_only");
+        [Category("AI"), DisplayName("Convert Same Group")]
+        [Description("Determines if AI sends court chaplain to proselytize on religions of same religious group:0: never try to convert 1: try to convert if ai_zeal is high 2: always try to convert.")]
+        public ConvertReligion ConvertSameGroupValue
+        {
+            get { return ConvertSameGroup.Value; }
+            set
+            {
+                ConvertSameGroup.Value = value;
+            }
+        }
+        [Browsable(false)]
+        [ScriptValue(true)]
+        public ScriptValue<ConvertReligion> ConvertSameGroup = new ScriptValue<ConvertReligion>("ai_convert_same_group");
+        [Category("AI"), DisplayName("Convert Other Group")]
+        [Description("Determines if AI sends court chaplain to proselytize on religions of other religious groups:0: never try to convert 1: try to convert if ai_zeal is high 2: always try to convert")]
+        public ConvertReligion ConvertOtherGroupValue
+        {
+            get { return ConvertOtherGroup.Value; }
+            set
+            {
+                ConvertOtherGroup.Value = value;
+            }
+        }
+        [Browsable(false)]
+        [ScriptValue(true)]
+        public ScriptValue<ConvertReligion> ConvertOtherGroup = new ScriptValue<ConvertReligion>("ai_convert_other_group");
         [Category("AI"), DisplayName("Peaceful")]
         [Description("Will make Hordes lose their super aggressiveness, upon conversion to this religion group.")]
         public PBool PeacefulValue
@@ -123,6 +149,9 @@ namespace Paradox_Mod_Editor.Models.CrusaderKings
 		[ScriptValue(true)]
         public List<Religion> religions = new List<Religion>();
 
-        public ReligionGroup(string name) : base(name) { }
+        public ReligionGroup(string name) : base(name)
+        {
+            this.ScriptChildren.Add(typeof(ReligionGroup), typeof(Religion));
+        }
     }
 }

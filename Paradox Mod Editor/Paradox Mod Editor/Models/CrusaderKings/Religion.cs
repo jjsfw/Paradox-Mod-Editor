@@ -836,12 +836,5 @@ namespace Paradox_Mod_Editor.Models.CrusaderKings
         public ScriptPBool AllowInRulerDesigner = new ScriptPBool("allow_in_ruler_designer");
 
         public Religion(string name) : base(name) { }
-
-        public enum ConvertReligion
-        {
-            Never = 0,
-            HighZeal = 1,
-            Always = 2
-        }
     }
 }

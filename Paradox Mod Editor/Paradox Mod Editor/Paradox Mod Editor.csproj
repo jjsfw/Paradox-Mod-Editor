@@ -150,7 +150,7 @@
     <Compile Include="Models\CrusaderKings\ReligionGroup.cs" />
     <Compile Include="Models\IScriptStrategy.cs" />
     <Compile Include="Models\OpenFile.cs" />
-    <Compile Include="Models\IScriptObject.cs" />
+    <Compile Include="Models\ScriptObject.cs" />
     <Compile Include="Models\IScriptFactory.cs" />
     <Compile Include="Models\ScriptParser.cs" />
     <Compile Include="Models\ScriptPBool.cs" />

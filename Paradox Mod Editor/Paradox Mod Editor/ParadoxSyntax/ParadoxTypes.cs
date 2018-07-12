@@ -9,4 +9,11 @@ namespace Paradox_Mod_Editor.ParadoxSyntax
         yes,
         no
     }
+
+    public enum ConvertReligion
+    {
+        Never = 0,
+        HighZeal = 1,
+        Always = 2
+    }
 }

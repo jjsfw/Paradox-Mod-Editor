@@ -9,7 +9,8 @@ namespace Paradox_Mod_Editor.Models
 {
     public abstract class ScriptObject
     {
-        string Name { get; }
+        public string Name { get; }
+        public Dictionary<Type, Type> ScriptChildren { get; set; } = new Dictionary<Type, Type>(); // maps ScriptObjects to their possible children e.g. ReligionGroup -> Religion
 
         public ScriptObject(string name)
         {
@@ -27,6 +28,15 @@ namespace Paradox_Mod_Editor.Models
         public override string ToString()
         {
             return Name;
+        }
+
+        public virtual Type GetChildType()
+        {
+            if (ScriptChildren.ContainsKey(this.GetType()))
+            {
+                return ScriptChildren[this.GetType()];
+            }
+            return null;
         }
     }
 }

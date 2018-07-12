@@ -14,6 +14,7 @@ namespace Paradox_Mod_Editor.Models
     public class ScriptParser
     {
         private IScriptStrategy strategy;
+        private const string scriptPattern = @"^\s*[a-zA-Z_]+\s*=\s*{\s*$";
 
         public ScriptParser(IScriptStrategy strategy)
         {
@@ -30,7 +31,7 @@ namespace Paradox_Mod_Editor.Models
             int start = 0;
             int depth = 0;
             bool insideObject = false;
-            string scriptPattern = @"^\s*[a-zA-Z]+\s*=\s*{\s*$";
+            string scriptPattern = @"^\s*[a-zA-Z_]+\s*=\s*{\s*$";
             for (int i = 0; i < lineData.Length; i++)
             {
                 string line = lineData[i];
@@ -66,6 +67,51 @@ namespace Paradox_Mod_Editor.Models
             return scriptObjects;
         }
 
+        public List<ScriptObject> Split(string[] lineData, Type scriptType)
+        {
+            if (scriptType == null)
+            {
+                return null;
+            }
+            List<ScriptObject> scriptObjects = new List<ScriptObject>();
+            int start = 0;
+            int depth = 0;
+            bool insideObject = false;
+            for (int i = 0; i < lineData.Length; i++)
+            {
+                string line = lineData[i];
+
+                if (line.Contains("#"))
+                {
+                    line = line.Substring(0, line.IndexOf("#"));
+                }
+                if (!insideObject && Regex.IsMatch(line, scriptPattern))
+                {
+                    start = i;
+                    insideObject = true;
+                    depth = 0;
+                    continue;
+                }
+                if (insideObject)
+                {
+                    if (line.Contains("{"))
+                    {
+                        depth++;
+                    }
+                    if (line.Contains("}"))
+                    {
+                        depth--;
+                    }
+                    if (depth == -1)
+                    {
+                        insideObject = false;
+                        scriptObjects.Add(Parse(scriptType, lineData.Skip(start).Take(i - start + 1).ToArray()));
+                    }
+                }
+            }
+            return scriptObjects;
+        }
+
         private ScriptObject Parse(Type scriptType, string[] data)
         {
             // TODO: get name from first line
@@ -74,13 +120,15 @@ namespace Paradox_Mod_Editor.Models
             // PropertyInfo[] properties = ((ScriptPropertyGiver)scriptObject).GetScriptProperties();
             Dictionary<string, IScriptContainer> scriptToProperty = new Dictionary<string, IScriptContainer>();
 
+            // TODO: parse sub-objects (recursively?)
+
             string name = data[0].Substring(0, data[0].IndexOf(' ')).Trim();
             ScriptObject scriptObject = strategy.GetScriptObject(scriptType, name);
             foreach(PropertyInfo property in properties)
             {
                 if (property.PropertyType.Name == typeof(ScriptValue<>).Name || property.PropertyType == typeof(ScriptPBool)) // use Name to account for ScriptValues of fixed type not being equal
                 {
-                    // N.B. notes below are tentative
+                    // N.B. notes below are tentative - possibly obsolete
                     // TODO: move scriptText to xml file, have factory/builder/whatever makes the scriptObjects pass the relevant data
                     // to the scriptObject in PropertyName -> PropertyScriptText dict
                     // TODO: use Builder instead of Factory?
@@ -107,6 +155,14 @@ namespace Paradox_Mod_Editor.Models
                         lineValue = lineValue.Substring(0, lineValue.IndexOf('#')).Trim(); ;
                     }
                     scriptValue.SetValue(lineValue);
+                }
+                else if (scriptObject.GetChildType() != null && i > 0 && Regex.IsMatch(line, scriptPattern))
+                {
+                    List<ScriptObject> subObjects = Split(new List<string>(data).GetRange(i, data.Length - i).ToArray(), scriptObject.GetChildType());
+                    if (subObjects != null)
+                    {
+                        // TODO: assign subobjects to parents
+                    }
                 }
             }
             return scriptObject;
