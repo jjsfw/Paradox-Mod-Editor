@@ -159,7 +159,24 @@ namespace Paradox_Mod_Editor.Views
 
         public void SetScriptObjects(List<ScriptObject> scriptObjects)
         {
-            lstScriptObjects.DataSource = scriptObjects;
+            lstScriptObjects.DataSource = FlattenScriptTree(scriptObjects);
+        }
+
+        private List<ScriptObject> FlattenScriptTree(List<ScriptObject> scriptObjects)
+        {
+            List<ScriptObject> flatScripts = new List<ScriptObject>();
+
+            for (int i = 0; i < scriptObjects.Count; i++)
+            {
+                ScriptObject currentObject = scriptObjects[i];
+                flatScripts.Add(currentObject);
+                if (currentObject.Children.Count > 0)
+                {
+                    flatScripts.AddRange(FlattenScriptTree(currentObject.Children));
+                }
+            }
+
+            return flatScripts;
         }
 
         public void AddNewScriptObject(ScriptObject scriptObject)

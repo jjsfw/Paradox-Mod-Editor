@@ -12,6 +12,7 @@ namespace Paradox_Mod_Editor.Models
         public string Name { get; }
         protected static Dictionary<Type, Type> scriptChildren = new Dictionary<Type, Type>(); // maps ScriptObjects to their possible children e.g. ReligionGroup -> Religion
         protected static Dictionary<Type, string[]> excludedStrings = new Dictionary<Type, string[]>();
+        public List<ScriptObject> Children { get; set; } = new List<ScriptObject>();
 
         public ScriptObject(string name)
         {
@@ -34,7 +35,7 @@ namespace Paradox_Mod_Editor.Models
         protected void RegisterNewScriptType(Type childType, string[] scriptExcludedStrings)
         {
             Type myType = this.GetType();
-            if (scriptChildren.ContainsKey(myType))
+            if (!scriptChildren.ContainsKey(myType))
             {
                 scriptChildren.Add(myType, childType);
                 excludedStrings.Add(myType, scriptExcludedStrings);

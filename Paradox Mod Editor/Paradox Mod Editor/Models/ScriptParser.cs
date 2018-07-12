@@ -168,7 +168,7 @@ namespace Paradox_Mod_Editor.Models
                     List<ScriptObject> subObjects = Split(new List<string>(data).GetRange(i, data.Length - i).ToArray(), scriptObject.GetChildType());
                     if (subObjects != null)
                     {
-                        // TODO: assign subobjects to parents
+                        scriptObject.Children = subObjects;
                     }
                 }
             }
