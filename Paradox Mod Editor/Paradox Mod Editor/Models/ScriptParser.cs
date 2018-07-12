@@ -85,7 +85,7 @@ namespace Paradox_Mod_Editor.Models
                 {
                     line = line.Substring(0, line.IndexOf("#"));
                 }
-                if (!insideObject && Regex.IsMatch(line, scriptPattern))
+                if (!insideObject && Regex.IsMatch(line, scriptPattern)) // excluded strings(?)
                 {
                     start = i;
                     insideObject = true;
@@ -121,6 +121,7 @@ namespace Paradox_Mod_Editor.Models
             Dictionary<string, IScriptContainer> scriptToProperty = new Dictionary<string, IScriptContainer>();
 
             // TODO: parse sub-objects (recursively?)
+            // TODO: fix parsing of the ai convert values
 
             string name = data[0].Substring(0, data[0].IndexOf(' ')).Trim();
             ScriptObject scriptObject = strategy.GetScriptObject(scriptType, name);
@@ -156,7 +157,7 @@ namespace Paradox_Mod_Editor.Models
                     }
                     scriptValue.SetValue(lineValue);
                 }
-                else if (scriptObject.GetChildType() != null && i > 0 && Regex.IsMatch(line, scriptPattern))
+                else if (scriptObject.GetChildType() != null && i > 0 && Regex.IsMatch(line, scriptPattern) && !scriptObject.GetExcludedStrings().Any(line.Contains))
                 {
                     List<ScriptObject> subObjects = Split(new List<string>(data).GetRange(i, data.Length - i).ToArray(), scriptObject.GetChildType());
                     if (subObjects != null)

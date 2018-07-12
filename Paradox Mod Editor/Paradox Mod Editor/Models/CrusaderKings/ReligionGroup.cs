@@ -151,7 +151,7 @@ namespace Paradox_Mod_Editor.Models.CrusaderKings
 
         public ReligionGroup(string name) : base(name)
         {
-            this.ScriptChildren.Add(typeof(ReligionGroup), typeof(Religion));
+            RegisterNewScriptType(typeof(Religion), new[] { "color", "male_names", "female_names" });
         }
     }
 }

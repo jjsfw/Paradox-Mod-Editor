@@ -10,7 +10,8 @@ namespace Paradox_Mod_Editor.Models
     public abstract class ScriptObject
     {
         public string Name { get; }
-        public Dictionary<Type, Type> ScriptChildren { get; set; } = new Dictionary<Type, Type>(); // maps ScriptObjects to their possible children e.g. ReligionGroup -> Religion
+        protected static Dictionary<Type, Type> scriptChildren = new Dictionary<Type, Type>(); // maps ScriptObjects to their possible children e.g. ReligionGroup -> Religion
+        protected static Dictionary<Type, string[]> excludedStrings = new Dictionary<Type, string[]>();
 
         public ScriptObject(string name)
         {
@@ -30,11 +31,30 @@ namespace Paradox_Mod_Editor.Models
             return Name;
         }
 
-        public virtual Type GetChildType()
+        protected void RegisterNewScriptType(Type childType, string[] scriptExcludedStrings)
         {
-            if (ScriptChildren.ContainsKey(this.GetType()))
+            Type myType = this.GetType();
+            if (scriptChildren.ContainsKey(myType))
             {
-                return ScriptChildren[this.GetType()];
+                scriptChildren.Add(myType, childType);
+                excludedStrings.Add(myType, scriptExcludedStrings);
+            }
+        }
+
+        public Type GetChildType()
+        {
+            if (scriptChildren.ContainsKey(this.GetType()))
+            {
+                return scriptChildren[this.GetType()];
+            }
+            return null;
+        }
+
+        public string[] GetExcludedStrings()
+        {
+            if (excludedStrings.ContainsKey(this.GetType()))
+            {
+                return excludedStrings[this.GetType()];
             }
             return null;
         }
