@@ -41,10 +41,19 @@ namespace Paradox_Mod_Editor.Models
             }
             catch (InvalidCastException)
             {
-                if (typeof(string) == newValue.GetType() && int.TryParse(newValue.ToString(), out int result))
+                if (typeof(string) == newValue.GetType())
                 {
-                    SetValue(int.Parse(newValue.ToString()));
+                    string stringValue = newValue.ToString();
+                    if (int.TryParse(stringValue, out int ignoreInt))
+                    {
+                        SetValue(int.Parse(newValue.ToString()));
+                    }
+                    else if (double.TryParse(stringValue, out double ignoreDouble))
+                    {
+                        SetValue(double.Parse(newValue.ToString()));
+                    }
                 }
+                
                 else
                 {
                     throw new ArgumentException(String.Format("cannot store a {0} in a ScriptValue for {1}", newValue.GetType().ToString(), typeof(T).ToString()));

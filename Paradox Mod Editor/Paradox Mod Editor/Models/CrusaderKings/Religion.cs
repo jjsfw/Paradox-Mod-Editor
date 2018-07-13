@@ -369,7 +369,7 @@ namespace Paradox_Mod_Editor.Models.CrusaderKings
 		public ScriptPBool GrantDivorce{ get; } = new ScriptPBool("can_grant_divorce");
         [Category("Religious Head"), DisplayName("Grant Invasion")]
 		[Description("Determines if the religious head can grant the invasion Casus Belli.")]
-        public PBool GrantInvasionValue
+        public string GrantInvasionValue
 		{
 			get { return GrantInvasion.Value; }
 			set
@@ -379,7 +379,7 @@ namespace Paradox_Mod_Editor.Models.CrusaderKings
 		}
         [Browsable(false)]
         [ScriptValue(true)]
-		public ScriptPBool GrantInvasion{ get; } = new ScriptPBool("can_grant_invasion_cb");
+		public ScriptValue<string> GrantInvasion{ get; } = new ScriptValue<string>("can_grant_invasion_cb");
         [Category("Religious Head"), DisplayName("Grant Claims")]
 		[Description("Determines if the religious head can grant claims (actually not working).")]
         public PBool GrantClaimValue
@@ -721,7 +721,7 @@ namespace Paradox_Mod_Editor.Models.CrusaderKings
 		public ScriptValue<string> UnitHomeModifiers{ get; } = new ScriptValue<string>("unit_home_modifier");
         [Category("Modifiers"), DisplayName("Short Reign Opinion Year Mult")]
         [Description("Opinion penalty multiplier to short reign years. Override the define SHORT_REIGN_OPINION_MULT = 2.")]
-        public int ShortReignOpinionYearMultValue
+        public double ShortReignOpinionYearMultValue
 		{
 			get { return ShortReignOpinionYearMult.Value; }
 			set
@@ -731,7 +731,7 @@ namespace Paradox_Mod_Editor.Models.CrusaderKings
 		}
         [Browsable(false)]
         [ScriptValue(true)]
-		public ScriptValue<int> ShortReignOpinionYearMult{ get; } = new ScriptValue<int>("short_reign_opinion_year_mult");
+		public ScriptValue<double> ShortReignOpinionYearMult{ get; } = new ScriptValue<double>("short_reign_opinion_year_mult");
         [Category("Modifiers"), DisplayName("Character Modifiers")]
         [Description("Modifier for all characters of this religion.")]
         public string CharacterModifiersValue

@@ -142,15 +142,27 @@ namespace Paradox_Mod_Editor.Models
             }
 
             List<string> parsedFields = new List<string>();
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 1; i < data.Length; i++)
             {
                 string line = data[i];
                 if (scriptToProperty.Keys.Any(line.Contains))
                 {
                     // TODO: add check for default PBools
                     // TODO: add check for undefined properties
-                    // TODO: add check for repeated properties
-                    IScriptContainer scriptValue = scriptToProperty[scriptToProperty.Keys.First(line.Contains)];
+                    // TODO: add check for repeated properties within same object
+
+                    // TODO: refine this - evil_god_names is picking god_names since it appears first and is contained
+                    // use regex word boundaries?
+                    //IScriptContainer scriptValue = scriptToProperty[scriptToProperty.Keys.First(line.Contains)];
+                    IScriptContainer scriptValue = default(IScriptContainer);
+                    foreach (string key in scriptToProperty.Keys)
+                    {
+                        if (Regex.IsMatch(line, @"\b" + key + @"\b"))
+                        {
+                            scriptValue = scriptToProperty[key];
+                            break;
+                        }
+                    }
                     if (parsedFields.Contains(scriptValue.ScriptText))
                     {
                         continue;
@@ -159,6 +171,22 @@ namespace Paradox_Mod_Editor.Models
                     if (lineValue.Contains('#'))
                     {
                         lineValue = lineValue.Substring(0, lineValue.IndexOf('#')).Trim(); ;
+                    }
+                    if (scriptValue.GetType().GetGenericArguments().Length > 0 && 
+                        scriptValue.GetType().GetGenericArguments()[0] == typeof(List<string>))
+                    {
+                        while (!lineValue.Contains('}'))
+                        {
+                            i++;
+                            lineValue += data[i];
+                        }
+                        lineValue = lineValue.Replace("{", "").Replace("}", "").Trim();
+
+                        List<string> values = lineValue.Split(' ').ToList();
+
+                        scriptValue.SetValue(values);
+                        parsedFields.Add(scriptValue.ScriptText);
+                        continue;
                     }
                     scriptValue.SetValue(lineValue);
                     parsedFields.Add(scriptValue.ScriptText);
