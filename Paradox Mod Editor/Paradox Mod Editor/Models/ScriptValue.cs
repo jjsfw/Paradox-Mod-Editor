@@ -38,10 +38,25 @@ namespace Paradox_Mod_Editor.Models
             Value = newValue;
         }
 
-        public virtual void SetValue(string newValue)
+        private T ParseValue(object newValue)
         {
-            TypeConverter converter = TypeDescriptor.GetConverter(typeof(T));
-            Value = (T)converter.ConvertFromString(newValue);
+
+
+            throw new InvalidCastException(string.Format("cannot store {0} {1} in {2} for {3}", newValue.GetType(), newValue, typeof(T), ScriptText));
+        }
+
+        public virtual void SetValue(object newValue)
+        {
+            if (typeof(T) == newValue.GetType())
+            {
+                Value = (T)newValue;
+            }
+            else
+            {
+                Value = ParseValue(newValue);
+            }
+            TypeConverter converter = TypeDescriptor.GetConverter(newValue.GetType());
+            Value = (T)converter.ConvertTo(newValue, typeof(T));
             //try
             //{
             //    Value = (T)newValue;

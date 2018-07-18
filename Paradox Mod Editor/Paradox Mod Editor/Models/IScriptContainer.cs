@@ -11,7 +11,7 @@ namespace Paradox_Mod_Editor.Models
         // TODO: is this interface really needed?
         string ScriptText { get; }
         dynamic GetValue();
-        void SetValue(string newValue);
+        void SetValue(object newValue);
         // SetValue w/ T input - not possible in interface
     }
 }
