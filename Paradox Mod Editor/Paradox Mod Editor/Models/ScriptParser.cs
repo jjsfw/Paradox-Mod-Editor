@@ -8,6 +8,7 @@ using Paradox_Mod_Editor.Models;
 using System.Text.RegularExpressions;
 using System.ComponentModel;
 using Paradox_Mod_Editor.ParadoxSyntax;
+using System.Diagnostics;
 
 namespace Paradox_Mod_Editor.Models
 {
@@ -15,6 +16,7 @@ namespace Paradox_Mod_Editor.Models
     {
         private IScriptStrategy strategy;
         private const string scriptPattern = @"^\s*[a-zA-Z_]+\s*=\s*{\s*$";
+        Stopwatch stopWatch;
 
         public ScriptParser(IScriptStrategy strategy)
         {
@@ -69,6 +71,7 @@ namespace Paradox_Mod_Editor.Models
 
         public List<ScriptObject> Split(string[] lineData, Type scriptType)
         {
+            stopWatch = Stopwatch.StartNew();
             if (scriptType == null)
             {
                 return null;
@@ -109,6 +112,8 @@ namespace Paradox_Mod_Editor.Models
                     }
                 }
             }
+            string splitTime = stopWatch.ElapsedMilliseconds.ToString();
+            Debug.WriteLine("{0} sub-split in {1}ms", lineData[0], splitTime);
             return scriptObjects;
         }
 
@@ -122,9 +127,10 @@ namespace Paradox_Mod_Editor.Models
 
             // TODO: parse sub-objects (recursively?)
 
-            string name = data[0].Substring(0, data[0].IndexOf(' ')).Trim();
+            string name = data[0].Substring(0, data[0].IndexOf('=')).Trim();
             ScriptObject scriptObject = strategy.GetScriptObject(scriptType, name);
-            foreach(PropertyInfo property in properties)
+            stopWatch = Stopwatch.StartNew();
+            foreach (PropertyInfo property in properties)
             {
                 if (property.PropertyType.Name == typeof(ScriptValue<>).Name || property.PropertyType == typeof(ScriptPBool)) // use Name to account for ScriptValues of fixed type not being equal
                 {
@@ -140,8 +146,12 @@ namespace Paradox_Mod_Editor.Models
                     scriptToProperty.Add(((IScriptContainer)property.GetValue(scriptObject)).ScriptText, (IScriptContainer)property.GetValue(scriptObject));
                 }
             }
+            stopWatch.Stop();
+            string propertyTime = stopWatch.ElapsedMilliseconds.ToString();
+            Debug.WriteLine(string.Format("{0}'s properties gathered in {1}", name, propertyTime));
 
             List<string> parsedFields = new List<string>();
+            stopWatch = Stopwatch.StartNew();
             for (int i = 1; i < data.Length; i++)
             {
                 string line = data[i];
@@ -151,9 +161,6 @@ namespace Paradox_Mod_Editor.Models
                     // TODO: add check for undefined properties
                     // TODO: add check for repeated properties within same object
 
-                    // TODO: refine this - evil_god_names is picking god_names since it appears first and is contained
-                    // use regex word boundaries?
-                    //IScriptContainer scriptValue = scriptToProperty[scriptToProperty.Keys.First(line.Contains)];
                     IScriptContainer scriptValue = default(IScriptContainer);
                     foreach (string key in scriptToProperty.Keys)
                     {
@@ -200,6 +207,8 @@ namespace Paradox_Mod_Editor.Models
                     }
                 }
             }
+            string buildTime = stopWatch.ElapsedMilliseconds.ToString();
+            Debug.WriteLine(string.Format("{0} built in {1}", name, buildTime));
             return scriptObject;
         }
     }

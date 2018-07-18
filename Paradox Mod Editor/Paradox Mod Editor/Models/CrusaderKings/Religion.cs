@@ -330,7 +330,7 @@ namespace Paradox_Mod_Editor.Models.CrusaderKings
 		public ScriptValue<ConvertReligion> ConvertOtherGroup{ get; } = new ScriptValue<ConvertReligion>("ai_convert_other_group");
         [Category("AI"), DisplayName("Aggression")]
 		[Description("AI aggression factor.")]
-        public double AggressionValue
+        public decimal AggressionValue
         {
 			get { return Aggression.Value; }
 			set
@@ -340,7 +340,7 @@ namespace Paradox_Mod_Editor.Models.CrusaderKings
 		}
         [Browsable(false)]
         [ScriptValue(true)]
-		public ScriptValue<double> Aggression{ get; } = new ScriptValue<double>("aggression");
+		public ScriptValue<decimal> Aggression{ get; } = new ScriptValue<decimal>("aggression");
         [Category("Religious Head"), DisplayName("Excommunication")]
 		[Description("Determines if the religious head can excommunicate members of the religion.")]
         public PBool ExcommunicationValue
@@ -643,7 +643,7 @@ namespace Paradox_Mod_Editor.Models.CrusaderKings
 		public ScriptPBool PeacePrestigeLoss{ get; } = new ScriptPBool("peace_prestige_loss");
         [Category("War"), DisplayName("Peace Piety Gain")]
 		[Description("Gain piety while at peace (piety per month).")]
-        public double PeacePietyGainValue
+        public decimal PeacePietyGainValue
 		{
 			get { return PeacePietyGain.Value; }
 			set
@@ -653,7 +653,7 @@ namespace Paradox_Mod_Editor.Models.CrusaderKings
 		}
         [Browsable(false)]
         [ScriptValue(true)]
-		public ScriptValue<double> PeacePietyGain{ get; } = new ScriptValue<double>("peace_piety_gain");
+		public ScriptValue<decimal> PeacePietyGain{ get; } = new ScriptValue<decimal>("peace_piety_gain");
         [Category("Reformation"), DisplayName("Reformed")]
         [Description("The name of the reformed form of this religion. Note: the reformed religion needs to rpecede the unreformed religion in the file.")]
         public string ReformedValue
@@ -721,7 +721,7 @@ namespace Paradox_Mod_Editor.Models.CrusaderKings
 		public ScriptValue<string> UnitHomeModifiers{ get; } = new ScriptValue<string>("unit_home_modifier");
         [Category("Modifiers"), DisplayName("Short Reign Opinion Year Mult")]
         [Description("Opinion penalty multiplier to short reign years. Override the define SHORT_REIGN_OPINION_MULT = 2.")]
-        public double ShortReignOpinionYearMultValue
+        public decimal ShortReignOpinionYearMultValue
 		{
 			get { return ShortReignOpinionYearMult.Value; }
 			set
@@ -731,7 +731,7 @@ namespace Paradox_Mod_Editor.Models.CrusaderKings
 		}
         [Browsable(false)]
         [ScriptValue(true)]
-		public ScriptValue<double> ShortReignOpinionYearMult{ get; } = new ScriptValue<double>("short_reign_opinion_year_mult");
+		public ScriptValue<decimal> ShortReignOpinionYearMult{ get; } = new ScriptValue<decimal>("short_reign_opinion_year_mult");
         [Category("Modifiers"), DisplayName("Character Modifiers")]
         [Description("Modifier for all characters of this religion.")]
         public string CharacterModifiersValue

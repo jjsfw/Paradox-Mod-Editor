@@ -8,8 +8,10 @@ namespace Paradox_Mod_Editor.Models
 {
     interface IScriptContainer
     {
+        // TODO: is this interface really needed?
         string ScriptText { get; }
         dynamic GetValue();
-        void SetValue(object newValue);
+        void SetValue(string newValue);
+        // SetValue w/ T input - not possible in interface
     }
 }
