@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Paradox_Mod_Editor.ParadoxSyntax;
 
-namespace Paradox_Mod_Editor.Models // TODO: make PBool a special case of ScriptValue instead of its own class?
+namespace Paradox_Mod_Editor.Models
 {
     public class ScriptPBool : ScriptValue<PBool>
     {
@@ -27,6 +27,7 @@ namespace Paradox_Mod_Editor.Models // TODO: make PBool a special case of Script
 
         public override void SetValue(object newValue)
         {
+            // TODO: see if this type can be folded directly into ScriptValue w/ TypeConverter/EnumConverter/etc
             if (newValue.GetType() == typeof(PBool))
             {
                 Value = (PBool)newValue;

@@ -12,6 +12,7 @@ namespace Paradox_Mod_Editor.Models
         string ScriptText { get; }
         dynamic GetValue();
         void SetValue(object newValue);
+        Type GetContainedType();
         // SetValue w/ T input - not possible in interface
     }
 }

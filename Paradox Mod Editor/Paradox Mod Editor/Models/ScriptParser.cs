@@ -117,6 +117,14 @@ namespace Paradox_Mod_Editor.Models
             return scriptObjects;
         }
 
+        private object ParseToType(string text, Type type)
+        {
+            TypeConverter converter = TypeDescriptor.GetConverter(type);
+            return converter.ConvertFromString(text);
+
+            //throw new InvalidCastException(string.Format("cannot store {0} {1} in {2} for {3}", newValue.GetType(), newValue, typeof(T), ScriptText));
+        }
+
         private ScriptObject Parse(Type scriptType, string[] data)
         {
             // TODO: get name from first line
@@ -195,7 +203,7 @@ namespace Paradox_Mod_Editor.Models
                         parsedFields.Add(scriptValue.ScriptText);
                         continue;
                     }
-                    scriptValue.SetValue(lineValue);
+                    scriptValue.SetValue(ParseToType(lineValue, scriptValue.GetContainedType()));
                     parsedFields.Add(scriptValue.ScriptText);
                 }
                 else if (scriptObject.GetChildType() != null && i > 0 && Regex.IsMatch(line, scriptPattern) && !scriptObject.GetExcludedStrings().Any(line.Contains))

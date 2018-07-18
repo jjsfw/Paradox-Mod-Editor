@@ -33,30 +33,14 @@ namespace Paradox_Mod_Editor.Models
             return Value;
         }
 
-        public virtual void SetValue(T newValue)
+        public Type GetContainedType()
         {
-            Value = newValue;
-        }
-
-        private T ParseValue(object newValue)
-        {
-
-
-            throw new InvalidCastException(string.Format("cannot store {0} {1} in {2} for {3}", newValue.GetType(), newValue, typeof(T), ScriptText));
+            return typeof(T);
         }
 
         public virtual void SetValue(object newValue)
         {
-            if (typeof(T) == newValue.GetType())
-            {
-                Value = (T)newValue;
-            }
-            else
-            {
-                Value = ParseValue(newValue);
-            }
-            TypeConverter converter = TypeDescriptor.GetConverter(newValue.GetType());
-            Value = (T)converter.ConvertTo(newValue, typeof(T));
+            Value = (T)newValue;
             //try
             //{
             //    Value = (T)newValue;
