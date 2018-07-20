@@ -166,6 +166,10 @@ namespace Paradox_Mod_Editor.Models
             for (int i = 1; i < data.Length; i++)
             {
                 string line = data[i];
+                if (line.Contains("#"))
+                {
+                    line = line.Substring(0, line.IndexOf("#")).Trim();
+                }
                 if (scriptToProperty.Keys.Any(line.Contains))
                 {
                     // TODO: add check for default PBools
