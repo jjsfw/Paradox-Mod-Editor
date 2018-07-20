@@ -69,7 +69,7 @@ namespace Paradox_Mod_Editor.Models
             return scriptObjects;
         }
 
-        public List<ScriptObject> Split(string[] lineData, Type scriptType)
+        public (List<ScriptObject>, int) Split(string[] lineData, Type scriptType)
         {
             stopWatch = Stopwatch.StartNew();
             if (scriptType == null)
@@ -127,6 +127,9 @@ namespace Paradox_Mod_Editor.Models
 
         private ScriptObject Parse(Type scriptType, string[] data)
         {
+            // TODO: parsing current stops at a position, reads sub-string recursively, then starts again at beginning of substring
+            // make it jump to to the end of the substring at the end of the recursion
+            
             // TODO: get name from first line
             PropertyInfo[] properties = scriptType.GetProperties().Where(
                 prop => Attribute.IsDefined(prop, typeof(ScriptValueAttribute))).ToArray();
