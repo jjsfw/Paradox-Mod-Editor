@@ -69,7 +69,7 @@ namespace Paradox_Mod_Editor.Models
             return scriptObjects;
         }
 
-        public (List<ScriptObject>, int) Split(string[] lineData, Type scriptType)
+        public (List<ScriptObject>, int)? Split(string[] lineData, Type scriptType)
         {
             stopWatch = Stopwatch.StartNew();
             if (scriptType == null)
@@ -114,7 +114,7 @@ namespace Paradox_Mod_Editor.Models
             }
             string splitTime = stopWatch.ElapsedMilliseconds.ToString();
             Debug.WriteLine("{0} sub-split in {1}ms", lineData[0], splitTime);
-            return scriptObjects;
+            return (scriptObjects, 0);
         }
 
         private object ParseToType(string text, Type type)
@@ -211,7 +211,7 @@ namespace Paradox_Mod_Editor.Models
                 }
                 else if (scriptObject.GetChildType() != null && i > 0 && Regex.IsMatch(line, scriptPattern) && !scriptObject.GetExcludedStrings().Any(line.Contains))
                 {
-                    List<ScriptObject> subObjects = Split(new List<string>(data).GetRange(i, data.Length - i).ToArray(), scriptObject.GetChildType());
+                    List<ScriptObject> subObjects = Split(new List<string>(data).GetRange(i, data.Length - i).ToArray(), scriptObject.GetChildType()).Value.Item1;
                     if (subObjects != null)
                     {
                         scriptObject.Children = subObjects;
