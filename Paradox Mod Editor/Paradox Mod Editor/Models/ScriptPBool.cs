@@ -9,9 +9,9 @@ namespace Paradox_Mod_Editor.Models
 {
     public class ScriptPBool : ScriptValue<PBool>
     {
-        public ScriptPBool(string text) : base(PBool.Default, text) { }
+        public ScriptPBool(string text) : base(text, PBool.Default) { }
 
-        public ScriptPBool(PBool value, string text) : base(value, text) { }
+        public ScriptPBool(PBool value, string text) : base(text, value) { }
 
         public override string WriteScript()
         {

@@ -17,7 +17,7 @@ namespace Paradox_Mod_Editor.Models
             this.ScriptText = text;
         }
 
-        public ScriptValue(T value, string text)
+        public ScriptValue(string text, T value)
         {
             this.Value = value;
             this.ScriptText = text;

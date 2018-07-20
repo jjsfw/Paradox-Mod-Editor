@@ -130,7 +130,7 @@ namespace Paradox_Mod_Editor.Models
             // TODO: parsing current stops at a position, reads sub-string recursively, then starts again at beginning of substring
             // make it jump to to the end of the substring at the end of the recursion
             
-            // TODO: get name from first line
+            // TODO: assign name to SciptObject properly
             PropertyInfo[] properties = scriptType.GetProperties().Where(
                 prop => Attribute.IsDefined(prop, typeof(ScriptValueAttribute))).ToArray();
             // PropertyInfo[] properties = ((ScriptPropertyGiver)scriptObject).GetScriptProperties();
