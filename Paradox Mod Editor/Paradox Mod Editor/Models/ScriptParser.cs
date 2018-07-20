@@ -25,9 +25,7 @@ namespace Paradox_Mod_Editor.Models
 
         public List<ScriptObject> Split(string data, FileType fileType)
         {
-            // TODO: add IScriptObject type detection based on file type
             // TODO: add file type detection
-            // TODO: move excluded strings to file type
             List<ScriptObject> scriptObjects = new List<ScriptObject>();
             string[] lineData = data.Split('\n');
             int start = 0;
@@ -127,16 +125,9 @@ namespace Paradox_Mod_Editor.Models
 
         private ScriptObject Parse(Type scriptType, string[] data)
         {
-            // TODO: parsing current stops at a position, reads sub-string recursively, then starts again at beginning of substring
-            // make it jump to to the end of the substring at the end of the recursion
-            
-            // TODO: assign name to SciptObject properly
             PropertyInfo[] properties = scriptType.GetProperties().Where(
                 prop => Attribute.IsDefined(prop, typeof(ScriptValueAttribute))).ToArray();
-            // PropertyInfo[] properties = ((ScriptPropertyGiver)scriptObject).GetScriptProperties();
             Dictionary<string, IScriptContainer> scriptToProperty = new Dictionary<string, IScriptContainer>();
-
-            // TODO: parse sub-objects (recursively?)
 
             string name = data[0].Substring(0, data[0].IndexOf('=')).Trim();
             ScriptObject scriptObject = strategy.GetScriptObject(scriptType, name);
@@ -145,15 +136,6 @@ namespace Paradox_Mod_Editor.Models
             {
                 if (property.PropertyType.Name == typeof(ScriptValue<>).Name || property.PropertyType == typeof(ScriptPBool)) // use Name to account for ScriptValues of fixed type not being equal
                 {
-                    // N.B. notes below are tentative - possibly obsolete
-                    // TODO: move scriptText to xml file, have factory/builder/whatever makes the scriptObjects pass the relevant data
-                    // to the scriptObject in PropertyName -> PropertyScriptText dict
-                    // TODO: use Builder instead of Factory?
-                    // TODO: steps below:
-                    // 1) create dumby scriptObject to get the ScriptTexts from using default ReligionFactory
-                    // 2) parse information
-                    // 3) use new "factory" to input parsed data into dumby object (use null coalesce if needed)
-                    
                     scriptToProperty.Add(((IScriptContainer)property.GetValue(scriptObject)).ScriptText, (IScriptContainer)property.GetValue(scriptObject));
                 }
             }
