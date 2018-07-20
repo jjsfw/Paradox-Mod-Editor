@@ -158,10 +158,36 @@ namespace Paradox_Mod_Editor.Models.CrusaderKings
         [Browsable(false)]
 		[ScriptValue(true)]
         public List<Religion> religions = new List<Religion>();
+        [Category("Names"), DisplayName("Male Names")]
+        [Description("Names given to male followers of this religion group.")]
+        public List<string> MaleNamesValue
+        {
+            get { return MaleNames.Value; }
+            set
+            {
+                MaleNames.Value = value;
+            }
+        }
+        [Browsable(false)]
+        [ScriptValue(true)]
+        public ScriptValue<List<string>> MaleNames { get; } = new ScriptValue<List<string>>("male_names");
+        [Category("Names"), DisplayName("Female Names")]
+        [Description("Names given to female followers of this religion group.")]
+        public List<string> FemaleNamesValue
+        {
+            get { return FemaleNames.Value; }
+            set
+            {
+                FemaleNames.Value = value;
+            }
+        }
+        [Browsable(false)]
+        [ScriptValue(true)]
+        public ScriptValue<List<string>> FemaleNames { get; } = new ScriptValue<List<string>>("female_names");
 
         public ReligionGroup(string name) : base(name)
         {
-            RegisterNewScriptType(typeof(Religion), new[] { "color", "male_names", "female_names" });
+            RegisterNewScriptType(typeof(Religion), new[] { "color" });
         }
     }
 }

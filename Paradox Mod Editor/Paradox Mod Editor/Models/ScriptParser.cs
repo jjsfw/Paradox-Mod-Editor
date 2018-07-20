@@ -26,6 +26,7 @@ namespace Paradox_Mod_Editor.Models
         public List<ScriptObject> Split(string data, FileType fileType)
         {
             // TODO: add file type detection
+            // TODO: add check for bracket imbalance
             List<ScriptObject> scriptObjects = new List<ScriptObject>();
             string[] lineData = data.Split('\n');
             int start = 0;
