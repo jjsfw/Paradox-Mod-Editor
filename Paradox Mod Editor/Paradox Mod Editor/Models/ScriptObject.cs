@@ -9,14 +9,14 @@ namespace Paradox_Mod_Editor.Models
 {
     public abstract class ScriptObject
     {
-        public virtual string Name { get; }
+        public virtual string NameValue { get; set; }
         protected static Dictionary<Type, Type> scriptChildren = new Dictionary<Type, Type>(); // maps ScriptObjects to their possible children e.g. ReligionGroup -> Religion
         protected static Dictionary<Type, string[]> excludedStrings = new Dictionary<Type, string[]>();
         public List<ScriptObject> Children { get; set; } = new List<ScriptObject>();
 
         public ScriptObject(string name)
         {
-            this.Name = name;
+            this.NameValue = name;
         }
 
         public PropertyInfo[] GetScriptProperties()
@@ -29,7 +29,7 @@ namespace Paradox_Mod_Editor.Models
 
         public override string ToString()
         {
-            return Name;
+            return NameValue;
         }
 
         protected void RegisterNewScriptType(Type childType, string[] scriptExcludedStrings)

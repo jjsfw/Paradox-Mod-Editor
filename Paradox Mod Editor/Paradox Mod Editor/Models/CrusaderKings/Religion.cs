@@ -16,7 +16,17 @@ namespace Paradox_Mod_Editor.Models.CrusaderKings
         // TODO: contain text inside of religion/whichever script object the text refers to, store script objects instead of raw text in OpenFiles (?)
         [Category("*General"), DisplayName("Name"), DefaultValue("new_religion")]
         [Description("The name of the religion as it appears in script.")]
-        public string Name { get; set; }
+        public override string NameValue
+        {
+            get { return Name.Value; }
+            set
+            {
+                Name.Value = value;
+            }
+        }
+        [Browsable(false)]
+        [ScriptValue(true)]
+        public ScriptValue<string> Name { get; } = new ScriptValue<string>("%ls");
         [Category("*General"), DisplayName("Parent Religion")]
         [Description("Makes the religion a heresy of its parent religion. The parent religion must be defined before. Note: reformed pagans can have heresies, but they need to be defined after both reformed and unreformed religions.")]
         public string ParentValue
@@ -265,7 +275,7 @@ namespace Paradox_Mod_Editor.Models.CrusaderKings
 		public ScriptValue<List<string>> Intermarry{ get; } = new ScriptValue<List<string>>("intermarry");
         [Category("Marriage"), DisplayName("Max Wives")]
 		[Description("Determines the max number of wives members of the religion can have. As well as the number of potential wives automatically generated for the court.")]
-        public int MaxWivesValue
+        public int? MaxWivesValue
         {
 			get { return MaxWives.Value; }
 			set
@@ -275,10 +285,10 @@ namespace Paradox_Mod_Editor.Models.CrusaderKings
 		}
         [Browsable(false)]
         [ScriptValue(true)]
-		public ScriptValue<int> MaxWives{ get; } = new ScriptValue<int>("max_wives");
+		public ScriptValue<int?> MaxWives{ get; } = new ScriptValue<int?>("max_wives");
         [Category("Marriage"), DisplayName("Max Consorts")]
 		[Description("Max number of consorts / concubines.")]
-        public int MaxConsortsValue
+        public int? MaxConsortsValue
         {
 			get { return MaxConsorts.Value; }
 			set
@@ -288,7 +298,7 @@ namespace Paradox_Mod_Editor.Models.CrusaderKings
 		}
         [Browsable(false)]
         [ScriptValue(true)]
-		public ScriptValue<int> MaxConsorts{ get; } = new ScriptValue<int>("max_consorts");
+		public ScriptValue<int?> MaxConsorts{ get; } = new ScriptValue<int?>("max_consorts");
         [Category("Marriage"), DisplayName("Sacred Blood")]
 		[Description("Sacred Xwedodah close-kin marriage mechanics.")]
         public PBool DivineBloodValue
@@ -330,7 +340,7 @@ namespace Paradox_Mod_Editor.Models.CrusaderKings
 		//public ScriptValue<ConvertReligion> ConvertOtherGroup{ get; } = new ScriptValue<ConvertReligion>("ai_convert_other_group");
         [Category("AI"), DisplayName("Aggression")]
 		[Description("AI aggression factor.")]
-        public decimal AggressionValue
+        public decimal? AggressionValue
         {
 			get { return Aggression.Value; }
 			set
@@ -340,7 +350,7 @@ namespace Paradox_Mod_Editor.Models.CrusaderKings
 		}
         [Browsable(false)]
         [ScriptValue(true)]
-		public ScriptValue<decimal> Aggression{ get; } = new ScriptValue<decimal>("aggression");
+		public ScriptValue<decimal?> Aggression{ get; } = new ScriptValue<decimal?>("aggression");
         [Category("Religious Head"), DisplayName("Excommunication")]
 		[Description("Determines if the religious head can excommunicate members of the religion.")]
         public PBool ExcommunicationValue
@@ -603,7 +613,7 @@ namespace Paradox_Mod_Editor.Models.CrusaderKings
 		public ScriptPBool IgnoresDefensiveAttrition{ get; } = new ScriptPBool("ignores_defensive_attrition");
         [Category("War"), DisplayName("Independence Warscore Bonus")]
 		[Description("Overrides define CONTESTED_TITLE_OCCUPIED_WARSCORE_BONUS_INDEP.")]
-        public int IdependenceWarScoreBonusValue
+        public int? IdependenceWarScoreBonusValue
 		{
 			get { return IndependenceWarScoreBonus.Value; }
 			set
@@ -613,7 +623,7 @@ namespace Paradox_Mod_Editor.Models.CrusaderKings
 		}
         [Browsable(false)]
         [ScriptValue(true)]
-		public ScriptValue<int> IndependenceWarScoreBonus{ get; } = new ScriptValue<int>("independence_war_score_bonus");
+		public ScriptValue<int?> IndependenceWarScoreBonus{ get; } = new ScriptValue<int?>("independence_war_score_bonus");
         [Category("War"), DisplayName("Same Religion Piety Loss")]
 		[Description("Lose piety when attacking a ruler of the same religion.")]
         public PBool AttackingSameReligionPietyLossValue
@@ -643,7 +653,7 @@ namespace Paradox_Mod_Editor.Models.CrusaderKings
 		public ScriptPBool PeacePrestigeLoss{ get; } = new ScriptPBool("peace_prestige_loss");
         [Category("War"), DisplayName("Peace Piety Gain")]
 		[Description("Gain piety while at peace (piety per month).")]
-        public decimal PeacePietyGainValue
+        public decimal? PeacePietyGainValue
 		{
 			get { return PeacePietyGain.Value; }
 			set
@@ -653,7 +663,7 @@ namespace Paradox_Mod_Editor.Models.CrusaderKings
 		}
         [Browsable(false)]
         [ScriptValue(true)]
-		public ScriptValue<decimal> PeacePietyGain{ get; } = new ScriptValue<decimal>("peace_piety_gain");
+		public ScriptValue<decimal?> PeacePietyGain{ get; } = new ScriptValue<decimal?>("peace_piety_gain");
         [Category("Reformation"), DisplayName("Reformed")]
         [Description("The name of the reformed form of this religion. Note: the reformed religion needs to rpecede the unreformed religion in the file.")]
         public string ReformedValue
@@ -721,7 +731,7 @@ namespace Paradox_Mod_Editor.Models.CrusaderKings
 		public ScriptValue<string> UnitHomeModifiers{ get; } = new ScriptValue<string>("unit_home_modifier");
         [Category("Modifiers"), DisplayName("Short Reign Opinion Year Mult")]
         [Description("Opinion penalty multiplier to short reign years. Override the define SHORT_REIGN_OPINION_MULT = 2.")]
-        public decimal ShortReignOpinionYearMultValue
+        public decimal? ShortReignOpinionYearMultValue
 		{
 			get { return ShortReignOpinionYearMult.Value; }
 			set
@@ -731,7 +741,7 @@ namespace Paradox_Mod_Editor.Models.CrusaderKings
 		}
         [Browsable(false)]
         [ScriptValue(true)]
-		public ScriptValue<decimal> ShortReignOpinionYearMult{ get; } = new ScriptValue<decimal>("short_reign_opinion_year_mult");
+		public ScriptValue<decimal?> ShortReignOpinionYearMult{ get; } = new ScriptValue<decimal?>("short_reign_opinion_year_mult");
         [Category("Modifiers"), DisplayName("Character Modifiers")]
         [Description("Modifier for all characters of this religion.")]
         public string CharacterModifiersValue

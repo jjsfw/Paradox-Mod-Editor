@@ -13,8 +13,18 @@ namespace Paradox_Mod_Editor.Models.CrusaderKings
     {
         [Category("*General"), DisplayName("Name")]
         [Description("The name of the religion group as it appears in script.")]
+        public override string NameValue
+        {
+            get { return Name.Value; }
+            set
+            {
+                Name.Value = value;
+            }
+        }
+        [Browsable(false)]
         [ScriptValue(true)]
-        public string Name { get; set; } = "new_religion_group";
+        public ScriptValue<string> Name { get; } = new ScriptValue<string>("%ls");
+        //public override string Name { get; set; } = "new_religion_group";
         [Category("*General"), DisplayName("Playable")]
         [Description("Defines whether characters of this religion are playable.")]
         public PBool PlayableValue
