@@ -18,11 +18,9 @@ namespace Paradox_Mod_Editor.Models.CrusaderKings
         [Description("The name of the religion as it appears in script.")]
         public override string NameValue
         {
-            get { return Name.Value; }
-            set
-            {
-                Name.Value = value;
-            }
+            // TODO: use expression body for future accessors
+            get => Name.Value;
+            set => Name.Value = value;
         }
         [Browsable(false)]
         [ScriptValue(true)]
@@ -38,6 +36,7 @@ namespace Paradox_Mod_Editor.Models.CrusaderKings
             }
         }
         [Browsable(false)]
+        [ScriptValue(true)]
         public ScriptValue<string> Parent { get; set; } = new ScriptValue<string>("parent");
         [Category("Graphical"), DisplayName("Graphical Culture")]
         [Description("Only used for the display of CoA frames on the map.")]
@@ -442,6 +441,7 @@ namespace Paradox_Mod_Editor.Models.CrusaderKings
         [Browsable(false)]
         [ScriptValue(true)]
 		public ScriptPBool Autocephaly{ get; } = new ScriptPBool("autocephaly");
+        // TODO: make clothings nullable
         [Category("Religious Head"), DisplayName("Religious Head Clothing")]
 		[Description("Index of frames to use for the religious head cloths & headgear. See portrait modding.")]
         public int ReligiousHeadClothingValue
@@ -912,6 +912,6 @@ namespace Paradox_Mod_Editor.Models.CrusaderKings
         [ScriptValue(true)]
 		public ScriptPBool AllowInRulerDesigner{ get; } = new ScriptPBool("allow_in_ruler_designer");
 
-        public Religion(string name) : base(name) { }
+        public Religion(string name) : base(name, true) { }
     }
 }

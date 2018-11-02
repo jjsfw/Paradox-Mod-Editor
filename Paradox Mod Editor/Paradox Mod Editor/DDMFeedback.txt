@@ -1,0 +1,2 @@
+﻿Scroll to selected object in text on selection
+

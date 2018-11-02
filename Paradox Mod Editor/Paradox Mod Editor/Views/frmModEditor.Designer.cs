@@ -73,6 +73,7 @@
             this.readOnlyBlocksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.debugToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mniDebugParse = new System.Windows.Forms.ToolStripMenuItem();
+            this.mniDebugWrite = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlSpecialEdit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spcPropertiesList)).BeginInit();
             this.spcPropertiesList.Panel1.SuspendLayout();
@@ -459,7 +460,8 @@
             // debugToolStripMenuItem
             // 
             this.debugToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mniDebugParse});
+            this.mniDebugParse,
+            this.mniDebugWrite});
             this.debugToolStripMenuItem.Name = "debugToolStripMenuItem";
             this.debugToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
             this.debugToolStripMenuItem.Text = "Debug";
@@ -470,6 +472,13 @@
             this.mniDebugParse.Size = new System.Drawing.Size(180, 22);
             this.mniDebugParse.Text = "Parse";
             this.mniDebugParse.Click += new System.EventHandler(this.mniDebugParse_Click);
+            // 
+            // mniDebugWrite
+            // 
+            this.mniDebugWrite.Name = "mniDebugWrite";
+            this.mniDebugWrite.Size = new System.Drawing.Size(180, 22);
+            this.mniDebugWrite.Text = "Write";
+            this.mniDebugWrite.Click += new System.EventHandler(this.mniDebugWrite_Click);
             // 
             // frmModEditor
             // 
@@ -554,5 +563,6 @@
         private System.Windows.Forms.ToolStripMenuItem readOnlyBlocksToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem debugToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mniDebugParse;
+        private System.Windows.Forms.ToolStripMenuItem mniDebugWrite;
     }
 }

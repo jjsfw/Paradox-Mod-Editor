@@ -100,6 +100,12 @@ namespace Paradox_Mod_Editor.Views
                 currentIndent = spacesCount;
                 lastNonEmptyLine = i;
             }
+            // passive parsing
+            // maintain selected index
+            int currentIndex = lstScriptObjects.SelectedIndex;
+            controller.DebugParse();
+            lstScriptObjects.SelectedIndex = currentIndex;
+            // update filestate
             currentNode.BackColor = Color.White;
             controller.CheckFileForChanges(currentNode);
         }
@@ -144,7 +150,11 @@ namespace Paradox_Mod_Editor.Views
 
         private void pgrEditor_PropertyValueChanged(object s, PropertyValueChangedEventArgs e)
         {
-            
+            ScriptObject scriptObject = (ScriptObject)((PropertyGrid)s).SelectedObject;
+            //string property = e.ChangedItem.Label;
+            string property = e.ChangedItem.PropertyDescriptor.Name.Replace("Value", "");
+            var value = e.ChangedItem.Value;
+            controller.UpdateObjectText(scriptObject, property, value);
         }
 
         private void spcListButtons_SizeChanged(object sender, EventArgs e)
@@ -160,6 +170,12 @@ namespace Paradox_Mod_Editor.Views
         public void SetScriptObjects(List<ScriptObject> scriptObjects)
         {
             lstScriptObjects.DataSource = FlattenScriptTree(scriptObjects);
+        }
+
+        public List<ScriptObject> GetScriptObjects()
+        {
+            List<ScriptObject> scriptObjects = (List<ScriptObject>)lstScriptObjects.DataSource;
+            return scriptObjects;
         }
 
         private List<ScriptObject> FlattenScriptTree(List<ScriptObject> scriptObjects)
@@ -194,6 +210,11 @@ namespace Paradox_Mod_Editor.Views
         private void mniDebugParse_Click(object sender, EventArgs e)
         {
             controller.DebugParse();
+        }
+
+        private void mniDebugWrite_Click(object sender, EventArgs e)
+        {
+            controller.DebugWrite();
         }
     }
 }

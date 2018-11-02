@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using Paradox_Mod_Editor.Models;
 using Paradox_Mod_Editor.Basic_Forms;
 using Paradox_Mod_Editor.Models.CrusaderKings;
+using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace Paradox_Mod_Editor.Controllers
 {
@@ -57,7 +59,7 @@ namespace Paradox_Mod_Editor.Controllers
 
         private IScriptFactory[] GetCrusaderKingsFactories()
         {
-            return new IScriptFactory[] { new ReligionGroupScriptFactory(), new ReligionScriptFactory(), new CommentBlockScriptFactory() };
+            return new IScriptFactory[] { new ReligionGroupScriptFactory(), new ReligionScriptFactory(), new CommentBlockScriptFactory(), new EventFactory() };
         }
 
         private void BuildCK2Scripts()
@@ -219,11 +221,57 @@ namespace Paradox_Mod_Editor.Controllers
 
         public void DebugParse()
         {
-            currentFile.SetScriptObjects(
-            parser.Split(currentFile.GetCurrentText(), new FileType(
-                new List<string> { "Paradox_Mod_Editor.Models.CrusaderKings.ReligionGroup", "Paradox_Mod_Editor.Models.CrusaderKings.Religion", "Paradox_Mod_Editor.Models.CrusaderKings.CommentBlock" }, 
-                new List<string> { "secret_religion_visibility_trigger" })));
-            view.SetScriptObjects(currentFile.GetScriptObjects());
+            // TODO: continuous parsing doesn't seem to be too much of a time consumer. Leave it in for now
+            try
+            {
+                currentFile.SetScriptObjects(
+                // Events
+                //parser.Split(currentFile.GetCurrentText(), new FileType(
+                //    new List<string> { "Paradox_Mod_Editor.Models.CrusaderKings.Event", "Paradox_Mod_Editor.Models.CrusaderKings.CommandBlock", "Paradox_Mod_Editor.Models.CrusaderKings.CommentBlock" },
+                //    null)));
+                // Religions
+                parser.Split(currentFile.GetCurrentText(), new FileType(
+                    new List<string> { "Paradox_Mod_Editor.Models.CrusaderKings.ReligionGroup", "Paradox_Mod_Editor.Models.CrusaderKings.Religion", "Paradox_Mod_Editor.Models.CrusaderKings.CommentBlock" },
+                    new List<string> { "secret_religion_visibility_trigger" })));
+                view.SetScriptObjects(currentFile.GetScriptObjects());
+            }
+            catch { }
+        }
+
+        public void DebugWrite()
+        {
+            string newText = "";
+            foreach (ScriptObject scriptObject in view.GetScriptObjects())
+            {
+                if (scriptObject.ReplaceWrite)
+                {
+                    string replaceKey = "%%" + scriptObject.NameValue + "%%";
+                    string init = newText.Substring(0, newText.IndexOf(replaceKey));
+                    string end = newText.Substring(newText.IndexOf(replaceKey) + replaceKey.Length);
+                    newText = init + scriptObject.RawText + end;
+                }
+                else
+                {
+                    newText += scriptObject.RawText;
+                }
+            }
+            view.GetTextBox().Text = newText;
+        }
+
+        public void UpdateObjectText(ScriptObject scriptObject, string propertyName, object value)
+        {
+            PropertyInfo[] properties = scriptObject.GetType().GetProperties().Where(
+                prop => Attribute.IsDefined(prop, typeof(ScriptValueAttribute))).ToArray();
+            foreach (PropertyInfo property in properties)
+            {
+                if (propertyName == property.Name)
+                {
+                    IScriptContainer scriptContainer = (IScriptContainer)property.GetValue(scriptObject);
+                    string scriptText = scriptContainer.ScriptText;
+                    scriptObject.RawText = Regex.Replace(scriptObject.RawText, scriptText + @"\s*=\s*[^\s#]+", scriptText + " = " + value);
+                    break;
+                }
+            }
         }
     }
 }

@@ -28,6 +28,7 @@ namespace Paradox_Mod_Editor.Models
         public override void SetValue(object newValue)
         {
             // TODO: see if this type can be folded directly into ScriptValue w/ TypeConverter/EnumConverter/etc
+            // TODO: use nullable bool instead?
             if (newValue.GetType() == typeof(PBool))
             {
                 Value = (PBool)newValue;

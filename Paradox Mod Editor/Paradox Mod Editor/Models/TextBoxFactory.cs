@@ -27,6 +27,7 @@ namespace Paradox_Mod_Editor.Models
             textBox.AutoIndentChars = false;
             textBox.AutoIndentExistingLines = false;
             textBox.AutoIndent = true;
+            textBox.ShowFoldingLines = true;
             textBox.BracketsHighlightStrategy = BracketsHighlightStrategy.Strategy1;
             textBox.LeftBracket = '{';
             textBox.LeftBracket2 = '(';
@@ -56,13 +57,15 @@ namespace Paradox_Mod_Editor.Models
             textBox.OnTextChangedDelayed(textBox.Range);
             textBox.BringToFront();
 
-            autocompleteMenu = new AutocompleteMenu(textBox);
-            autocompleteMenu.ForeColor = Color.White;
-            autocompleteMenu.BackColor = Color.Gray;
-            autocompleteMenu.SelectedColor = Color.Purple;
-            autocompleteMenu.SearchPattern = @"[\w\.]";
-            autocompleteMenu.AllowTabKey = true;
-            autocompleteMenu.AlwaysShowTooltip = true;
+            autocompleteMenu = new AutocompleteMenu(textBox)
+            {
+                ForeColor = Color.White,
+                BackColor = Color.Gray,
+                SelectedColor = Color.Purple,
+                SearchPattern = @"[\w\.]",
+                AllowTabKey = true,
+                AlwaysShowTooltip = true
+            };
             autocompleteMenu.SearchPattern = @"[\w\.:=!<>]";
 
             autocompleteMenu.Items.SetAutocompleteItems(autocompleteItems);

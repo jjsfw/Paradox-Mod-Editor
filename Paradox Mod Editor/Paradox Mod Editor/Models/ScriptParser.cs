@@ -15,8 +15,8 @@ namespace Paradox_Mod_Editor.Models
     public class ScriptParser
     {
         private IScriptStrategy strategy;
-        private const string scriptPattern = @"^\s*[a-zA-Z_]+\s*=\s*{\s*$";
-        Stopwatch stopWatch;
+        private const string scriptPattern = @"^\s*[a-zA-Z_-]+\s*=\s*{\s*$";
+        private Stopwatch stopWatch;
 
         public ScriptParser(IScriptStrategy strategy)
         {
@@ -32,7 +32,6 @@ namespace Paradox_Mod_Editor.Models
             int start = 0;
             int depth = 0;
             bool insideObject = false;
-            string scriptPattern = @"^\s*[a-zA-Z_]+\s*=\s*{\s*$";
             for (int i = 0; i < lineData.Length; i++)
             {
                 string line = lineData[i];
@@ -41,7 +40,7 @@ namespace Paradox_Mod_Editor.Models
                 {
                     line = line.Substring(0, line.IndexOf("#"));
                 }
-                if (!insideObject && Regex.IsMatch(line, scriptPattern) && !fileType.ExcludedStrings.Any(line.Contains))
+                if (!insideObject && Regex.IsMatch(line, scriptPattern) && (fileType.ExcludedStrings is null || !fileType.ExcludedStrings.Any(line.Contains)))
                 {
                     start = i;
                     insideObject = true;
@@ -131,7 +130,9 @@ namespace Paradox_Mod_Editor.Models
             Dictionary<string, IScriptContainer> scriptToProperty = new Dictionary<string, IScriptContainer>();
 
             string name = data[0].Substring(0, data[0].IndexOf('=')).Trim();
+            string rawData = String.Join("\n", data);
             ScriptObject scriptObject = strategy.GetScriptObject(scriptType, name);
+            scriptObject.RawText = rawData;
             stopWatch = Stopwatch.StartNew();
             foreach (PropertyInfo property in properties)
             {
@@ -203,6 +204,10 @@ namespace Paradox_Mod_Editor.Models
                     if (subObjects != null)
                     {
                         scriptObject.Children = subObjects;
+                        foreach (ScriptObject subObject in subObjects)
+                        {
+                            scriptObject.RawText = scriptObject.RawText.Replace(subObject.RawText, "%%" + subObject.NameValue + "%%");
+                        }
                         i += subData.Length;
                     }
                 }

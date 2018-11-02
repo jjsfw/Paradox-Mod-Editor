@@ -17,5 +17,6 @@ namespace Paradox_Mod_Editor.Views
         FastColoredTextBox GetTextBox();
         void AddNewScriptObject(ScriptObject scriptObject);
         void SetScriptObjects(List<ScriptObject> scriptObjects);
+        List<ScriptObject> GetScriptObjects();
     }
 }

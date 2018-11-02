@@ -142,7 +142,10 @@
     <Compile Include="Models\Attributes.cs" />
     <Compile Include="Models\CommentBlock.cs" />
     <Compile Include="Models\CommentBlockScriptFactory.cs" />
+    <Compile Include="Models\CrusaderKings\CommandBlock.cs" />
     <Compile Include="Models\CrusaderKings\CrusaderKingsStrategy.cs" />
+    <Compile Include="Models\CrusaderKings\Event.cs" />
+    <Compile Include="Models\CrusaderKings\EventFactory.cs" />
     <Compile Include="Models\CrusaderKings\ReligionGroupScriptFactory.cs" />
     <Compile Include="Models\FileType.cs" />
     <Compile Include="Models\IScriptContainer.cs" />
@@ -225,6 +228,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="DDMFeedback.txt" />
     <Content Include="ParadoxSyntax\CrusaderKingsScripts.xml" />
     <Content Include="FastColoredTextBox\FastColoredTextBox.csproj" />
     <Content Include="FastColoredTextBox\license.txt" />
