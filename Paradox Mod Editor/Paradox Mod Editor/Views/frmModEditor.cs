@@ -104,7 +104,18 @@ namespace Paradox_Mod_Editor.Views
             // maintain selected index
             int currentIndex = lstScriptObjects.SelectedIndex;
             controller.DebugParse();
-            lstScriptObjects.SelectedIndex = currentIndex;
+
+            if (!(lstScriptObjects.DataSource is null))
+            {
+                if (((List<ScriptObject>)lstScriptObjects.DataSource).Count > currentIndex)
+                {
+                    lstScriptObjects.SelectedIndex = currentIndex;
+                }
+                else
+                {
+                    lstScriptObjects.SelectedIndex = 0;
+                }
+            }
             // update filestate
             currentNode.BackColor = Color.White;
             controller.CheckFileForChanges(currentNode);

@@ -221,7 +221,8 @@ namespace Paradox_Mod_Editor.Controllers
 
         public void DebugParse()
         {
-            // TODO: continuous parsing doesn't seem to be too much of a time consumer. Leave it in for now
+            // TODO: continuous parsing doesn't seem to be *too* much of a time consumer. Leave it in for now
+            // TODO: in future, try to have it only parse the changed sections
             try
             {
                 currentFile.SetScriptObjects(
